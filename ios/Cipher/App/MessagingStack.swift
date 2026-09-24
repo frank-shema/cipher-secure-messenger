@@ -20,6 +20,14 @@ struct MessagingStack: Sendable {
     let conversationGateway: any ConversationGateway
     let realtime: any RealtimeGateway
     let clock: any Clock
+    /// Raw wire envelopes for the Server's-Eye view.
+    let envelopes: any EnvelopeProviding
+    /// Where the per-conversation disappearing timer is kept.
+    let disappearingTimers: any DisappearingTimerStoring
+    /// Expiry sweeps, when the backing store can find expired rows; nil for stores that cannot.
+    let expiredMessages: (any ExpiredMessageDeleting)?
+    /// Durable home for incoming raw envelopes; nil when the store keeps none.
+    let rawEnvelopes: (any RawEnvelopeRecording)?
 
     init(
         account: User,
@@ -32,7 +40,11 @@ struct MessagingStack: Sendable {
         keyDirectory: any KeyDirectoryGateway,
         conversationGateway: any ConversationGateway,
         realtime: any RealtimeGateway,
-        clock: any Clock = SystemClock()
+        clock: any Clock = SystemClock(),
+        envelopes: (any EnvelopeProviding)? = nil,
+        disappearingTimers: (any DisappearingTimerStoring)? = nil,
+        expiredMessages: (any ExpiredMessageDeleting)? = nil,
+        rawEnvelopes: (any RawEnvelopeRecording)? = nil
     ) {
         self.account = account
         self.messages = messages
@@ -45,6 +57,10 @@ struct MessagingStack: Sendable {
         self.conversationGateway = conversationGateway
         self.realtime = realtime
         self.clock = clock
+        self.envelopes = envelopes ?? OutboxEnvelopeProvider(outbox: outbox)
+        self.disappearingTimers = disappearingTimers ?? ConversationRepositoryTimerStore(conversations: conversations)
+        self.expiredMessages = expiredMessages
+        self.rawEnvelopes = rawEnvelopes
     }
 
     var sendMessage: SendMessageUseCase {
@@ -116,5 +132,14 @@ struct MessagingStack: Sendable {
 
     var flushOutbox: FlushOutboxUseCase {
         FlushOutboxUseCase(messages: messages, conversations: conversations, outbox: outbox, gateway: conversationGateway, clock: clock)
+    }
+
+    var evaluateTrust: EvaluateTrustUseCase {
+        EvaluateTrustUseCase(conversations: conversations, preferences: AlwaysOnMetadataStripping(), clock: clock)
+    }
+
+    var changeDisappearingTimer: ChangeDisappearingTimerUseCase {
+        let clock = clock
+        return ChangeDisappearingTimerUseCase(store: disappearingTimers, sender: sendMessage, now: { clock.now() })
     }
 }

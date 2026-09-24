@@ -95,15 +95,12 @@ extension ChatViewModel {
         revealedMessageIds.insert(id)
     }
 
-    func capsuleUnlocked(_ id: MessageID) {
-        unlockedCapsuleIds.insert(id)
-        haptics.play(.capsuleUnlock)
-    }
-
-    /// Whether a bubble should render as a sealed capsule right now.
-    func isSealed(_ message: Message) -> Bool {
-        guard let unlockAt = message.flags.unlockAt, message.direction == .incoming else { return false }
-        return unlockAt > now && !unlockedCapsuleIds.contains(message.id)
+    /// Whether a bubble should render with the capsule chrome right now: sealed, or just opened and
+    /// still playing its reveal. Once the reveal completes the row swaps to a plain bubble.
+    func showsCapsule(_ message: Message) -> Bool {
+        guard message.direction == .incoming, message.flags.unlockAt != nil else { return false }
+        if capsules.isSealed(message) { return true }
+        return capsules.isUnlocked(message.id) && !revealedMessageIds.contains(message.id)
     }
 
     /// Flips one bubble to the envelope the relay stored. The envelope is fetched lazily because the
@@ -137,22 +134,24 @@ extension ChatViewModel {
         routes.onVerify(contact.id)
     }
 
+    func showTrust() {
+        isTrustPresented = true
+    }
+
     func toggleServersEye() {
         isServersEyePresented.toggle()
         ChatLog.serversEye.info("servers-eye \(self.isServersEyePresented ? "opened" : "closed", privacy: .public)")
     }
 
-    /// Persists the timer on the conversation and announces the change as a system message so both
-    /// sides see the same rule from the same moment.
-    func setDisappearingTimer(_ timer: TimeInterval?) {
-        guard conversation.disappearingTimer != timer else { return }
-        conversation.disappearingTimer = timer
-        let updated = conversation
+    /// Applies the timer optimistically, then persists and announces it through the Ephemeral use case
+    /// so both transcripts show the same notice from the same moment.
+    func setDisappearingTimer(_ seconds: TimeInterval?) {
+        let timer = DisappearingTimer(seconds: seconds)
+        guard conversation.disappearingTimer != timer.seconds else { return }
+        conversation.disappearingTimer = timer.seconds
         Task {
             do {
-                try await deps.conversations.upsert(updated)
-                let event = SystemEvent(kind: .disappearingChanged)
-                _ = try await deps.sender.execute(conversationId: conversationId, payload: .system(event), expiresAt: nil)
+                try await deps.changeTimer.execute(conversationId: conversationId, timer: timer)
             } catch {
                 errorMessage = error.localizedDescription
             }
@@ -166,5 +165,9 @@ extension ChatViewModel {
 
     func openAttachment(_ id: MessageID) {
         routes.onOpenAttachment(id)
+    }
+
+    func sensitiveFindingDidChange(_ kind: SensitiveKind?) {
+        sensitiveFinding = kind
     }
 }

@@ -1,26 +1,60 @@
+import CipherCore
 import CipherDesign
 import SwiftUI
 
-/// Maps a `Route` to its screen. Routes owned by features that are still landing resolve to a
-/// placeholder so navigation never dead-ends; the integrator swaps each case for the real view.
+/// Maps a `Route` to its screen. Screens that need the account's messaging surface resolve it through
+/// `WithMessagingSurface`, which shows a calm fallback while the runtime is still coming up.
 struct RouteDestinationView: View {
     let route: Route
 
+    @Environment(AppContainer.self) private var container
+    @Environment(Router.self) private var router
+
     var body: some View {
         switch route {
+        case .conversation(let id):
+            ChatScreen(conversationId: id)
+        case .newConversation:
+            WithMessagingSurface { surface in
+                NewConversationView(start: surface.list.start) { id in
+                    router.replace(with: [.conversation(id)])
+                }
+            }
+        case .verify(let userId):
+            WithMessagingSurface { surface in
+                VerifyContactView(userId: userId, dependencies: surface.verify, haptics: container.haptics)
+            }
         case .settings:
             SettingsView()
+        case .serversEye(let id):
+            ServersEyeScreen(conversationId: id)
+        case .trust(let id):
+            TrustScreen(conversationId: id)
+        case .attachmentViewer:
+            RoutePlaceholderView(title: String(localized: "route.attachment", defaultValue: "Attachment"))
         case .lockSettings:
-            LockSettingsPlaceholderView()
-        case .conversation, .newConversation, .verify, .serversEye, .trust, .attachmentViewer:
-            RoutePlaceholderView(route: route)
+            SettingsLockView(lock: container.appLock, flipToHide: container.flipToHide)
+        }
+    }
+}
+
+/// Resolves the active messaging surface for a screen, or explains why there is none yet.
+struct WithMessagingSurface<Content: View>: View {
+    @Environment(AppContainer.self) private var container
+    @ViewBuilder let content: (MessagingSurface) -> Content
+
+    var body: some View {
+        if let surface = container.messaging.surface {
+            content(surface)
+        } else {
+            MessagingUnavailableView()
         }
     }
 }
 
 /// A calm "not here yet" screen that names the destination, so a tester knows the tap registered.
 struct RoutePlaceholderView: View {
-    let route: Route
+    let title: String
 
     var body: some View {
         ZStack {
@@ -34,32 +68,18 @@ struct RoutePlaceholderView: View {
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
     }
-
-    private var title: String {
-        switch route {
-        case .conversation:
-            String(localized: "route.conversation", defaultValue: "Conversation")
-        case .newConversation:
-            String(localized: "route.newConversation", defaultValue: "New chat")
-        case .verify:
-            String(localized: "route.verify", defaultValue: "Verify keys")
-        case .settings:
-            String(localized: "route.settings", defaultValue: "Settings")
-        case .serversEye:
-            String(localized: "route.serversEye", defaultValue: "Server's eye")
-        case .trust:
-            String(localized: "route.trust", defaultValue: "Trust")
-        case .attachmentViewer:
-            String(localized: "route.attachment", defaultValue: "Attachment")
-        case .lockSettings:
-            String(localized: "route.lockSettings", defaultValue: "App lock")
-        }
-    }
 }
 
-#Preview {
+#Preview("New chat") {
     NavigationStack {
         RouteDestinationView(route: .newConversation)
+    }
+    .previewEnvironment(AppContainer.mock(signedInAs: Fixtures.alice), state: .ready(Fixtures.session(for: Fixtures.alice)))
+}
+
+#Preview("Placeholder") {
+    NavigationStack {
+        RouteDestinationView(route: .attachmentViewer(MessageID(MessagingFixtures.stableUUID("preview-attachment"))))
     }
     .previewEnvironment(AppContainer.mock(signedInAs: Fixtures.alice), state: .ready(Fixtures.session(for: Fixtures.alice)))
 }

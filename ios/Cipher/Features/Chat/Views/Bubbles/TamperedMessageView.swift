@@ -8,7 +8,6 @@ struct TamperedMessageView: View {
     let message: Message
     let reason: TamperReason
     let tail: MessageBubbleShape.Tail
-    let now: Date
 
     var body: some View {
         VStack(alignment: .leading, spacing: CipherSpacing.sm) {
@@ -27,7 +26,7 @@ struct TamperedMessageView: View {
                     .font(CipherTypography.monoSmall)
                     .foregroundStyle(CipherColor.danger.opacity(0.8))
                 Spacer()
-                BubbleMetaView(message: message, now: now)
+                BubbleMetaView(message: message)
             }
         }
         .padding(.horizontal, CipherSpacing.md)
@@ -45,7 +44,7 @@ struct TamperedMessageView: View {
     VStack(spacing: CipherSpacing.md) {
         ForEach(TamperReason.allCases, id: \.self) { reason in
             if let tampered = messages.first(where: { $0.content.isTampered }) {
-                TamperedMessageView(message: tampered, reason: reason, tail: .leading, now: PreviewMessaging.frozenNow)
+                TamperedMessageView(message: tampered, reason: reason, tail: .leading)
             }
         }
     }

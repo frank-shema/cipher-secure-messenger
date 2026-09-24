@@ -12,4 +12,6 @@ enum AppLog {
     static let onboarding = Logger(subsystem: subsystem, category: "onboarding")
     static let settings = Logger(subsystem: subsystem, category: "settings")
     static let router = Logger(subsystem: subsystem, category: "router")
+    static let messaging = Logger(subsystem: subsystem, category: "messaging")
+    static let realtime = Logger(subsystem: subsystem, category: "realtime")
 }

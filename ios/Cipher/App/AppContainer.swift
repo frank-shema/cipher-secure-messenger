@@ -5,13 +5,15 @@ import Observation
 
 /// The composition root. Everything with a lifetime of "the whole process" is built exactly once here
 /// and handed down through the SwiftUI environment; everything with a lifetime of "one signed-in
-/// account" is built by `makeMessagingStack(for:)` when the session becomes ready.
+/// account" is built by `runtimeFactory` when the session becomes ready and owned by `messaging`.
 ///
 /// Production wiring lives in `ProductionFactories`; previews and tests use `mock()`, which swaps every
 /// port for an in-memory implementation so no screen ever needs a relay, a Keychain or CryptoKit.
 @MainActor
 @Observable
 final class AppContainer {
+    typealias RuntimeFactory = @MainActor (Session, AppContainer) async throws -> any ActiveMessaging
+
     let endpoints: ServerEndpoints
     let defaults: UserDefaults
     let clock: any Clock
@@ -21,17 +23,19 @@ final class AppContainer {
     let identityKeyStore: any IdentityKeyStore
     let publicationRegistry: IdentityPublicationRegistry
     let sessionEvents: SessionEventRelay
-    let realtimeLifecycle: any RealtimeLifecycle
     let haptics: any HapticEngine
     let toastCenter: ToastCenter
     let router: Router
+    let appLock: AppLockManager
+    let flipToHide: FlipToHideMonitor
+    let messaging: MessagingCoordinator
     let keyPublishClassifier: KeyPublishErrorClassifier
 
-    /// EXTENSION POINT for the messaging integration. Given a ready session, builds the account-scoped
-    /// `PersistenceStore`, the `CipherCryptoEngine`, the `WebSocketClient` and the remote gateways, and
-    /// returns them as one `MessagingStack`. The default throws `IntegrationError.notWired` so the shell
-    /// keeps running (and previews keep compiling) until the integrator assigns the real factory.
+    /// Builds the account-scoped Core graph (`PersistenceStore`, `CipherCryptoEngine`, `WebSocketClient`,
+    /// remote gateways). Kept as a standalone factory because the DEBUG self-test drives a stack directly.
     @ObservationIgnored var messagingStackFactory: @Sendable (Session) async throws -> MessagingStack
+    /// Wraps a stack into the runtime the screens run on; previews substitute the in-memory fakes.
+    @ObservationIgnored var runtimeFactory: RuntimeFactory
 
     init(
         endpoints: ServerEndpoints,
@@ -42,10 +46,13 @@ final class AppContainer {
         keyDirectory: any KeyDirectoryGateway,
         identityKeyStore: any IdentityKeyStore,
         sessionEvents: SessionEventRelay,
-        realtimeLifecycle: any RealtimeLifecycle,
         haptics: any HapticEngine,
+        appLock: AppLockManager,
+        flipToHide: FlipToHideMonitor,
         keyPublishClassifier: KeyPublishErrorClassifier = .problemBased,
-        messagingStackFactory: @escaping @Sendable (Session) async throws -> MessagingStack = AppContainer.notWiredMessagingStack
+        messagingStackFactory: @escaping @Sendable (Session) async throws -> MessagingStack = AppContainer.notWiredMessagingStack,
+        runtimeFactory: @escaping RuntimeFactory = AppContainer.liveRuntime,
+        wipeAccountData: @escaping @Sendable (UserID) throws -> Void = { _ in }
     ) {
         self.endpoints = endpoints
         self.defaults = defaults
@@ -56,12 +63,25 @@ final class AppContainer {
         self.identityKeyStore = identityKeyStore
         self.publicationRegistry = IdentityPublicationRegistry(defaults: defaults)
         self.sessionEvents = sessionEvents
-        self.realtimeLifecycle = realtimeLifecycle
         self.haptics = haptics
         self.toastCenter = ToastCenter()
         self.router = Router()
+        self.appLock = appLock
+        self.flipToHide = flipToHide
         self.keyPublishClassifier = keyPublishClassifier
         self.messagingStackFactory = messagingStackFactory
+        self.runtimeFactory = runtimeFactory
+        self.messaging = MessagingCoordinator(
+            router: router,
+            appLock: appLock,
+            identityKeys: identityKeyStore,
+            clock: clock,
+            wipeAccountData: wipeAccountData
+        )
+        messaging.makeRuntime = { [weak self] session in
+            guard let self else { throw IntegrationError.notWired(component: "AppContainer") }
+            return try await self.runtimeFactory(session, self)
+        }
     }
 
     /// The production graph: Keychain-backed stores and the relay at the configured (or overridden) address.
@@ -69,6 +89,7 @@ final class AppContainer {
         let endpoints = AppPreferences.endpoints(in: defaults)
         let clock = SystemClock()
         let sessionEvents = SessionEventRelay()
+        let haptics = CoreHapticsEngine()
         let ports = ProductionFactories.makePorts(endpoints: endpoints, sessionEvents: sessionEvents, clock: clock)
         return AppContainer(
             endpoints: endpoints,
@@ -79,8 +100,13 @@ final class AppContainer {
             keyDirectory: ports.keyDirectory,
             identityKeyStore: ports.identityKeyStore,
             sessionEvents: sessionEvents,
-            realtimeLifecycle: ports.realtimeLifecycle,
-            haptics: CoreHapticsEngine()
+            haptics: haptics,
+            appLock: AppLockManager.live(haptics: haptics, defaults: defaults),
+            flipToHide: FlipToHideMonitor(defaults: defaults),
+            messagingStackFactory: { session in
+                try ProductionFactories.makeMessagingStack(for: session, ports: ports, clock: clock)
+            },
+            wipeAccountData: { accountId in try ProductionFactories.removeAccountData(accountId) }
         )
     }
 
@@ -108,14 +134,19 @@ final class AppContainer {
             keyDirectory: MockKeyDirectoryGateway(currentUser: user ?? Fixtures.alice, uploadBehavior: keyUpload),
             identityKeyStore: MockIdentityKeyStore(existing: existingKeys),
             sessionEvents: SessionEventRelay(),
-            realtimeLifecycle: NoopRealtimeLifecycle(),
-            haptics: NoopHapticEngine()
+            haptics: NoopHapticEngine(),
+            appLock: AppLockManager.preview(enabled: false, locked: false),
+            flipToHide: FlipToHideMonitor(source: PreviewGravitySource(), defaults: defaults),
+            runtimeFactory: { session, _ in PreviewMessagingRuntime(session: session) }
         )
     }
 
     var identityBootstrapper: IdentityBootstrapper {
         IdentityBootstrapper(keyStore: identityKeyStore, directory: keyDirectory, classifier: keyPublishClassifier)
     }
+
+    /// The realtime hooks `AppSession` fires; the messaging coordinator answers them.
+    var realtimeLifecycle: any RealtimeLifecycle { messaging }
 
     /// Builds the account-scoped messaging graph; see `messagingStackFactory`.
     func makeMessagingStack(for session: Session) async throws -> MessagingStack {
@@ -126,5 +157,17 @@ final class AppContainer {
     @Sendable
     private static func notWiredMessagingStack(for session: Session) async throws -> MessagingStack {
         throw IntegrationError.notWired(component: "CipherPersistence.PersistenceStore + CipherCrypto.CipherCryptoEngine")
+    }
+
+    /// Production runtime: the real stack behind a socket pump, expiry sweeps and the sensitive guard.
+    private static func liveRuntime(for session: Session, in container: AppContainer) async throws -> any ActiveMessaging {
+        let stack = try await container.makeMessagingStack(for: session)
+        return AccountRuntime(
+            stack: stack,
+            identityKeys: container.identityKeyStore,
+            haptics: container.haptics,
+            toasts: container.toastCenter,
+            defaults: container.defaults
+        )
     }
 }

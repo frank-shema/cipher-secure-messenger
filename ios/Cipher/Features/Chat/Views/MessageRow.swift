@@ -15,7 +15,7 @@ struct MessageRow: View {
     var body: some View {
         Group {
             if case .system(let event) = message.content {
-                SystemMessageView(event: event, contactName: contactName, date: message.effectiveTimestamp)
+                SystemMessageView(event: event, contactName: contactName, date: message.effectiveTimestamp, text: noticeText)
                     .padding(.horizontal, CipherSpacing.lg)
             } else {
                 bubbleRow
@@ -23,6 +23,12 @@ struct MessageRow: View {
         }
         .padding(.top, item.isFirstInGroup ? CipherSpacing.sm : 2)
         .onAppear { viewModel.markVisible(message.id) }
+    }
+
+    /// Timer notices name the new timer; every other system event keeps its generic sentence.
+    private var noticeText: String? {
+        guard DisappearingChangeNotice.isTimerNotice(message) else { return nil }
+        return DisappearingChangeNotice.text(for: message, contactName: contactName)
     }
 
     private var bubbleRow: some View {
@@ -63,23 +69,23 @@ struct MessageRow: View {
     private var bubble: some View {
         switch message.content {
         case .text(let body):
-            if viewModel.isSealed(message), let unlockAt = message.flags.unlockAt {
-                SealedCapsuleBubble(message: message, text: body, unlockAt: unlockAt, now: viewModel.now) {
-                    viewModel.capsuleUnlocked(message.id)
+            if viewModel.showsCapsule(message), let unlockAt = message.flags.unlockAt {
+                SealedCapsuleBubble(message: message, text: body, unlockAt: unlockAt, capsules: viewModel.capsules) {
+                    viewModel.markRevealed(message.id)
                 }
             } else {
                 TextBubble(message: message, text: body, tail: item.tail,
-                           isRevealed: viewModel.revealedMessageIds.contains(message.id), now: viewModel.now) {
+                           isRevealed: viewModel.revealedMessageIds.contains(message.id)) {
                     viewModel.markRevealed(message.id)
                 }
             }
         case .attachment(let attachment, let caption):
             AttachmentBubble(message: message, attachment: attachment, caption: caption, tail: item.tail,
-                             progress: viewModel.uploadProgress[message.id], now: viewModel.now) {
+                             progress: viewModel.uploadProgress[message.id]) {
                 viewModel.openAttachment(message.id)
             }
         case .tampered(let reason):
-            TamperedMessageView(message: message, reason: reason, tail: item.tail, now: viewModel.now)
+            TamperedMessageView(message: message, reason: reason, tail: item.tail)
         case .reaction, .system:
             EmptyView()
         }

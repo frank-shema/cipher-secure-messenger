@@ -8,6 +8,8 @@ struct SystemMessageView: View {
     let event: SystemEvent
     let contactName: String
     let date: Date
+    /// Overrides the generic wording, e.g. the timer notice that names the new timer.
+    var text: String?
 
     private var symbol: String {
         switch event.kind {
@@ -30,7 +32,7 @@ struct SystemMessageView: View {
         HStack(spacing: CipherSpacing.xs) {
             Image(systemName: symbol)
                 .font(.caption2.weight(.semibold))
-            Text(MessageFormatting.systemText(for: event.kind, contactName: contactName))
+            Text(text ?? MessageFormatting.systemText(for: event.kind, contactName: contactName))
                 .font(.caption)
             Text(MessageFormatting.time(date))
                 .font(.caption2.monospacedDigit())

@@ -16,6 +16,12 @@ struct ChatDependencies: Sendable {
     var sensitiveDetector: any SensitiveContentDetecting
     /// Nil disables attachment sending in the composer (the picks still fire their callbacks).
     var attachments: (any AttachmentSending)?
+    /// Persists a disappearing-timer change and announces it in the transcript.
+    var changeTimer: ChangeDisappearingTimerUseCase
+    /// Scores the conversation for the trust ring and the "Why this chat is secure" sheet.
+    var trust: any TrustEvaluating
+    /// Sweeps expired messages while the chat is open; nil where nothing ever expires (previews, decoy).
+    var expiry: ExpiryScheduler?
     /// Injected time source so previews can freeze "now" for capsules and countdowns.
     var now: @Sendable () -> Date
 
@@ -31,6 +37,9 @@ struct ChatDependencies: Sendable {
         envelopes: any EnvelopeProviding,
         sensitiveDetector: any SensitiveContentDetecting,
         attachments: (any AttachmentSending)? = nil,
+        changeTimer: ChangeDisappearingTimerUseCase? = nil,
+        trust: (any TrustEvaluating)? = nil,
+        expiry: ExpiryScheduler? = nil,
         now: @escaping @Sendable () -> Date = { Date() }
     ) {
         self.currentUserId = currentUserId
@@ -44,6 +53,13 @@ struct ChatDependencies: Sendable {
         self.envelopes = envelopes
         self.sensitiveDetector = sensitiveDetector
         self.attachments = attachments
+        self.changeTimer = changeTimer ?? ChangeDisappearingTimerUseCase(
+            store: ConversationRepositoryTimerStore(conversations: conversations),
+            sender: sender,
+            now: now
+        )
+        self.trust = trust ?? EvaluateTrustUseCase(conversations: conversations, preferences: AlwaysOnMetadataStripping())
+        self.expiry = expiry
         self.now = now
     }
 }

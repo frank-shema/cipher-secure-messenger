@@ -10,19 +10,17 @@ struct TextBubble: View {
     let text: String
     let tail: MessageBubbleShape.Tail
     let isRevealed: Bool
-    let now: Date
     let onRevealed: () -> Void
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var reveal: Bool
     @State private var isSealing = false
 
-    init(message: Message, text: String, tail: MessageBubbleShape.Tail, isRevealed: Bool, now: Date, onRevealed: @escaping () -> Void) {
+    init(message: Message, text: String, tail: MessageBubbleShape.Tail, isRevealed: Bool, onRevealed: @escaping () -> Void) {
         self.message = message
         self.text = text
         self.tail = tail
         self.isRevealed = isRevealed
-        self.now = now
         self.onRevealed = onRevealed
         _reveal = State(initialValue: isRevealed || message.direction == .outgoing)
     }
@@ -34,7 +32,7 @@ struct TextBubble: View {
                 .foregroundStyle(message.direction.primaryTextColor)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .fixedSize(horizontal: false, vertical: true)
-            BubbleMetaView(message: message, now: now)
+            BubbleMetaView(message: message)
         }
         .bubbleChrome(direction: message.direction, tail: tail)
         .scrambleOnSend(trigger: isSealing)
@@ -83,7 +81,7 @@ struct TextBubble: View {
         ForEach(messages.prefix(3)) { message in
             if case .text(let body) = message.content {
                 TextBubble(message: message, text: body, tail: message.direction == .outgoing ? .trailing : .leading,
-                           isRevealed: false, now: PreviewMessaging.frozenNow) {}
+                           isRevealed: false) {}
                     .frame(maxWidth: 300, alignment: message.direction == .outgoing ? .trailing : .leading)
                     .frame(maxWidth: .infinity, alignment: message.direction == .outgoing ? .trailing : .leading)
             }

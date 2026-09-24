@@ -33,7 +33,7 @@ struct ChatInputBar: View {
         .background(.bar)
         .overlay(alignment: .top) { Rectangle().fill(CipherColor.divider).frame(height: 0.5) }
         .sheet(isPresented: $viewModel.isTimeCapsulePickerPresented) {
-            TimeCapsulePickerSheet(unlockAt: $viewModel.composer.unlockAt, now: viewModel.now)
+            TimeCapsulePickerSheet(unlockAt: $viewModel.composer.unlockAt, now: viewModel.deps.now)
         }
     }
 

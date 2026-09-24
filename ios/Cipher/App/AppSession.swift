@@ -105,10 +105,12 @@ final class AppSession {
         }
     }
 
+    /// The messaging runtime comes up first so `onAuthenticated` hooks (the DEBUG companion, for
+    /// one) can rely on a stack that already exists.
     private func becomeReady(_ session: Session) async {
         state = .ready(session)
+        await container.realtimeLifecycle.sessionDidBecomeReady(session)
         await onAuthenticated(session)
-        await container.realtimeLifecycle.sessionDidBecomeReady()
     }
 
     // MARK: Identity bootstrap
@@ -201,7 +203,7 @@ final class AppSession {
         } catch {
             AppLog.session.error("session clear failed: \(String(describing: type(of: error)), privacy: .public)")
         }
-        await endSession()
+        await endSession(reason: .signedOut)
     }
 
     /// Consumes refresh outcomes from the token provider for as long as the root view lives.
@@ -216,7 +218,7 @@ final class AppSession {
                     style: .warning,
                     systemImage: "clock.badge.exclamationmark"
                 )
-                await endSession()
+                await endSession(reason: .invalidated)
             }
         }
     }
@@ -244,11 +246,11 @@ final class AppSession {
         }
     }
 
-    private func endSession() async {
+    private func endSession(reason: SessionEndReason) async {
         state = .signedOut
         keyBootstrap = .idle
         container.router.popToRoot()
-        await container.realtimeLifecycle.sessionDidEnd()
+        await container.realtimeLifecycle.sessionDidEnd(reason: reason)
         await onSignedOut()
         AppLog.session.info("session ended")
     }

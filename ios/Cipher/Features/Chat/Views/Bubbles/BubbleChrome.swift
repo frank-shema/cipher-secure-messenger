@@ -43,24 +43,15 @@ extension GroupedMessage {
     }
 }
 
-/// Time, delivery glyph and (for disappearing messages) the countdown ring, laid out inside the
-/// bubble's bottom-trailing corner. `now` is injected so previews can freeze the ring.
+/// Time, delivery glyph and (for disappearing messages) the live countdown ring, laid out inside
+/// the bubble's bottom-trailing corner. The ring follows the wall clock on its own cadence.
 struct BubbleMetaView: View {
     let message: Message
-    let now: Date
 
     var body: some View {
         HStack(spacing: CipherSpacing.xs) {
-            if let expiresAt = message.expiresAt {
-                TimelineView(.periodic(from: now, by: 1)) { context in
-                    let remaining = expiresAt.timeIntervalSince(context.date)
-                    let total = max(expiresAt.timeIntervalSince(message.sentAt), 1)
-                    CountdownRing(progress: remaining / total, lineWidth: 2,
-                                  tint: message.direction.secondaryTextColor, remaining: remaining)
-                        .frame(width: 22, height: 22)
-                        .accessibilityLabel(String(localized: "chat.meta.disappears",
-                                                   defaultValue: "Disappears in \(CountdownRing.label(forRemaining: remaining))"))
-                }
+            if let ring = ExpiryCountdownRing(message: message, tint: message.direction.secondaryTextColor, size: 18) {
+                ring
             }
             if message.flags.whisper {
                 Image(systemName: "ear").font(.caption2).accessibilityHidden(true)
@@ -78,7 +69,7 @@ struct BubbleMetaView: View {
 #Preview {
     VStack(alignment: .leading, spacing: CipherSpacing.md) {
         ForEach(PreviewMessaging.sampleMessages.prefix(3)) { message in
-            BubbleMetaView(message: message, now: PreviewMessaging.frozenNow)
+            BubbleMetaView(message: message)
                 .bubbleChrome(direction: message.direction, tail: message.direction == .outgoing ? .trailing : .leading)
         }
     }

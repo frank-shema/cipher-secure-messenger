@@ -11,6 +11,8 @@ struct ChatHeaderState: Hashable, Sendable {
     var isTyping: Bool
     var isOnline: Bool
     var trust: TrustState
+    /// Fill of the trust ring, from the live evaluation when it has run.
+    var trustScore: Double
     var disappearingTimer: TimeInterval?
 }
 
@@ -23,7 +25,9 @@ final class ChatViewModel {
     let conversationId: ConversationID
     let routes: ChatRoutes
 
-    var conversation: Conversation
+    var conversation: Conversation {
+        didSet { trustRing.update(conversation: conversation) }
+    }
     private(set) var messages: [Message] = []
     private(set) var messagesById: [MessageID: Message] = [:]
     private(set) var sections: [MessageDaySection] = []
@@ -32,15 +36,13 @@ final class ChatViewModel {
     var isLoadingOlder = false
     var hasOlder = true
     private(set) var isPeerTyping = false
-    private(set) var sensitiveFinding: SensitiveKind?
+    var sensitiveFinding: SensitiveKind?
     var rawEnvelopes: [MessageID: Envelope] = [:]
 
     /// Incoming bubbles play the decrypt reveal once; scrolling back must not replay it.
     var revealedMessageIds: Set<MessageID> = []
     /// Bubbles currently flipped to their raw envelope.
     var flippedMessageIds: Set<MessageID> = []
-    /// Capsules whose seal opened while the screen was up, so they render as plain bubbles.
-    var unlockedCapsuleIds: Set<MessageID> = []
 
     var draft = "" {
         didSet { draftDidChange() }
@@ -50,6 +52,7 @@ final class ChatViewModel {
     var stagedAttachment: StagedAttachment?
     var isTimeCapsulePickerPresented = false
     var isServersEyePresented = false
+    var isTrustPresented = false
     var errorMessage: String?
 
     /// The attachments feature installs these; the composer only surfaces the buttons.
@@ -58,14 +61,19 @@ final class ChatViewModel {
 
     let deps: ChatDependencies
     let haptics: any HapticEngine
-    private let typingDebouncer: TypingDebouncer
+    /// Opens Time Capsules at their instant; rows register the capsules they show.
+    let capsules: TimeCapsuleUnlockCoordinator
+    /// Scores the conversation for the header ring and the trust sheet; fed from this model's
+    /// contact observation rather than its own, so the two never disagree.
+    let trustRing: TrustRingViewModel
+    let typingDebouncer: TypingDebouncer
     private var lifecycleTasks: [Task<Void, Never>] = []
-    private var sensitiveTask: Task<Void, Never>?
+    var sensitiveTask: Task<Void, Never>?
     var markReadTask: Task<Void, Never>?
     private var typingTimeoutTask: Task<Void, Never>?
     var olderMessages: [Message] = []
     private var lastIncomingId: MessageID?
-    private var dismissedSensitiveKind: SensitiveKind?
+    var dismissedSensitiveKind: SensitiveKind?
     let pageSize = 50
 
     init(
@@ -79,11 +87,14 @@ final class ChatViewModel {
         self.deps = dependencies
         self.routes = routes
         self.haptics = haptics
+        self.capsules = TimeCapsuleUnlockCoordinator(haptics: haptics, now: dependencies.now)
+        self.trustRing = TrustRingViewModel(conversation: conversation, evaluator: dependencies.trust)
         let typing = dependencies.typing
         let id = conversation.id
         self.typingDebouncer = TypingDebouncer { isTyping in
             Task { await typing.setTyping(isTyping, in: id) }
         }
+        capsules.onUnlock = { [weak self] id in self?.markVisible(id) }
     }
 
     var contact: Contact { conversation.contact }
@@ -98,6 +109,7 @@ final class ChatViewModel {
             isTyping: isPeerTyping,
             isOnline: contact.presence.online,
             trust: contact.trust,
+            trustScore: trustRing.score,
             disappearingTimer: conversation.disappearingTimer
         )
     }
@@ -119,6 +131,7 @@ final class ChatViewModel {
     func start() {
         guard lifecycleTasks.isEmpty else { return }
         lifecycleTasks = [observeMessages(), observeContact(), observeTyping()]
+        trustRing.start()
         ChatLog.chat.info("chat opened conversation=\(self.conversationId.description, privacy: .public)")
     }
 
@@ -129,6 +142,7 @@ final class ChatViewModel {
         sensitiveTask?.cancel()
         markReadTask?.cancel()
         typingTimeoutTask?.cancel()
+        trustRing.stop()
     }
 
     private func observeMessages() -> Task<Void, Never> {
@@ -193,81 +207,12 @@ final class ChatViewModel {
         }
     }
 
-    // MARK: Composer
-
-    private func draftDidChange() {
-        typingDebouncer.draftChanged(isEmpty: draft.isEmpty)
-        sensitiveTask?.cancel()
-        let text = draft
-        guard !text.isEmpty else {
-            sensitiveFinding = nil
-            dismissedSensitiveKind = nil
-            return
-        }
-        sensitiveTask = Task { [weak self] in
-            try? await Task.sleep(for: .milliseconds(250))
-            guard !Task.isCancelled, let self else { return }
-            let kind = await deps.sensitiveDetector.detect(in: text)
-            guard !Task.isCancelled else { return }
-            sensitiveFinding = kind == dismissedSensitiveKind ? nil : kind
-        }
-    }
-
-    func acceptSensitiveSuggestion() {
-        composer.viewOnce = stagedAttachment?.isImage == true
-        composer.suggestedDisappearAfter = ComposerOptions.sensitiveDisappearAfter
-        composer.whisper = true
-        sensitiveFinding = nil
-        haptics.play(.lock)
-    }
-
-    func dismissSensitiveSuggestion() {
-        dismissedSensitiveKind = sensitiveFinding
-        sensitiveFinding = nil
-    }
-
-    func send() {
-        let text = draft.trimmingCharacters(in: .whitespacesAndNewlines)
-        let staged = stagedAttachment
-        guard !text.isEmpty || staged != nil else {
-            errorMessage = ChatError.nothingToSend.localizedDescription
-            return
-        }
-        let flags = composer.flags(conversationTimer: conversation.disappearingTimer)
-        let replyTo = replyingTo?.id
-        let expiresAt = flags.disappearAfter.map { now.addingTimeInterval($0) }
-        resetComposer()
-        Task { await deliver(text: text, staged: staged, flags: flags, replyTo: replyTo, expiresAt: expiresAt) }
-    }
-
-    private func deliver(text: String, staged: StagedAttachment?, flags: MessageFlags, replyTo: MessageID?, expiresAt: Date?) async {
-        do {
-            if let staged {
-                guard let attachments = deps.attachments else { throw ChatError.attachmentsUnavailable }
-                let caption = text.isEmpty ? nil : text
-                let request = AttachmentSendRequest(staged: staged, caption: caption, flags: flags, replyTo: replyTo,
-                                                    conversationId: conversationId, expiresAt: expiresAt)
-                _ = try await attachments.send(request)
-            } else {
-                let payload = MessagePayload.text(text, flags: flags, replyTo: replyTo)
-                _ = try await deps.sender.execute(conversationId: conversationId, payload: payload, expiresAt: expiresAt)
-            }
-            haptics.play(.sent)
-        } catch {
-            let failure = String(describing: type(of: error))
-            let id = conversationId.description
-            ChatLog.chat.error("send failed conversation=\(id, privacy: .public) error=\(failure, privacy: .public)")
-            errorMessage = error.localizedDescription
-        }
-    }
-
-    private func resetComposer() {
-        draft = ""
-        replyingTo = nil
-        composer = ComposerOptions()
-        stagedAttachment = nil
-        sensitiveFinding = nil
-        dismissedSensitiveKind = nil
-        typingDebouncer.stop()
+    /// Rows the expiry sweep deleted: drop them from the paged cache the live window does not cover.
+    func messagesDeleted(_ ids: [MessageID]) {
+        let gone = Set(ids)
+        guard !gone.isEmpty else { return }
+        olderMessages.removeAll { gone.contains($0.id) }
+        let remaining = messages.filter { !gone.contains($0.id) }
+        Task { await apply(observed: remaining) }
     }
 }

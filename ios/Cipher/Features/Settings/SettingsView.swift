@@ -18,11 +18,15 @@ struct SettingsView: View {
                     }
                     SettingsIdentitySection(model: model)
                     SettingsServerSection(model: model)
-                    appLock
+                    SettingsSecuritySection(showsAppLock: !isDecoy) {
+                        router.navigate(to: .lockSettings)
+                    }
                     #if DEBUG
                     developer(model)
                     #endif
-                    signOut
+                    if !isDecoy {
+                        signOut
+                    }
                     Text(String(localized: "settings.version", defaultValue: "Cipher") + " " + model.appVersion)
                         .font(CipherTypography.caption)
                         .foregroundStyle(CipherColor.textSecondary)
@@ -52,20 +56,9 @@ struct SettingsView: View {
         }
     }
 
-    private var appLock: some View {
-        SectionCard(title: String(localized: "settings.section.security", defaultValue: "Security")) {
-            Button {
-                router.navigate(to: .lockSettings)
-            } label: {
-                SettingsRow(
-                    icon: "faceid",
-                    title: String(localized: "settings.appLock.title", defaultValue: "App lock"),
-                    detail: String(localized: "settings.appLock.detail", defaultValue: "PIN and Face ID")
-                )
-            }
-            .buttonStyle(.plain)
-            .accessibilityHint(String(localized: "settings.appLock.hint", defaultValue: "Opens app lock settings"))
-        }
+    /// The decoy inbox must not reveal that a lock exists, nor let a coerced person be signed out.
+    private var isDecoy: Bool {
+        container.messaging.isDecoy
     }
 
     #if DEBUG

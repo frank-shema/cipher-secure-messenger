@@ -12,9 +12,9 @@ struct ComposerAccessories: View {
     var body: some View {
         VStack(spacing: CipherSpacing.sm) {
             if let finding = viewModel.sensitiveFinding {
-                SensitiveContentChip(kind: finding.chipKind,
-                                     onAccept: viewModel.acceptSensitiveSuggestion,
-                                     onDismiss: viewModel.dismissSensitiveSuggestion)
+                SensitiveSuggestionChip(suggestion: SensitiveSuggestion(kind: finding, confidence: 1),
+                                        onAccept: viewModel.acceptSensitiveSuggestion,
+                                        onDismiss: viewModel.dismissSensitiveSuggestion)
                     .transition(.move(edge: .bottom).combined(with: .opacity))
             }
             if let replyingTo = viewModel.replyingTo {
@@ -87,19 +87,6 @@ struct ComposerAccessories: View {
         .overlay(RoundedRectangle(cornerRadius: CipherRadius.md, style: .continuous).strokeBorder(CipherColor.divider))
         .accessibilityElement(children: .contain)
         .accessibilityLabel(String(localized: "chat.composer.attachment.a11y", defaultValue: "Attached \(staged.filename)"))
-    }
-}
-
-extension SensitiveKind {
-    /// Bridges the detector's kind to the chip's; the two enums live in different packages so Core
-    /// never depends on the design system.
-    var chipKind: CipherDesign.SensitiveContentKind {
-        switch self {
-        case .password: .password
-        case .cardNumber: .card
-        case .iban: .iban
-        case .oneTimeCode: .oneTimeCode
-        }
     }
 }
 

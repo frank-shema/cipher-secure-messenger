@@ -9,6 +9,8 @@ struct ServersEyeView: View {
     let messages: [Message]
     let contactName: String
     let envelopes: any EnvelopeProviding
+    /// Modal (its own stack and Done button) from the chat's eye toggle; pushed for `Route.serversEye`.
+    var presentation: ScreenPresentation = .sheet
 
     @Environment(\.dismiss) private var dismiss
     @State private var loaded: [MessageID: Envelope] = [:]
@@ -18,7 +20,16 @@ struct ServersEyeView: View {
     }
 
     var body: some View {
-        NavigationStack {
+        switch presentation {
+        case .sheet:
+            NavigationStack { content }
+        case .pushed:
+            content
+        }
+    }
+
+    private var content: some View {
+        Group {
             ScrollView {
                 LazyVStack(spacing: 0, pinnedViews: .sectionHeaders) {
                     Section {
@@ -37,8 +48,10 @@ struct ServersEyeView: View {
             .navigationTitle(String(localized: "serversEye.title", defaultValue: "Server's-Eye View"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button(String(localized: "common.done", defaultValue: "Done")) { dismiss() }
+                if presentation == .sheet {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button(String(localized: "common.done", defaultValue: "Done")) { dismiss() }
+                    }
                 }
             }
             .task(id: visible.map(\.id)) { await loadEnvelopes() }

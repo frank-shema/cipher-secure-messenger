@@ -11,8 +11,8 @@ struct ComposerOptions: Hashable, Sendable {
     var viewOnce = false
     /// Time Capsule: the recipient keeps the message sealed until this instant.
     var unlockAt: Date?
-    /// Seconds after read until both sides delete, set by the sensitive-content suggestion. The
-    /// conversation-level disappearing timer wins when both are present.
+    /// Seconds after read until both sides delete, set by the sensitive-content suggestion. It wins
+    /// over the conversation-level timer because the person accepted it for this very message.
     var suggestedDisappearAfter: TimeInterval?
 
     var isTimeCapsule: Bool { unlockAt != nil }
@@ -24,19 +24,10 @@ struct ComposerOptions: Hashable, Sendable {
         MessageFlags(
             viewOnce: viewOnce,
             whisper: whisper,
-            disappearAfter: conversationTimer ?? suggestedDisappearAfter,
+            disappearAfter: suggestedDisappearAfter ?? conversationTimer,
             unlockAt: unlockAt
         )
     }
-
-    /// Timers the Time Capsule sheet offers. Short ones exist for demos; the long ones are the point.
-    static let capsulePresets: [TimeInterval] = [60, 60 * 60, 24 * 60 * 60, 7 * 24 * 60 * 60]
-
-    /// Disappearing-timer choices in the header menu.
-    static let disappearingPresets: [TimeInterval] = [30, 5 * 60, 60 * 60, 24 * 60 * 60, 7 * 24 * 60 * 60]
-
-    /// The auto-delete window applied when a person accepts the sensitive-content suggestion.
-    static let sensitiveDisappearAfter: TimeInterval = 60
 }
 
 /// Errors the chat screen raises itself. Transport and crypto failures come from Core already typed.

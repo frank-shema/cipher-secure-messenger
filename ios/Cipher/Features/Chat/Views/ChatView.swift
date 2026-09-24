@@ -8,6 +8,7 @@ struct ChatView: View {
     @Bindable var viewModel: ChatViewModel
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
         VStack(spacing: 0) {
@@ -21,10 +22,11 @@ struct ChatView: View {
             ChatInputBar(viewModel: viewModel)
         }
         .background(CipherColor.background.ignoresSafeArea())
+        .background { expirySweeps }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                ChatHeaderView(state: viewModel.header, onTrustTap: viewModel.verify)
+                ChatHeaderView(state: viewModel.header, onTrustTap: viewModel.showTrust)
             }
             ToolbarItem(placement: .topBarTrailing) {
                 ChatHeaderMenu(
@@ -43,6 +45,17 @@ struct ChatView: View {
                 envelopes: viewModel.deps.envelopes
             )
         }
+        .sheet(isPresented: $viewModel.isTrustPresented) {
+            TrustSheetView(
+                viewModel: viewModel.trustRing,
+                actions: TrustActions(
+                    onVerifyKeys: viewModel.verify,
+                    onEnableDisappearing: viewModel.setDisappearingTimer,
+                    onReviewKeyChange: viewModel.verify
+                ),
+                now: { viewModel.now }
+            )
+        }
         .alert(
             String(localized: "chat.error.title", defaultValue: "Could not complete that"),
             isPresented: Binding(get: { viewModel.errorMessage != nil }, set: { if !$0 { viewModel.errorMessage = nil } }),
@@ -50,10 +63,22 @@ struct ChatView: View {
             message: { Text(viewModel.errorMessage ?? "") }
         )
         .animation(CipherMotion.gentle.crossfadeIfReduced(reduceMotion), value: viewModel.header.trust.needsAttention)
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { viewModel.capsules.applicationDidBecomeActive() }
+        }
         .task {
             viewModel.start()
         }
         .onDisappear { viewModel.stop() }
+    }
+
+    /// Registers the chat with the expiry scheduler (fast cadence while visible) when the store sweeps.
+    @ViewBuilder
+    private var expirySweeps: some View {
+        if let scheduler = viewModel.deps.expiry {
+            Color.clear
+                .expirySweeps(scheduler, conversationId: viewModel.conversationId) { viewModel.messagesDeleted($0) }
+        }
     }
 }
 

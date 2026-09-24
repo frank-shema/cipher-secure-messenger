@@ -11,7 +11,6 @@ struct AttachmentBubble: View {
     let caption: String?
     let tail: MessageBubbleShape.Tail
     let progress: Double?
-    let now: Date
     let onTap: () -> Void
 
     private var isImage: Bool { attachment.mimeType.hasPrefix("image/") }
@@ -36,7 +35,7 @@ struct AttachmentBubble: View {
                         .foregroundStyle(message.direction.primaryTextColor)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                BubbleMetaView(message: message, now: now)
+                BubbleMetaView(message: message)
             }
         }
         .buttonStyle(.plain)
@@ -113,7 +112,6 @@ struct AttachmentBubble: View {
 }
 
 #Preview {
-    let now = PreviewMessaging.frozenNow
     let messages = PreviewMessaging.sampleMessages.filter { if case .attachment = $0.content { true } else { false } }
     ScrollView {
         VStack(spacing: CipherSpacing.md) {
@@ -121,7 +119,7 @@ struct AttachmentBubble: View {
                 if case .attachment(let attachment, let caption) = message.content {
                     AttachmentBubble(message: message, attachment: attachment, caption: caption,
                                      tail: message.direction == .outgoing ? .trailing : .leading,
-                                     progress: message.status == .sending ? 0.6 : nil, now: now) {}
+                                     progress: message.status == .sending ? 0.6 : nil) {}
                         .frame(maxWidth: .infinity, alignment: message.direction == .outgoing ? .trailing : .leading)
                 }
             }

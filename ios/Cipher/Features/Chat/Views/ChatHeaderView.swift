@@ -2,9 +2,9 @@ import CipherCore
 import CipherDesign
 import SwiftUI
 
-/// Navigation-bar centrepiece: avatar inside the trust ring, name with shield, and a presence line
-/// that swaps to the typing indicator. Tapping the ring opens verification because the ring is the
-/// thing that says "you have not checked this person yet".
+/// Navigation-bar centrepiece: avatar inside the trust ring, name with shield, the active timer
+/// badge and a presence line that swaps to the typing indicator. Tapping the ring opens "Why this
+/// chat is secure", because the ring is the thing that says how much has been checked.
 struct ChatHeaderView: View {
     let state: ChatHeaderState
     let onTrustTap: () -> Void
@@ -13,15 +13,7 @@ struct ChatHeaderView: View {
 
     var body: some View {
         HStack(spacing: CipherSpacing.sm) {
-            Button(action: onTrustTap) {
-                TrustRing(score: state.trust.ringScore, segments: 8, size: 38) {
-                    InitialsAvatar(name: state.name, seed: state.seed, size: 30) {
-                        PresenceDot(online: state.isOnline, size: 9)
-                    }
-                }
-            }
-            .buttonStyle(.plain)
-            .accessibilityLabel(String(localized: "chat.header.trustRing.a11y", defaultValue: "Trust ring, opens verification"))
+            TrustRingAvatar(name: state.name, seed: state.seed, score: state.trustScore, isOnline: state.isOnline, onTap: onTrustTap)
 
             VStack(alignment: .leading, spacing: 1) {
                 HStack(spacing: CipherSpacing.xs) {
@@ -30,13 +22,15 @@ struct ChatHeaderView: View {
                         .foregroundStyle(CipherColor.textPrimary)
                         .lineLimit(1)
                     ShieldBadge(state: state.trust.shieldState, size: 14)
+                    DisappearingTimerBadge(timer: DisappearingTimer(seconds: state.disappearingTimer))
                 }
                 subtitle
                     .frame(height: 14)
             }
         }
         .animation(CipherMotion.snappy.crossfadeIfReduced(reduceMotion), value: state.isTyping)
-        .accessibilityElement(children: .combine)
+        .animation(CipherMotion.gentle.crossfadeIfReduced(reduceMotion), value: state.trustScore)
+        .accessibilityElement(children: .contain)
     }
 
     @ViewBuilder
@@ -86,36 +80,11 @@ struct ChatHeaderMenu: View {
                           : String(localized: "chat.header.menu.verify", defaultValue: "Verify safety code"),
                           systemImage: "checkmark.shield")
                 }
-                Menu {
-                    Button {
-                        onDisappearing(nil)
-                    } label: {
-                        timerOption(String(localized: "chat.header.disappearing.off", defaultValue: "Off"),
-                                    isSelected: state.disappearingTimer == nil)
-                    }
-                    ForEach(ComposerOptions.disappearingPresets, id: \.self) { preset in
-                        Button {
-                            onDisappearing(preset)
-                        } label: {
-                            timerOption(CountdownRing.label(forRemaining: preset), isSelected: state.disappearingTimer == preset)
-                        }
-                    }
-                } label: {
-                    Label(String(localized: "chat.header.menu.disappearing", defaultValue: "Disappearing messages"), systemImage: "timer")
-                }
+                DisappearingTimerMenu(seconds: state.disappearingTimer) { onDisappearing($0.seconds) }
             } label: {
                 Image(systemName: "ellipsis.circle")
             }
             .accessibilityLabel(String(localized: "chat.header.menu.a11y", defaultValue: "Conversation options"))
-        }
-    }
-
-    @ViewBuilder
-    private func timerOption(_ title: String, isSelected: Bool) -> some View {
-        if isSelected {
-            Label(title, systemImage: "checkmark")
-        } else {
-            Text(title)
         }
     }
 }
