@@ -72,7 +72,7 @@ jobs:
         run: >
           xcodebuild -project ios/Cipher.xcodeproj -scheme Cipher
           -destination "platform=iOS Simulator,name=${{ steps.sim.outputs.name }}"
-          -quiet build CODE_SIGNING_ALLOWED=NO
+          -quiet build
 
       # CipherTests holds a placeholder until the ViewModel and integration suites land in the
       # hardening pass. Reports, does not block; remove continue-on-error when they do.
@@ -80,7 +80,7 @@ jobs:
         run: >
           xcodebuild -project ios/Cipher.xcodeproj -scheme Cipher
           -destination "platform=iOS Simulator,name=${{ steps.sim.outputs.name }}"
-          -quiet test CODE_SIGNING_ALLOWED=NO -resultBundlePath TestResults.xcresult
+          -quiet test -resultBundlePath TestResults.xcresult
         continue-on-error: true
 
       - name: Upload results

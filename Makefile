@@ -37,10 +37,10 @@ test-backend: ## Backend unit + slice + Testcontainers integration tests
 test-ios: ## iOS package tests (macOS host) + app tests (simulator)
 	cd ios/Packages/CipherCore && swift test
 	cd ios/Packages/CipherCrypto && swift test
-	xcodebuild -project $(XCODE_PROJECT) -scheme $(XCODE_SCHEME) -destination '$(XCODE_DEST)' -quiet test CODE_SIGNING_ALLOWED=NO
+	xcodebuild -project $(XCODE_PROJECT) -scheme $(XCODE_SCHEME) -destination '$(XCODE_DEST)' -quiet test
 
 ios-build: ## Build the app for the simulator
-	xcodebuild -project $(XCODE_PROJECT) -scheme $(XCODE_SCHEME) -destination '$(XCODE_DEST)' -quiet build CODE_SIGNING_ALLOWED=NO
+	xcodebuild -project $(XCODE_PROJECT) -scheme $(XCODE_SCHEME) -destination '$(XCODE_DEST)' -quiet build
 
 ios-generate: ## Regenerate Cipher.xcodeproj from ios/project.yml (requires xcodegen)
 	cd ios && xcodegen generate

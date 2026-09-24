@@ -62,6 +62,7 @@ enum DemoBotSelfTest {
     /// A single token for the FAIL line: the enum case for the bot's own errors, the type name for
     /// anything else, so the line never carries a sentence (or anything sensitive) from a description.
     static func reason(for error: any Error) -> String {
+        DemoBotLog.selfTest.error("self-test failure detail: \(String(describing: error), privacy: .public)")
         if let failure = error as? DemoBotError {
             return String(describing: failure).split(separator: "(").first.map { String($0) } ?? String(describing: failure)
         }
