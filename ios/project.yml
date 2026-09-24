@@ -57,7 +57,6 @@ targets:
         NSMotionUsageDescription: "Cipher uses motion to hide your messages when the phone is placed face down."
         ITSAppUsesNonExemptEncryption: false
         NSAppTransportSecurity:
-          NSAllowsLocalNetworking: true
           NSAllowsArbitraryLoads: true
     entitlements:
       path: Cipher/Resources/Cipher.entitlements

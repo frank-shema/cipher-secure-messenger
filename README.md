@@ -83,6 +83,11 @@ curl -s -X POST http://104.248.131.165:8080/api/v1/auth/login \
 The deployment itself (Docker on an Ubuntu droplet, shared PostgreSQL, secrets in an env file,
 redeploy steps) is documented in [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
+> **Build note.** Always build with normal simulator signing (Xcode's default, or the `make` targets).
+> Passing `CODE_SIGNING_ALLOWED=NO` produces an unsigned app that the data-protection Keychain
+> rejects with `errSecMissingEntitlement (-34018)`, so sign-in fails. The demo relay is plain `http`,
+> so `Info.plist` sets `NSAllowsArbitraryLoads`; a production build would pin `https`/`wss` instead.
+
 ### Option B — everything on your machine
 
 **Prerequisites:** Xcode 16+ (developed and tested on Xcode 27, iOS 17 deployment target), JDK 21,
