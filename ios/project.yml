@@ -55,6 +55,8 @@ targets:
         NSPhotoLibraryUsageDescription: "Cipher uses your photo library to attach photos to encrypted messages."
         NSFaceIDUsageDescription: "Cipher uses Face ID to unlock the app."
         ITSAppUsesNonExemptEncryption: false
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
     entitlements:
       path: Cipher/Resources/Cipher.entitlements
       properties:
