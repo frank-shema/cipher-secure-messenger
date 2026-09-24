@@ -46,6 +46,45 @@ the conversation you have actually verified.
 
 ## Quick start
 
+There are two ways to run Cipher. The fastest needs only Xcode, because the relay is already
+running on a public server.
+
+### Option A — hosted relay (2 minutes, nothing to install but Xcode)
+
+The blind relay is deployed and reachable right now:
+
+| | |
+|---|---|
+| Relay | `http://104.248.131.165:8080` |
+| Swagger UI | [http://104.248.131.165:8080/swagger-ui.html](http://104.248.131.165:8080/swagger-ui.html) |
+| Health | [http://104.248.131.165:8080/actuator/health](http://104.248.131.165:8080/actuator/health) |
+| WebSocket | `ws://104.248.131.165:8080/ws` |
+
+```sh
+git clone https://github.com/frank-shema/cipher-secure-messenger.git
+cd cipher-secure-messenger
+make ios-open      # regenerates Cipher.xcodeproj from ios/project.yml and opens it in Xcode
+```
+
+Run the `Cipher` scheme on an iPhone simulator, open **Settings → Relay**, enter
+`http://104.248.131.165:8080`, tap **Save**, relaunch, then sign in with the demo credentials
+below. Two simulators (or a simulator and a phone) can chat with each other through the hosted
+relay, and Echo works on a single simulator. The server only ever sees ciphertext; you can prove
+it by calling `GET /api/v1/conversations/{id}/messages` from Swagger with your token.
+
+You can also poke the API without the app:
+
+```sh
+curl -s -X POST http://104.248.131.165:8080/api/v1/auth/login \
+  -H 'Content-Type: application/json' \
+  -d '{"username":"alice","password":"cipher-alice"}' | jq .
+```
+
+The deployment itself (Docker on an Ubuntu droplet, shared PostgreSQL, secrets in an env file,
+redeploy steps) is documented in [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
+
+### Option B — everything on your machine
+
 **Prerequisites:** Xcode 16+ (developed and tested on Xcode 27, iOS 17 deployment target), JDK 21,
 Docker. `xcodegen` is used to regenerate the project (`brew install xcodegen`); `swiftlint` is
 optional for `make lint`.
@@ -58,7 +97,9 @@ make seed        # wait for /actuator/health, confirm the demo users exist, prin
 
 Run the `Cipher` scheme on an iPhone simulator. The simulator talks to the relay at
 `http://localhost:8080` and `ws://localhost:8080/ws` out of the box. Swagger UI is at
-`http://localhost:8080/swagger-ui.html`, health at `/actuator/health`.
+`http://localhost:8080/swagger-ui.html`, health at `/actuator/health`. To run the relay without
+Docker: `cd backend && mvn spring-boot:run -Dspring-boot.run.profiles=dev` against any
+PostgreSQL 16 reachable through `DATABASE_URL`.
 
 ### Demo credentials
 
@@ -94,9 +135,9 @@ Capsule).
 
 ### Physical device
 
-A device cannot reach `localhost` on your Mac. Open **Settings → Relay**, enter
-`http://<your-mac-lan-ip>:8080`, tap **Save** and relaunch (the API client is built once at
-launch). The WebSocket URL is derived from the same address (`http` → `ws`, `https` → `wss`).
+A device cannot reach `localhost` on your Mac. Open **Settings → Relay**, enter either the hosted
+relay `http://104.248.131.165:8080` or `http://<your-mac-lan-ip>:8080`, tap **Save** and relaunch
+(the API client is built once at launch). The WebSocket URL is derived from the same address (`http` → `ws`, `https` → `wss`).
 `Info.plist` allows plain `http` for local networking only; anything that leaves your network must
 be `https`.
 
