@@ -77,6 +77,7 @@
 		47F61F10D7256AF923440D4E /* KeyConflictCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F72C683292A92C1B7E49127 /* KeyConflictCard.swift */; };
 		4819780335BA4DD927D1460E /* Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A3F19E2F5D980FA25FDAEF /* Fixtures.swift */; };
 		48DE1D6354315A8F6AC55A80 /* CipherNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = AFE17466F1F8972038C1FE40 /* CipherNetworking */; };
+		48E4F6BCACD0934A5ECF6EC3 /* DemoBotMessageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5929D827EA6A1D7F3D1C52D /* DemoBotMessageRepository.swift */; };
 		4B7D024B2CBFBEF3C4CE6F5C /* AttachmentViewerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C19A7B63BD02AE5FDB7AA /* AttachmentViewerScreen.swift */; };
 		4B84971AB8CFA0896FFD33C0 /* SessionEventRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07EDCEEC749F8F30E612C0 /* SessionEventRelay.swift */; };
 		4BE120720D0F8FE83D969CA0 /* DemoBotCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06D9C6FF0E7EFAC43DE9D3 /* DemoBotCommand.swift */; };
@@ -174,6 +175,7 @@
 		B9DF9CC6C10D3B92989CEDCD /* ChatHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DBC2B38ED4ABE1C28F3D2E /* ChatHeaderView.swift */; };
 		BCCFF579E2CA33A3B1B01D53 /* ChatDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006BDD3752D67C673CC86205 /* ChatDependencies.swift */; };
 		BD05C601AE1B94C5BADACC73 /* VerifyContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9106BCCE0DA9B42ABC928D /* VerifyContactView.swift */; };
+		BDF931FC9A70312CD5CA72B8 /* DemoBotMemoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA94BD17B98A146D3EE1996 /* DemoBotMemoryTests.swift */; };
 		BEC810A6C607225B937AE553 /* TrustPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB0CD1B3BCBC20641E1403 /* TrustPreview.swift */; };
 		BF37C6C845347A3138A68779 /* DemoBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8668329BF856D33615ACDFB /* DemoBot.swift */; };
 		BFC4F09CC3B74106B7C42F67 /* AppLockSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF1717ECFD426C938D9C1A7 /* AppLockSettings.swift */; };
@@ -452,6 +454,7 @@
 		CC7C19A7B63BD02AE5FDB7AA /* AttachmentViewerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentViewerScreen.swift; sourceTree = "<group>"; };
 		CE1923CF73D41333A286C63E /* SensitiveGuardConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensitiveGuardConfiguration.swift; sourceTree = "<group>"; };
 		CE446AD3EDC2DD7705695507 /* RealtimeTypingSignaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeTypingSignaller.swift; sourceTree = "<group>"; };
+		CFA94BD17B98A146D3EE1996 /* DemoBotMemoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoBotMemoryTests.swift; sourceTree = "<group>"; };
 		D1938A617BDD4FF40E303156 /* Cipher.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Cipher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1BFC91AA22B17C58FDB259A /* CipherTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = CipherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1F12B782C710F4A6E33CDC5 /* InboxScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxScreen.swift; sourceTree = "<group>"; };
@@ -479,6 +482,7 @@
 		E36305028E4EBB5F259A0923 /* ReactionsStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionsStrip.swift; sourceTree = "<group>"; };
 		E4549A698EF7C76A16466BE0 /* EnvelopeVault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvelopeVault.swift; sourceTree = "<group>"; };
 		E4CEA8925F3CE665A67C87FF /* AttachmentToasts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentToasts.swift; sourceTree = "<group>"; };
+		E5929D827EA6A1D7F3D1C52D /* DemoBotMessageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoBotMessageRepository.swift; sourceTree = "<group>"; };
 		E6C05B4D119EFD37D4DA4E8B /* PrivacySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySection.swift; sourceTree = "<group>"; };
 		E6C7DA662DC2240FC60FF6AB /* AuthValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthValidation.swift; sourceTree = "<group>"; };
 		E76F13C130F1688AAC12498E /* AttachmentsFeatureWiring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentsFeatureWiring.swift; sourceTree = "<group>"; };
@@ -564,6 +568,7 @@
 			isa = PBXGroup;
 			children = (
 				29332BBAA1AB0824D7F3C4F6 /* CipherAppTests.swift */,
+				CFA94BD17B98A146D3EE1996 /* DemoBotMemoryTests.swift */,
 			);
 			path = CipherTests;
 			sourceTree = "<group>";
@@ -644,6 +649,7 @@
 				ADE379C7A032574755C85AF6 /* DemoBotImageFactory.swift */,
 				E18C6424D0414094AB0FA719 /* DemoBotLog.swift */,
 				CC3B0A74C1EDC2B4D014AC62 /* DemoBotMemory.swift */,
+				E5929D827EA6A1D7F3D1C52D /* DemoBotMessageRepository.swift */,
 				192C3D52AC4C0CA349179DF1 /* DemoBotPhrases.swift */,
 				6C98859C2BA01BCA34558A4F /* DemoBotRandom.swift */,
 				4CF897981E82ECBAE56D9765 /* DemoBotResponder.swift */,
@@ -1268,6 +1274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1B2D2579D3AE1E5D274352C /* CipherAppTests.swift in Sources */,
+				BDF931FC9A70312CD5CA72B8 /* DemoBotMemoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1346,6 +1353,7 @@
 				0FDDBFDF59419511C0828AB2 /* DemoBotImageFactory.swift in Sources */,
 				3F2F7B6C84750F20753A72CA /* DemoBotLog.swift in Sources */,
 				33986DAFA697E8B4C9707794 /* DemoBotMemory.swift in Sources */,
+				48E4F6BCACD0934A5ECF6EC3 /* DemoBotMessageRepository.swift in Sources */,
 				2AA7B081051321222963AA26 /* DemoBotPhrases.swift in Sources */,
 				03B99CE6B120ECB82180CA98 /* DemoBotRandom.swift in Sources */,
 				D73EF65906CB45BD62D01BC3 /* DemoBotResponder.swift in Sources */,
@@ -1691,6 +1699,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1707,6 +1716,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

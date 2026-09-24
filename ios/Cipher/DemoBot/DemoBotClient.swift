@@ -6,7 +6,8 @@ import CipherPersistence
 import Foundation
 
 /// A complete, independent Cipher client for the companion: its own tokens, REST client, gateways,
-/// socket, crypto engine, identity keys and (in-memory) store. Nothing is shared with the person's
+/// socket, crypto engine, identity keys and (in-memory) store. Only the outgoing counters outlive the
+/// process, through `DemoBotMessageRepository`, so a relaunched Echo never repeats a counter. Nothing is shared with the person's
 /// account, which is what makes the demo honest: the two sides really do meet only as ciphertext on
 /// the relay, and Echo verifies and decrypts exactly the way any other device would.
 struct DemoBotClient: Sendable {
@@ -26,6 +27,7 @@ struct DemoBotClient: Sendable {
     /// account-scoped stack. `progress` reports each phase so the Settings row can narrate it.
     static func assemble(
         configuration: DemoBotConfiguration,
+        memory: DemoBotMemory,
         progress: @Sendable (Phase) async -> Void
     ) async throws -> DemoBotClient {
         await progress(.signingIn)
@@ -57,7 +59,7 @@ struct DemoBotClient: Sendable {
         let realtime = WebSocketClient(configuration: configuration.api, tokenProvider: sharedTokens)
         let stack = MessagingStack(
             account: session.user,
-            messages: store,
+            messages: DemoBotMessageRepository(base: store, memory: memory),
             conversations: store,
             contacts: store,
             outbox: store,

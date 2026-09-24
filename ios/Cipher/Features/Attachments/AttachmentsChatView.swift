@@ -21,19 +21,16 @@ struct AttachmentsChatView: View {
     }
 
     var body: some View {
-        Group {
-            if let composer {
-                ChatView(viewModel: viewModel)
-                    .attachmentPickers(composer)
-            } else {
-                ChatView(viewModel: viewModel)
+        // One `ChatView` for both states: the composer arrives asynchronously, and rendering it in a
+        // separate branch would recreate the chat and stop the view model's streams while the first
+        // message snapshot is still in flight.
+        ChatView(viewModel: viewModel)
+            .attachmentPickers(composer)
+            // Keyed on the view model so a rebuilt chat (surface swap, decoy toggle) gets its own
+            // composer and the previous one's progress mirror is cancelled in its deinit.
+            .task(id: ObjectIdentifier(viewModel)) {
+                composer = feature?.attach(to: viewModel)
             }
-        }
-        // Keyed on the view model so a rebuilt chat (surface swap, decoy toggle) gets its own composer
-        // and the previous one's progress mirror is cancelled in its deinit.
-        .task(id: ObjectIdentifier(viewModel)) {
-            composer = feature?.attach(to: viewModel)
-        }
     }
 }
 

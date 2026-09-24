@@ -4,32 +4,57 @@ import SwiftUI
 
 /// Attaches the system photo picker and file importer to a chat screen and shows a "Preparing"
 /// pill while a pick is downscaled and stripped. Apply once to `ChatView`.
+///
+/// The composer is optional so the chat keeps one view identity whether or not attachments are
+/// available: swapping the wrapped view in and out of a conditional branch would recreate `ChatView`
+/// and tear down its live streams mid-flight. Without a composer the pickers are simply never presented.
 struct AttachmentPickersModifier: ViewModifier {
-    @Bindable var composer: AttachmentComposerModel
+    let composer: AttachmentComposerModel?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     func body(content: Content) -> some View {
         content
             .photosPicker(
-                isPresented: $composer.isPhotoPickerPresented,
-                selection: $composer.photoSelection,
+                isPresented: isPhotoPickerPresented,
+                selection: photoSelection,
                 matching: .images,
                 photoLibrary: .shared()
             )
             .fileImporter(
-                isPresented: $composer.isFileImporterPresented,
+                isPresented: isFileImporterPresented,
                 allowedContentTypes: [.item],
                 allowsMultipleSelection: false,
-                onCompletion: composer.handleFileImport
+                onCompletion: { composer?.handleFileImport($0) }
             )
             .overlay(alignment: .top) {
-                if composer.isPreparing {
+                if composer?.isPreparing == true {
                     PreparingPill()
                         .padding(.top, CipherSpacing.sm)
                         .transition(.move(edge: .top).combined(with: .opacity))
                 }
             }
-            .animation(CipherMotion.snappy.crossfadeIfReduced(reduceMotion), value: composer.isPreparing)
+            .animation(CipherMotion.snappy.crossfadeIfReduced(reduceMotion), value: composer?.isPreparing ?? false)
+    }
+
+    private var isPhotoPickerPresented: Binding<Bool> {
+        Binding(
+            get: { composer?.isPhotoPickerPresented ?? false },
+            set: { composer?.isPhotoPickerPresented = $0 }
+        )
+    }
+
+    private var isFileImporterPresented: Binding<Bool> {
+        Binding(
+            get: { composer?.isFileImporterPresented ?? false },
+            set: { composer?.isFileImporterPresented = $0 }
+        )
+    }
+
+    private var photoSelection: Binding<PhotosPickerItem?> {
+        Binding(
+            get: { composer?.photoSelection },
+            set: { composer?.photoSelection = $0 }
+        )
     }
 }
 
@@ -54,8 +79,9 @@ struct PreparingPill: View {
 }
 
 extension View {
-    /// Installs the pickers `AttachmentsFeature.attach(to:)` drives for a chat screen.
-    func attachmentPickers(_ composer: AttachmentComposerModel) -> some View {
+    /// Installs the pickers `AttachmentsFeature.attach(to:)` drives for a chat screen. Pass `nil`
+    /// while there is no composer yet: the view keeps its identity and the pickers stay dormant.
+    func attachmentPickers(_ composer: AttachmentComposerModel?) -> some View {
         modifier(AttachmentPickersModifier(composer: composer))
     }
 }

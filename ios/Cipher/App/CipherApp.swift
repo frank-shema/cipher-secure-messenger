@@ -19,6 +19,9 @@ struct CipherApp: App {
         session.onSignedOut = { [container] in
             container.demoBot.sessionDidEnd()
         }
+        if let conversationId = DemoBotWiring.openConversationArgument() {
+            container.router.replace(with: [.conversation(conversationId)])
+        }
         #endif
         _container = State(initialValue: container)
         _session = State(initialValue: session)
