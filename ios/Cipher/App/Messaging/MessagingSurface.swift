@@ -13,14 +13,24 @@ struct MessagingSurface: Identifiable, Sendable {
     let verify: VerifyDependencies
     /// True while the duress inbox is showing; Settings hides sign-out and the lock rows then.
     let isDecoy: Bool
+    /// The account's attachments feature; nil for the decoy inbox and previews.
+    let attachments: AttachmentsFeature?
 
-    init(account: User, list: ConversationListDependencies, chat: ChatDependencies, verify: VerifyDependencies, isDecoy: Bool) {
+    init(
+        account: User,
+        list: ConversationListDependencies,
+        chat: ChatDependencies,
+        verify: VerifyDependencies,
+        isDecoy: Bool,
+        attachments: AttachmentsFeature? = nil
+    ) {
         self.id = UUID()
         self.account = account
         self.list = list
         self.chat = chat
         self.verify = verify
         self.isDecoy = isDecoy
+        self.attachments = attachments
     }
 
     /// Resolves a route's conversation id against this surface's store.

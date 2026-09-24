@@ -22,7 +22,11 @@ struct SettingsView: View {
                         router.navigate(to: .lockSettings)
                     }
                     #if DEBUG
-                    developer(model)
+                    if !isDecoy {
+                        DemoBotSettingsSection(controller: container.demoBot) { id in
+                            router.navigate(to: .conversation(id))
+                        }
+                    }
                     #endif
                     if !isDecoy {
                         signOut
@@ -60,22 +64,6 @@ struct SettingsView: View {
     private var isDecoy: Bool {
         container.messaging.isDecoy
     }
-
-    #if DEBUG
-    private func developer(_ model: SettingsViewModel) -> some View {
-        SectionCard(title: String(localized: "settings.section.developer", defaultValue: "Developer")) {
-            Toggle(isOn: Binding(get: { model.demoCompanionEnabled }, set: { model.demoCompanionEnabled = $0 })) {
-                SettingsRow(
-                    icon: "waveform.path.ecg",
-                    title: String(localized: "settings.demo.title", defaultValue: "Demo companion (Echo)"),
-                    detail: String(localized: "settings.demo.detail", defaultValue: "A local bot that replies to you"),
-                    showsChevron: false
-                )
-            }
-            .tint(CipherColor.accent)
-        }
-    }
-    #endif
 
     private var signOut: some View {
         CipherButton(

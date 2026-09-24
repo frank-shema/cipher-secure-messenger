@@ -29,6 +29,10 @@ final class AppContainer {
     let appLock: AppLockManager
     let flipToHide: FlipToHideMonitor
     let messaging: MessagingCoordinator
+    #if DEBUG
+    /// Echo, the in-process demo companion. Watches the Settings switch for the whole process.
+    let demoBot: DemoBotController
+    #endif
     let keyPublishClassifier: KeyPublishErrorClassifier
 
     /// Builds the account-scoped Core graph (`PersistenceStore`, `CipherCryptoEngine`, `WebSocketClient`,
@@ -56,6 +60,9 @@ final class AppContainer {
     ) {
         self.endpoints = endpoints
         self.defaults = defaults
+        #if DEBUG
+        self.demoBot = DemoBotWiring.makeController(endpoints: endpoints, defaults: defaults)
+        #endif
         self.clock = clock
         self.sessionStore = sessionStore
         self.authGateway = authGateway
