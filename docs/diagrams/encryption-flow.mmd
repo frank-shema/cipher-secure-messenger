@@ -1,0 +1,32 @@
+%% Envelope cryptography (PROTOCOL.md §4): what happens to one message on the sender and the recipient.
+flowchart TB
+    subgraph keys["Long-term identity (per device, Keychain, Secure Enclave wrapped)"]
+        ik["X25519 identity key pair"]
+        sk["Ed25519 signing key pair"]
+    end
+
+    subgraph send["Sender"]
+        dh["X25519(myIdentityPriv, theirIdentityPub) → shared secret"]
+        root["root = HKDF-SHA256(shared, salt = conversationId, info = cipher/v1/root)"]
+        mk["msgKey = HKDF-SHA256(root, salt = bigEndian64(counter), info = cipher/v1/msg|senderId)"]
+        aad["aad = cipher/v1|senderId|conversationId|recipientId|counter|timestampMillis"]
+        seal["ciphertext = ChaChaPoly.seal(payloadJSON, msgKey, aad).combined"]
+        sig["signature = Ed25519.sign(aad ‖ ciphertext)"]
+        dh --> root --> mk --> seal
+        aad --> seal --> sig
+    end
+
+    env["Envelope on the wire<br/>{ id, conversationId, senderId, recipientId, counter, timestamp, ciphertext, signature, expiresAt }"]
+
+    subgraph recv["Recipient (order is deliberate)"]
+        v1["1. Verify signature with the PINNED Ed25519 key<br/>(fail → tampered: invalidSignature, nothing decrypted)"]
+        v2["2. Replay guard: (senderId, conversationId, counter) seen before?<br/>(fail → tampered: replayed, not stored twice)"]
+        v3["3. Derive the same root and msgKey"]
+        v4["4. ChaChaPoly.open with the same aad<br/>(fail → tampered: decryptionFailed)"]
+        v5["5. Decode MessagePayload, validate type/fields<br/>(fail → tampered: malformedPayload)"]
+        v1 --> v2 --> v3 --> v4 --> v5
+    end
+
+    ik --> dh
+    sk --> sig
+    sig --> env --> v1

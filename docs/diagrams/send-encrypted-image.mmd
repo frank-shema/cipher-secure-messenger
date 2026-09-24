@@ -1,0 +1,45 @@
+%% End to end: Alice sends Bob a photo. Everything the relay touches is ciphertext or routing metadata.
+sequenceDiagram
+    autonumber
+    participant A as Alice's iPhone
+    participant R as Relay (REST + /ws)
+    participant DB as PostgreSQL + blob store
+    participant B as Bob's iPhone
+
+    Note over A: Pick photo → downscale ≤ 2048 px, strip EXIF/GPS, build ≤ 24 KiB thumbnail
+    A->>A: key = AttachmentCipher.randomKey() (256-bit)
+    A->>A: sealed = ChaChaPoly.seal(bytes, key).combined
+    A->>A: sha256 = SHA256(sealed)
+    A->>A: Persist placeholder message (status .sending, upload ring)
+    A->>R: POST /api/v1/attachments (multipart: file=sealed as octet-stream, conversationId)
+    R->>DB: store bytes under a fresh UUID (no filename, no MIME type)
+    R-->>A: 201 BlobDescriptor { blobId, size }
+
+    Note over A: payload = { type: "attachment", attachment: { blobId, key, sha256, mimeType, filename, thumbnail }, flags }
+    A->>A: root = HKDF(X25519(aliceIK, bobIK), salt=conversationId, info="cipher/v1/root")
+    A->>A: msgKey = HKDF(root, salt=bigEndian64(counter), info="cipher/v1/msg|aliceId")
+    A->>A: ciphertext = ChaChaPoly.seal(payload, msgKey, aad=routing fields)
+    A->>A: signature = Ed25519.sign(aad ‖ ciphertext)
+    A->>A: Enqueue envelope in outbox (survives relaunch)
+    A->>R: POST /api/v1/conversations/{id}/messages (Envelope)
+    R->>R: Validate routing only: sender = caller, recipient = other participant, sizes
+    R->>DB: INSERT envelope (ciphertext, signature, counter, expiresAt)
+    R-->>A: 201 MessageAck { status: SENT }
+    A->>A: Message → .sent, outbox item removed
+
+    R->>B: ws message.new (StoredEnvelope)
+    B->>B: Verify Ed25519 signature with Bob's PINNED copy of Alice's key
+    B->>B: Replay guard: reject seen (aliceId, conversationId, counter)
+    B->>B: Derive the same msgKey, ChaChaPoly.open with the same aad
+    B->>B: Persist decrypted message + raw envelope (for Server's-Eye View)
+    B->>R: ws message.ack { messageIds }
+    R->>DB: status → DELIVERED
+    R->>A: ws receipt.delivered
+    Note over B: Thumbnail decrypts in place with the decrypt animation
+
+    B->>R: GET /api/v1/attachments/{blobId} (participants only)
+    R-->>B: 200 application/octet-stream (sealed bytes)
+    B->>B: SHA256(sealed) == attachment.sha256 ? else AttachmentError.digestMismatch
+    B->>B: ChaChaPoly.open(sealed, key) → display
+    B->>R: ws receipt.read
+    R->>A: ws receipt.read (double check turns teal, haptic .read)

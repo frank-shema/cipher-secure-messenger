@@ -1,0 +1,42 @@
+%% Backend: hexagonal architecture, package by feature. Adapters depend on the application layer, the application layer on the domain, the domain on nothing.
+flowchart LR
+    subgraph inbound["Inbound adapters (adapter/in)"]
+        web["web<br/>AuthController · KeyController<br/>ConversationController · AttachmentController"]
+        wsin["websocket<br/>RelayWebSocketHandler · JwtHandshakeInterceptor<br/>FrameHandlers: message.ack · receipt.read · typing.* · ping"]
+        sched["scheduling<br/>ExpiredEnvelopePurgeJob · ExpiredBlobPurgeJob · IdleSessionSweeper"]
+        seed["seed<br/>DemoSeeder (dev profile)"]
+    end
+
+    subgraph appl["Application layer (application/)"]
+        portsIn["port/in — one interface per use case<br/>RegisterUserUseCase · SendEnvelopeUseCase · AcknowledgeDeliveryUseCase …"]
+        services["Services<br/>AuthService · KeyDirectoryService<br/>ConversationService · EnvelopeService · ReceiptService<br/>PresenceService · TypingService · AttachmentService"]
+        portsOut["port/out — what the feature needs<br/>UserRepository · EnvelopeRepository · EnvelopePusher<br/>KeyChangeNotifier · BlobStorage · ContactDirectory …"]
+        portsIn --> services --> portsOut
+    end
+
+    subgraph domain["Domain (domain/) — plain records, no Spring"]
+        dom["User · RefreshToken · KeyBundle<br/>Conversation · Envelope · Receipt · Blob<br/>ProblemException · ProblemType"]
+    end
+
+    subgraph outbound["Outbound adapters (adapter/out)"]
+        jpa["persistence<br/>JPA entities + Spring Data repositories<br/>(separate from the domain)"]
+        push["push / notify<br/>WebSocketEnvelopePusher · WebSocketReceiptNotifier<br/>WebSocketPresencePublisher · WebSocketKeyChangeNotifier"]
+        storage["storage<br/>FileSystemBlobStorage"]
+        security["security<br/>BCryptPasswordHasher · JwtAccessTokenIssuer"]
+    end
+
+    subgraph shared["shared/"]
+        sh["SecurityConfig (HS256 resource server) · RateLimitFilter + TokenBucketRateLimiter<br/>GlobalExceptionHandler → RFC 7807 · CorrelationIdFilter<br/>SessionRegistry · FrameCodec · ClockConfig"]
+    end
+
+    web --> portsIn
+    wsin --> portsIn
+    sched --> portsIn
+    seed --> portsIn
+    services --> dom
+    portsOut --> jpa
+    portsOut --> push
+    portsOut --> storage
+    portsOut --> security
+    jpa --> pg[("PostgreSQL<br/>Flyway V1–V5")]
+    push --> registry["SessionRegistry<br/>(live sockets per user)"]
