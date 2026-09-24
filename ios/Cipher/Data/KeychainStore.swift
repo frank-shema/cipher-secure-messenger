@@ -18,14 +18,31 @@ enum KeychainError: Error, LocalizedError, Hashable, Sendable {
     }
 }
 
+/// When an item may be read, always `ThisDeviceOnly` so no secret migrates to another device in a backup.
+enum KeychainAccessibility: Sendable {
+    /// Only while the device is unlocked: for secrets the person uses interactively (PIN material).
+    case whenUnlocked
+    /// From the first unlock after boot until the next restart: for session tokens, which the app
+    /// must read while restoring a session in the background or right after a reboot.
+    case afterFirstUnlock
+
+    var attribute: CFString {
+        switch self {
+        case .whenUnlocked: kSecAttrAccessibleWhenUnlockedThisDeviceOnly
+        case .afterFirstUnlock: kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
+        }
+    }
+}
+
 /// Thin, synchronous wrapper over `SecItem*` for generic-password items.
 ///
-/// Every item is scoped to one `service` and is `ThisDeviceOnly` + `WhenUnlocked`: secrets stored here
-/// (session tokens) must never migrate to another device through a backup, and they are only needed while
-/// the person is actively using the app. `kSecUseDataProtectionKeychain` opts into the modern keychain
-/// on every platform so behaviour is identical on simulator, device and Catalyst.
+/// Every item is scoped to one `service` and carries the store's `accessibility`; a write re-applies it,
+/// so an item created under an older policy is migrated the next time it is saved.
+/// `kSecUseDataProtectionKeychain` opts into the modern keychain on every platform so behaviour is
+/// identical on simulator, device and Catalyst.
 struct KeychainStore: Sendable {
     let service: String
+    var accessibility: KeychainAccessibility = .whenUnlocked
 
     func read(account: String) throws(KeychainError) -> Data? {
         var query = baseQuery(account: account)
@@ -45,10 +62,14 @@ struct KeychainStore: Sendable {
         }
     }
 
-    /// Upserts: an existing item is updated in place so the attributes (accessibility) stay consistent.
+    /// Upserts: an existing item is updated in place, accessibility included, so every item under this
+    /// service ends up with the same policy regardless of which version of the app created it.
     func write(_ data: Data, account: String) throws(KeychainError) {
         let query = baseQuery(account: account)
-        let attributes: [String: Any] = [kSecValueData as String: data]
+        let attributes: [String: Any] = [
+            kSecValueData as String: data,
+            kSecAttrAccessible as String: accessibility.attribute
+        ]
         let updateStatus = SecItemUpdate(query as CFDictionary, attributes as CFDictionary)
         switch updateStatus {
         case errSecSuccess:
@@ -56,7 +77,7 @@ struct KeychainStore: Sendable {
         case errSecItemNotFound:
             var insert = query
             insert[kSecValueData as String] = data
-            insert[kSecAttrAccessible as String] = kSecAttrAccessibleWhenUnlockedThisDeviceOnly
+            insert[kSecAttrAccessible as String] = accessibility.attribute
             let addStatus = SecItemAdd(insert as CFDictionary, nil)
             guard addStatus == errSecSuccess else { throw KeychainError.unexpectedStatus(addStatus) }
         default:
