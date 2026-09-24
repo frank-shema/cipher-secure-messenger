@@ -6,10 +6,9 @@ import java.util.UUID;
 /**
  * Who should learn about a user's key change.
  *
- * <p>Contacts are the users who share a conversation with the given user. Conversations do not
- * exist in this branch, so the only adapter returns nobody; the messaging branch replaces it
- * with a query over conversation participants. The port is kept explicit so that swap is a
- * one-class change and the rotation use case never has to move.
+ * <p>Contacts are the users who share a conversation with the given user. The port is owned by
+ * the keys feature and implemented by the messaging feature (a query over conversation
+ * participants) so that rotation never depends on the messaging model directly.
  */
 public interface ContactDirectory {
 
