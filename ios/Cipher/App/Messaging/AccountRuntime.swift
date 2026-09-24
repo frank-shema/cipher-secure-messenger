@@ -9,6 +9,9 @@ import Foundation
 final class AccountRuntime: ActiveMessaging {
     let stack: MessagingStack
     let surface: MessagingSurface
+    /// Sealing, uploads, view-once and the protected cache for this account; nil when the cache
+    /// directory could not be created (text messaging keeps working).
+    let attachments: AttachmentsFeature?
     var onConnectionChange: @MainActor (RealtimeConnectionState) -> Void = { _ in } {
         didSet { pump.onConnectionChange = onConnectionChange }
     }
@@ -34,7 +37,8 @@ final class AccountRuntime: ActiveMessaging {
             configuration: .immediate,
             isEnabled: SensitiveGuardPreferences(defaults: defaults).reader
         )
-        let chat = ChatDependencies(
+        let attachments = Self.makeAttachments(stack: stack, toasts: toasts, haptics: haptics)
+        var chat = ChatDependencies(
             currentUserId: stack.account.id,
             observeMessages: stack.observeConversation,
             sender: stack.sendMessage,
@@ -51,6 +55,9 @@ final class AccountRuntime: ActiveMessaging {
             expiry: expiry,
             now: now
         )
+        if let attachments {
+            chat = chat.withAttachments(attachments)
+        }
         let list = ConversationListDependencies(
             observeConversations: stack.observeConversations,
             markRead: stack.markConversationRead,
@@ -62,12 +69,14 @@ final class AccountRuntime: ActiveMessaging {
         self.stack = stack
         self.typing = typing
         self.expiry = expiry
+        self.attachments = attachments
         self.surface = MessagingSurface(
             account: stack.account,
             list: list,
             chat: chat,
             verify: VerifyDependencies(stack: stack, identityKeys: identityKeys),
-            isDecoy: false
+            isDecoy: false,
+            attachments: attachments
         )
         self.pump = RealtimeEventPump(stack: stack, typing: typing, timerSync: timerSync, haptics: haptics, toasts: toasts)
     }
@@ -86,6 +95,7 @@ final class AccountRuntime: ActiveMessaging {
         await expiry?.stop()
         await typing.finishAll()
         await stack.realtime.disconnect()
+        attachments?.removeCachedFiles()
         isStarted = false
         AppLog.messaging.info("runtime stopped")
     }
@@ -102,5 +112,28 @@ final class AccountRuntime: ActiveMessaging {
         }
         await stack.realtime.connect()
         await expiry?.applicationDidBecomeActive()
+    }
+
+    /// Builds the attachments feature when the stack carries a blob transport and a view-once
+    /// record. Returns nil, after logging, when the protected cache directory cannot be created,
+    /// so text messaging still comes up.
+    private static func makeAttachments(
+        stack: MessagingStack,
+        toasts: ToastCenter,
+        haptics: any HapticEngine
+    ) -> AttachmentsFeature? {
+        guard let gateway = stack.attachmentGateway, let viewOnce = stack.viewOnce else { return nil }
+        do {
+            return try AttachmentsFeatureWiring.make(
+                stack: stack,
+                attachmentGateway: gateway,
+                viewOnce: viewOnce,
+                toasts: toasts,
+                haptics: haptics
+            )
+        } catch {
+            AppLog.messaging.error("attachments unavailable: \(String(describing: error), privacy: .public)")
+            return nil
+        }
     }
 }

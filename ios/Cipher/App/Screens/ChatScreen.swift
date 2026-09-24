@@ -16,7 +16,7 @@ struct ChatScreen: View {
     var body: some View {
         Group {
             if let viewModel {
-                ChatView(viewModel: viewModel)
+                AttachmentsChatView(viewModel: viewModel, feature: container.messaging.surface?.attachments)
             } else if isMissing {
                 EmptyStateView(
                     icon: "bubble.left.and.exclamationmark.bubble.right",

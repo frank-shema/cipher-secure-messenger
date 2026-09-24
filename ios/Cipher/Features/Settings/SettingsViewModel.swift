@@ -4,8 +4,8 @@ import Foundation
 import Observation
 import UIKit
 
-/// State for `SettingsView`: the public keys (read from the identity store, never the private halves),
-/// the relay address override and the DEBUG demo companion switch.
+/// State for `SettingsView`: the public keys (read from the identity store, never the private halves)
+/// and the relay address override.
 @MainActor
 @Observable
 final class SettingsViewModel {
@@ -19,9 +19,6 @@ final class SettingsViewModel {
     var serverURLText: String
     private(set) var serverIssue: String?
     private(set) var activeEndpoints: ServerEndpoints
-    var demoCompanionEnabled: Bool {
-        didSet { AppPreferences.setDemoCompanionEnabled(demoCompanionEnabled, in: defaults) }
-    }
 
     @ObservationIgnored private let container: AppContainer
     @ObservationIgnored private let defaults: UserDefaults
@@ -31,7 +28,6 @@ final class SettingsViewModel {
         self.defaults = container.defaults
         self.serverURLText = AppPreferences.serverURLOverride(in: container.defaults) ?? ""
         self.activeEndpoints = container.endpoints
-        self.demoCompanionEnabled = AppPreferences.isDemoCompanionEnabled(in: container.defaults)
     }
 
     /// "0.1.0 (1)" from the bundle; falls back to "—" in previews where the bundle is not the app.

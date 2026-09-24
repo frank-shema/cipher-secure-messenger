@@ -85,7 +85,9 @@ enum ProductionFactories {
             envelopes: StoredEnvelopeProvider(store: store, vault: vault),
             disappearingTimers: store,
             expiredMessages: store,
-            rawEnvelopes: store
+            rawEnvelopes: store,
+            attachmentGateway: RemoteAttachmentGateway(client: ports.client),
+            viewOnce: store
         )
     }
 

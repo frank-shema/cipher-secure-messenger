@@ -18,7 +18,7 @@ struct MessagingUnavailableView: View {
                     action: onRetry.map { retry in
                         EmptyStateView.Action(
                             title: String(localized: "messaging.unavailable.retry", defaultValue: "Try again"),
-                            handler: retry
+                            handler: { retry() }
                         )
                     }
                 )

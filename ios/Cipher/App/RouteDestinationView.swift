@@ -30,8 +30,8 @@ struct RouteDestinationView: View {
             ServersEyeScreen(conversationId: id)
         case .trust(let id):
             TrustScreen(conversationId: id)
-        case .attachmentViewer:
-            RoutePlaceholderView(title: String(localized: "route.attachment", defaultValue: "Attachment"))
+        case .attachmentViewer(let id):
+            AttachmentViewerRoute(messageId: id, feature: container.messaging.surface?.attachments)
         case .lockSettings:
             SettingsLockView(lock: container.appLock, flipToHide: container.flipToHide)
         }
@@ -52,24 +52,6 @@ struct WithMessagingSurface<Content: View>: View {
     }
 }
 
-/// A calm "not here yet" screen that names the destination, so a tester knows the tap registered.
-struct RoutePlaceholderView: View {
-    let title: String
-
-    var body: some View {
-        ZStack {
-            CipherColor.background.ignoresSafeArea()
-            EmptyStateView(
-                icon: "shippingbox",
-                title: title,
-                message: String(localized: "route.placeholder.message", defaultValue: "This screen is on its way in a later build.")
-            )
-        }
-        .navigationTitle(title)
-        .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
 #Preview("New chat") {
     NavigationStack {
         RouteDestinationView(route: .newConversation)
@@ -77,7 +59,7 @@ struct RoutePlaceholderView: View {
     .previewEnvironment(AppContainer.mock(signedInAs: Fixtures.alice), state: .ready(Fixtures.session(for: Fixtures.alice)))
 }
 
-#Preview("Placeholder") {
+#Preview("Attachment unavailable") {
     NavigationStack {
         RouteDestinationView(route: .attachmentViewer(MessageID(MessagingFixtures.stableUUID("preview-attachment"))))
     }

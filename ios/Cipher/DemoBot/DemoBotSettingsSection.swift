@@ -57,8 +57,10 @@ struct DemoBotSettingsSection: View {
     private var footer: String {
         String(
             localized: "demo.settings.footer",
-            defaultValue: "Echo is a second Cipher client inside this debug build, with its own keys and store. "
-                + "It talks to the same relay you do and sees only ciphertext until it decrypts on its side."
+            defaultValue: """
+                Echo is a second Cipher client inside this debug build, with its own keys and store. \
+                It talks to the same relay you do and sees only ciphertext until it decrypts on its side.
+                """
         )
     }
 }

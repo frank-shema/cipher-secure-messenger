@@ -1,4 +1,5 @@
 import CipherCore
+import CipherNetworking
 import Foundation
 
 /// Everything the messaging features need for one signed-in account: the per-account repositories,
@@ -28,6 +29,10 @@ struct MessagingStack: Sendable {
     let expiredMessages: (any ExpiredMessageDeleting)?
     /// Durable home for incoming raw envelopes; nil when the store keeps none.
     let rawEnvelopes: (any RawEnvelopeRecording)?
+    /// Relay attachment routes; nil for stacks with no blob transport (previews, decoy).
+    let attachmentGateway: (any AttachmentGateway)?
+    /// Durable "opened once" record for view-once media; nil where nothing persists.
+    let viewOnce: (any ViewOnceMarking)?
 
     init(
         account: User,
@@ -44,7 +49,9 @@ struct MessagingStack: Sendable {
         envelopes: (any EnvelopeProviding)? = nil,
         disappearingTimers: (any DisappearingTimerStoring)? = nil,
         expiredMessages: (any ExpiredMessageDeleting)? = nil,
-        rawEnvelopes: (any RawEnvelopeRecording)? = nil
+        rawEnvelopes: (any RawEnvelopeRecording)? = nil,
+        attachmentGateway: (any AttachmentGateway)? = nil,
+        viewOnce: (any ViewOnceMarking)? = nil
     ) {
         self.account = account
         self.messages = messages
@@ -61,6 +68,8 @@ struct MessagingStack: Sendable {
         self.disappearingTimers = disappearingTimers ?? ConversationRepositoryTimerStore(conversations: conversations)
         self.expiredMessages = expiredMessages
         self.rawEnvelopes = rawEnvelopes
+        self.attachmentGateway = attachmentGateway
+        self.viewOnce = viewOnce
     }
 
     var sendMessage: SendMessageUseCase {
