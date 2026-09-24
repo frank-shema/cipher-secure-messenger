@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.time.Clock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
@@ -41,6 +42,11 @@ public class RateLimitFilter extends OncePerRequestFilter {
     private final ProblemDetailFactory problems;
     private final ProblemResponseWriter writer;
 
+    /**
+     * The injection constructor; explicitly marked because the package-private one below exists
+     * for tests and Spring refuses to guess between two candidates.
+     */
+    @Autowired
     public RateLimitFilter(RateLimitProperties properties, Clock clock,
                            ProblemDetailFactory problems, ProblemResponseWriter writer) {
         this(new TokenBucketRateLimiter(properties.auth().capacity(), properties.auth().refillPerMinute(), clock),

@@ -19,7 +19,8 @@ import org.springframework.web.method.support.ModelAndViewContainer;
  *
  * <p>Authorization rules already guarantee the token is present on protected routes; the
  * defensive {@code unauthorized} problem exists so a misconfigured permit list fails closed
- * instead of dereferencing a null principal.
+ * instead of dereferencing a null principal. {@link #fromJwt(Jwt)} is public because the
+ * WebSocket handshake authenticates outside Spring MVC yet must derive the very same principal.
  */
 public class CurrentUserArgumentResolver implements HandlerMethodArgumentResolver {
 
@@ -39,7 +40,7 @@ public class CurrentUserArgumentResolver implements HandlerMethodArgumentResolve
         throw new ProblemException(ProblemType.UNAUTHORIZED, "Authentication is required");
     }
 
-    static AuthenticatedUser fromJwt(Jwt jwt) {
+    public static AuthenticatedUser fromJwt(Jwt jwt) {
         String subject = jwt.getSubject();
         String username = jwt.getClaimAsString(JwtIssuer.USERNAME_CLAIM);
         if (subject == null || username == null) {

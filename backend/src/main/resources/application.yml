@@ -49,11 +49,28 @@ cipher:
     auth:
       capacity: 10
       refill-per-minute: 10
+    messages:
+      capacity: 60
+      refill-per-minute: 60
+    uploads:
+      capacity: 20
+      refill-per-minute: 20
+    frames:
+      capacity: 240
+      refill-per-minute: 240
   seed:
     enabled: false
   attachments:
     max-size: 25MB
     storage-path: ${ATTACHMENTS_PATH:./data/blobs}
+  websocket:
+    idle-timeout: 90s
+    idle-sweep-interval: PT15S
+    send-time-limit: 10s
+    send-buffer-size-limit: 512KB
+    max-text-message-size: 64KB
+  purge:
+    interval: PT60S
 
 ---
 spring:

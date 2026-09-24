@@ -42,9 +42,9 @@ class CipherRelayApplicationTests {
         MigrationInfo current = flyway.info().current();
 
         assertThat(current).isNotNull();
-        assertThat(current.getVersion().getVersion()).isEqualTo("3");
+        assertThat(current.getVersion().getVersion()).isEqualTo("5");
         assertThat(current.getState()).isEqualTo(MigrationState.SUCCESS);
         assertThat(Arrays.stream(flyway.info().applied()).map(info -> info.getVersion().getVersion()))
-                .containsExactly("1", "2", "3");
+                .containsExactly("1", "2", "3", "4", "5");
     }
 }
