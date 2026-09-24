@@ -1,0 +1,61 @@
+# ── macOS ─────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# ── Xcode / Swift ─────────────────────────────────────────────────
+ios/**/xcuserdata/
+ios/**/*.xcuserstate
+ios/**/*.xcscmblueprint
+ios/**/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+ios/**/DerivedData/
+ios/DerivedData/
+ios/**/.build/
+ios/**/.swiftpm/
+ios/**/Package.resolved
+ios/**/*.moved-aside
+ios/**/*.hmap
+ios/**/*.ipa
+ios/**/*.dSYM.zip
+ios/**/*.dSYM
+ios/**/timeline.xctimeline
+ios/**/playground.xcworkspace
+ios/**/*.xcresult
+*.xcresult
+
+# ── Java / Maven ──────────────────────────────────────────────────
+backend/target/
+backend/data/
+backend/**/*.class
+backend/**/*.log
+backend/.mvn/wrapper/maven-wrapper.jar
+backend/*.iml
+
+# ── IDEs ──────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+.project
+.classpath
+.settings/
+
+# ── Environment & secrets ─────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.jks
+*.keystore
+
+# ── Docker volumes / local data ───────────────────────────────────
+data/
+postgres-data/
+minio-data/
+
+# ── Misc ──────────────────────────────────────────────────────────
+*.tmp
+*.bak
+node_modules/

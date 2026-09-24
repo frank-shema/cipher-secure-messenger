@@ -1,0 +1,62 @@
+# One command starts the blind relay and its database:
+#   docker compose up -d --build
+# Optional S3-compatible blob storage:
+#   docker compose --profile minio up -d --build
+name: cipher
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: cipher-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-cipher}
+      POSTGRES_USER: ${POSTGRES_USER:-cipher}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cipher}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-cipher} -d ${POSTGRES_DB:-cipher}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+    container_name: cipher-relay
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-dev}
+      DATABASE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-cipher}
+      DATABASE_USERNAME: ${POSTGRES_USER:-cipher}
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD:-cipher}
+      JWT_SECRET: ${JWT_SECRET:-dev-only-secret-change-me-dev-only-secret-change-me}
+      ATTACHMENTS_PATH: ${ATTACHMENTS_PATH:-/data/blobs}
+    ports:
+      - "8080:8080"
+    volumes:
+      - blob-data:/data/blobs
+    restart: unless-stopped
+
+  minio:
+    image: minio/minio:latest
+    container_name: cipher-minio
+    profiles: ["minio"]
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-cipher}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-cipher-minio-change-me}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio-data:/data
+
+volumes:
+  postgres-data:
+  blob-data:
+  minio-data:

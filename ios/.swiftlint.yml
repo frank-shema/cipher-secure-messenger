@@ -1,0 +1,54 @@
+disabled_rules:
+  - trailing_comma
+
+opt_in_rules:
+  - closure_spacing
+  - contains_over_first_not_nil
+  - empty_count
+  - explicit_init
+  - fatal_error_message
+  - first_where
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - redundant_nil_coalescing
+  - sorted_first_last
+  - toggle_bool
+  - unowned_variable_capture
+  - vertical_whitespace_closing_braces
+  - yoda_condition
+
+excluded:
+  - .build
+  - DerivedData
+  - Cipher.xcodeproj
+  - Packages/*/.build
+
+line_length:
+  warning: 140
+  error: 200
+
+file_length:
+  warning: 400
+
+type_body_length:
+  warning: 250
+
+function_body_length:
+  warning: 60
+
+identifier_name:
+  min_length: 2
+  allowed_symbols: ["_"]
+  excluded:
+    - id
+    - x
+    - y
+    - dx
+    - dy
+    - to
+    - in
+    - at
+
+force_cast: error
+force_try: error
+force_unwrapping: error
