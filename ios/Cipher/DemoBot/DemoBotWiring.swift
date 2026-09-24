@@ -29,6 +29,15 @@ enum DemoBotWiring {
     static func selfTestCommand(from arguments: [String] = CommandLine.arguments) -> DemoBotSelfTest.Command? {
         DemoBotSelfTest.command(from: arguments)
     }
+
+    /// The `--open-conversation <uuid>` launch argument, when present: the signed-in stack lands on
+    /// that chat as soon as the session is ready, so the screen can be driven from the command line.
+    static func openConversationArgument(from arguments: [String] = CommandLine.arguments) -> ConversationID? {
+        guard let index = arguments.firstIndex(of: "--open-conversation"),
+              arguments.indices.contains(index + 1),
+              let uuid = UUID(uuidString: arguments[index + 1]) else { return nil }
+        return ConversationID(uuid)
+    }
 }
 
 extension DemoBotController {
