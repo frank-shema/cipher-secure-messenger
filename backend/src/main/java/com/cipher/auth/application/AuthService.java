@@ -26,6 +26,7 @@ import java.util.Optional;
 import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,6 +52,11 @@ public class AuthService implements RegisterUserUseCase, LoginUseCase, RefreshSe
     private final Clock clock;
     private final SecureRandom random;
 
+    /**
+     * The injection constructor; explicitly marked because the package-private one below takes a
+     * seeded {@link SecureRandom} for tests and Spring refuses to guess between two candidates.
+     */
+    @Autowired
     public AuthService(UserRepository users, RefreshTokenRepository refreshTokens, PasswordHasher passwordHasher,
                        AccessTokenIssuer accessTokenIssuer, JwtProperties jwtProperties, Clock clock) {
         this(users, refreshTokens, passwordHasher, accessTokenIssuer, jwtProperties, clock, new SecureRandom());

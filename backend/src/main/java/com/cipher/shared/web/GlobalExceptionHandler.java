@@ -2,6 +2,7 @@ package com.cipher.shared.web;
 
 import com.cipher.shared.domain.ProblemException;
 import com.cipher.shared.domain.ProblemType;
+import com.cipher.shared.ratelimit.RateLimitExceededException;
 import jakarta.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.util.Comparator;
@@ -11,6 +12,7 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSourceResolvable;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
@@ -50,6 +52,15 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ProblemException.class)
     public ResponseEntity<ProblemDetail> handleProblem(ProblemException ex, HttpServletRequest request) {
         return respond(problems.create(ex.type(), ex.detail(), request));
+    }
+
+    @ExceptionHandler(RateLimitExceededException.class)
+    public ResponseEntity<ProblemDetail> handleRateLimited(RateLimitExceededException ex, HttpServletRequest request) {
+        ProblemDetail problem = problems.create(ex.type(), ex.detail(), request);
+        return ResponseEntity.status(problem.getStatus())
+                .header(HttpHeaders.RETRY_AFTER, Long.toString(ex.retryAfterSeconds()))
+                .contentType(MediaType.APPLICATION_PROBLEM_JSON)
+                .body(problem);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
