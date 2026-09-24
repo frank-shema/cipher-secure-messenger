@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "CipherPersistence",
+    defaultLocalization: "en",
     platforms: [.iOS(.v17), .macOS(.v14)],
     products: [
         .library(name: "CipherPersistence", targets: ["CipherPersistence"])
@@ -15,7 +16,8 @@ let package = Package(
             name: "CipherPersistence",
             dependencies: [
                 .product(name: "CipherCore", package: "CipherCore")
-            ]
+            ],
+            resources: [.process("Resources")]
         ),
         .testTarget(
             name: "CipherPersistenceTests",

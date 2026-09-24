@@ -1,0 +1,105 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "error.persistence.containerCreationFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your local message database could not be opened."
+          }
+        }
+      }
+    },
+    "error.persistence.contactNotFound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This contact could not be found."
+          }
+        }
+      }
+    },
+    "error.persistence.conversationNotFound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This conversation could not be found."
+          }
+        }
+      }
+    },
+    "error.persistence.encodingFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The message could not be prepared for storage."
+          }
+        }
+      }
+    },
+    "error.persistence.fetchFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your messages could not be loaded."
+          }
+        }
+      }
+    },
+    "error.persistence.invalidDisappearingTimer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The disappearing message timer must be longer than zero."
+          }
+        }
+      }
+    },
+    "error.persistence.messageNotFound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This message could not be found."
+          }
+        }
+      }
+    },
+    "error.persistence.saveFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your changes could not be saved."
+          }
+        }
+      }
+    },
+    "error.persistence.storageUnavailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local storage is unavailable on this device."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
