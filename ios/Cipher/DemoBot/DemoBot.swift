@@ -108,7 +108,7 @@ actor DemoBot {
     private func bringUp() async throws -> User {
         let assembled: DemoBotClient
         do {
-            assembled = try await DemoBotClient.assemble(configuration: configuration) { [weak self] phase in
+            assembled = try await DemoBotClient.assemble(configuration: configuration, memory: memory) { [weak self] phase in
                 await self?.publish(Self.status(for: phase))
             }
         } catch {
