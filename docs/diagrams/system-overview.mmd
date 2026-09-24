@@ -1,0 +1,36 @@
+%% System overview: two phones, one blind relay. The relay stores and routes ciphertext; it never holds a key.
+flowchart LR
+    subgraph A["iPhone A (Alice)"]
+        appA["Cipher app<br/>SwiftUI · CryptoKit · SwiftData"]
+        kcA[("Keychain<br/>X25519 + Ed25519 private keys<br/>(Secure Enclave wrapped)")]
+        dbA[("SwiftData store<br/>decrypted messages · outbox · replay counters")]
+        appA --- kcA
+        appA --- dbA
+    end
+
+    subgraph R["Blind relay (Spring Boot 3.5, Java 21)"]
+        rest["REST /api/v1<br/>auth · keys · conversations · attachments"]
+        ws["WebSocket /ws<br/>message.new · receipts · typing · presence · key.changed"]
+        pg[("PostgreSQL 16<br/>users · identity_keys · conversations<br/>envelopes (ciphertext) · blobs")]
+        fs[("Blob storage<br/>filesystem (MinIO optional)")]
+        rest --- pg
+        ws --- pg
+        rest --- fs
+    end
+
+    subgraph B["iPhone B (Bob)"]
+        appB["Cipher app"]
+        kcB[("Keychain")]
+        dbB[("SwiftData store")]
+        appB --- kcB
+        appB --- dbB
+    end
+
+    appA -- "HTTPS: PUT /keys/me, POST envelope, POST blob" --> rest
+    appB -- "HTTPS: GET /keys/{alice}, GET blob, GET history" --> rest
+    ws -- "push: message.new (ciphertext)" --> appB
+    appB -- "message.ack · receipt.read · typing" --> ws
+    ws -- "receipt.delivered · receipt.read · presence.update" --> appA
+
+    note["The relay sees: who, when, a counter, sizes, expiresAt.<br/>It never sees: text, filenames, MIME types, keys, flags."]
+    R -.- note

@@ -1,28 +1,6221 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "root.subtitle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Security you can see and feel"
+  "sourceLanguage": "en",
+  "strings": {
+    "%lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld"
           }
         }
       }
     },
-    "root.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cipher"
+    "%lld deleted so far": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld deleted so far"
+          }
+        }
+      }
+    },
+    "@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "@"
+          }
+        }
+      }
+    },
+    "Long-press me": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Long-press me"
+          }
+        }
+      }
+    },
+    "Sweeps every second while visible": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sweeps every second while visible"
+          }
+        }
+      }
+    },
+    "Swipe me right": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Swipe me right"
+          }
+        }
+      }
+    },
+    "attachments.composer.preparing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Removing metadata…"
+          }
+        }
+      }
+    },
+    "attachments.composer.preparing.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparing attachment"
+          }
+        }
+      }
+    },
+    "attachments.error.accessDenied": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cipher was not allowed to read that file."
+          }
+        }
+      }
+    },
+    "attachments.error.cacheUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attachments cannot be stored on this device right now."
+          }
+        }
+      }
+    },
+    "attachments.error.cacheWrite": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The attachment could not be saved."
+          }
+        }
+      }
+    },
+    "attachments.error.empty": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "That file is empty."
+          }
+        }
+      }
+    },
+    "attachments.error.encodingFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This image could not be prepared for sending."
+          }
+        }
+      }
+    },
+    "attachments.error.tooLarge": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "That file is over the 25 MB limit."
+          }
+        }
+      }
+    },
+    "attachments.error.unreadable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "That file could not be read."
+          }
+        }
+      }
+    },
+    "attachments.error.unreadableImage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This image could not be read."
+          }
+        }
+      }
+    },
+    "attachments.route.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attachment"
+          }
+        }
+      }
+    },
+    "attachments.route.unavailable.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This attachment cannot be opened on this device right now."
+          }
+        }
+      }
+    },
+    "attachments.route.unavailable.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attachment unavailable"
+          }
+        }
+      }
+    },
+    "attachments.toast.locationRemoved": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "📍 Location removed from photo"
+          }
+        }
+      }
+    },
+    "attachments.toast.metadataRemoved": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camera details removed from photo"
+          }
+        }
+      }
+    },
+    "attachments.toast.screenshotReported": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Screenshot reported to the sender"
+          }
+        }
+      }
+    },
+    "attachments.toast.tooLarge": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "That file is over the 25 MB limit"
+          }
+        }
+      }
+    },
+    "attachments.toast.viewOnceDeleted": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View-once photo deleted from this device"
+          }
+        }
+      }
+    },
+    "attachments.viewOnce.badge": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Viewing once · deleted when you close"
+          }
+        }
+      }
+    },
+    "attachments.viewOnce.explainer": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This photo opens once. It is deleted from this device when you close it, and the sender is told if you take a screenshot."
+          }
+        }
+      }
+    },
+    "attachments.viewOnce.open": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View once"
+          }
+        }
+      }
+    },
+    "attachments.viewOnce.open.a11y.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opens the photo one time"
+          }
+        }
+      }
+    },
+    "attachments.viewOnce.tapHint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap to view once"
+          }
+        }
+      }
+    },
+    "attachments.viewer.consumed.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This photo has been deleted from this device."
+          }
+        }
+      }
+    },
+    "attachments.viewer.consumed.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Viewed once"
+          }
+        }
+      }
+    },
+    "attachments.viewer.downloading.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Downloading and decrypting attachment"
+          }
+        }
+      }
+    },
+    "attachments.viewer.image.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photo"
+          }
+        }
+      }
+    },
+    "attachments.viewer.image.a11y.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pinch to zoom, double tap to toggle zoom"
+          }
+        }
+      }
+    },
+    "attachments.viewer.loading.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading attachment"
+          }
+        }
+      }
+    },
+    "attachments.viewer.share.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share attachment"
+          }
+        }
+      }
+    },
+    "attachments.viewer.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attachment"
+          }
+        }
+      }
+    },
+    "attachments.viewer.title.viewOnce": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View once"
+          }
+        }
+      }
+    },
+    "attachments.viewer.unavailable.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attachment unavailable"
+          }
+        }
+      }
+    },
+    "attachments.viewer.uploading": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This attachment is still uploading."
+          }
+        }
+      }
+    },
+    "auth.field.displayName": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Display name (optional)"
+          }
+        }
+      }
+    },
+    "auth.field.password": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Password"
+          }
+        }
+      }
+    },
+    "auth.field.username": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Username"
+          }
+        }
+      }
+    },
+    "auth.footnote": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passwords are only used to sign in; they never protect your messages."
+          }
+        }
+      }
+    },
+    "auth.header.login": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Welcome back"
+          }
+        }
+      }
+    },
+    "auth.header.register": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create your account"
+          }
+        }
+      }
+    },
+    "auth.mode.login": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Log in"
+          }
+        }
+      }
+    },
+    "auth.mode.picker": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Register or log in"
+          }
+        }
+      }
+    },
+    "auth.mode.register": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Register"
+          }
+        }
+      }
+    },
+    "auth.submit.hint.invalid": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fix the highlighted fields first"
+          }
+        }
+      }
+    },
+    "auth.submit.hint.ready": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Submits the form"
+          }
+        }
+      }
+    },
+    "auth.subtitle.login": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your messages are only readable on your devices."
+          }
+        }
+      }
+    },
+    "auth.subtitle.register": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A username is all the relay ever learns about you."
+          }
+        }
+      }
+    },
+    "auth.validation.displayName.long": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At most 64 characters."
+          }
+        }
+      }
+    },
+    "auth.validation.password.empty": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a password."
+          }
+        }
+      }
+    },
+    "auth.validation.password.long": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At most 128 characters."
+          }
+        }
+      }
+    },
+    "auth.validation.password.short": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At least 8 characters."
+          }
+        }
+      }
+    },
+    "auth.validation.username.chars": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lowercase letters, digits and underscores only."
+          }
+        }
+      }
+    },
+    "auth.validation.username.empty": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a username."
+          }
+        }
+      }
+    },
+    "auth.validation.username.long": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At most 32 characters."
+          }
+        }
+      }
+    },
+    "auth.validation.username.short": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At least 3 characters."
+          }
+        }
+      }
+    },
+    "capsule.action.remove": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove"
+          }
+        }
+      }
+    },
+    "capsule.action.seal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seal until then"
+          }
+        }
+      }
+    },
+    "capsule.explainer.body": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The relay cannot open it early — but this is enforced by the apps, not the server."
+          }
+        }
+      }
+    },
+    "capsule.explainer.sealedUntil": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sealed until %@"
+          }
+        }
+      }
+    },
+    "capsule.picker.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlock date and time"
+          }
+        }
+      }
+    },
+    "capsule.picker.label": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opens at"
+          }
+        }
+      }
+    },
+    "capsule.preset.a11y.custom": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pick a date and time"
+          }
+        }
+      }
+    },
+    "capsule.preset.a11y.oneDay": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open in one day"
+          }
+        }
+      }
+    },
+    "capsule.preset.a11y.oneHour": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open in one hour"
+          }
+        }
+      }
+    },
+    "capsule.preset.a11y.thirtySeconds": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open in 30 seconds, for demos"
+          }
+        }
+      }
+    },
+    "capsule.preset.custom": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Custom"
+          }
+        }
+      }
+    },
+    "capsule.preset.oneDay": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 day"
+          }
+        }
+      }
+    },
+    "capsule.preset.oneHour": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 hour"
+          }
+        }
+      }
+    },
+    "capsule.preset.thirtySeconds": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 s"
+          }
+        }
+      }
+    },
+    "capsule.reveal.a11y.sealed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sealed time capsule"
+          }
+        }
+      }
+    },
+    "capsule.sheet.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Time Capsule"
+          }
+        }
+      }
+    },
+    "chat.a11y.them": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Them"
+          }
+        }
+      }
+    },
+    "chat.a11y.you": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You"
+          }
+        }
+      }
+    },
+    "chat.attachment.a11y.file": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Encrypted file %@"
+          }
+        }
+      }
+    },
+    "chat.attachment.a11y.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opens the attachment"
+          }
+        }
+      }
+    },
+    "chat.attachment.a11y.photo": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Encrypted photo"
+          }
+        }
+      }
+    },
+    "chat.attachment.a11y.viewOnce": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View-once photo, not yet opened"
+          }
+        }
+      }
+    },
+    "chat.attachment.viewOnce.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap to view once"
+          }
+        }
+      }
+    },
+    "chat.capsule.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sealed time capsule, opens %@"
+          }
+        }
+      }
+    },
+    "chat.capsule.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Time Capsule"
+          }
+        }
+      }
+    },
+    "chat.composer.attach.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attach"
+          }
+        }
+      }
+    },
+    "chat.composer.attach.file": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File"
+          }
+        }
+      }
+    },
+    "chat.composer.attach.photo": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photo"
+          }
+        }
+      }
+    },
+    "chat.composer.attachment.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attached %@"
+          }
+        }
+      }
+    },
+    "chat.composer.attachment.remove": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove attachment"
+          }
+        }
+      }
+    },
+    "chat.composer.capsule.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Time Capsule"
+          }
+        }
+      }
+    },
+    "chat.composer.field.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Message"
+          }
+        }
+      }
+    },
+    "chat.composer.placeholder": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Encrypted message"
+          }
+        }
+      }
+    },
+    "chat.composer.reply.cancel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel reply"
+          }
+        }
+      }
+    },
+    "chat.composer.send.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send"
+          }
+        }
+      }
+    },
+    "chat.composer.send.a11y.mode": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A special send mode is on"
+          }
+        }
+      }
+    },
+    "chat.composer.viewOnce.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View once"
+          }
+        }
+      }
+    },
+    "chat.composer.whisper.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Whisper"
+          }
+        }
+      }
+    },
+    "chat.error.attachmentsUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attachments are not available in this build."
+          }
+        }
+      }
+    },
+    "chat.error.envelopeUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The stored envelope for this message is missing."
+          }
+        }
+      }
+    },
+    "chat.error.nothingToSend": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Type a message or attach a file first."
+          }
+        }
+      }
+    },
+    "chat.error.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not complete that"
+          }
+        }
+      }
+    },
+    "chat.header.encrypted": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "End-to-end encrypted"
+          }
+        }
+      }
+    },
+    "chat.header.lastSeen": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last seen %@"
+          }
+        }
+      }
+    },
+    "chat.header.menu.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conversation options"
+          }
+        }
+      }
+    },
+    "chat.header.menu.reverify": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Re-verify safety code"
+          }
+        }
+      }
+    },
+    "chat.header.menu.verify": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verify safety code"
+          }
+        }
+      }
+    },
+    "chat.header.online": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Online"
+          }
+        }
+      }
+    },
+    "chat.header.serversEye.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server's-Eye view"
+          }
+        }
+      }
+    },
+    "chat.header.typing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "typing…"
+          }
+        }
+      }
+    },
+    "chat.list.loadOlder": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Older messages"
+          }
+        }
+      }
+    },
+    "chat.list.loadOlder.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading older messages"
+          }
+        }
+      }
+    },
+    "chat.list.newMessages": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld new"
+          }
+        }
+      }
+    },
+    "chat.list.newMessages.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld new messages, scroll to bottom"
+          }
+        }
+      }
+    },
+    "chat.menu.copy": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy"
+          }
+        }
+      }
+    },
+    "chat.menu.deleteLocally": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete on this device"
+          }
+        }
+      }
+    },
+    "chat.menu.react": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "React %@"
+          }
+        }
+      }
+    },
+    "chat.menu.reply": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reply"
+          }
+        }
+      }
+    },
+    "chat.menu.retry": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try again"
+          }
+        }
+      }
+    },
+    "chat.menu.serverView": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View as the server sees it"
+          }
+        }
+      }
+    },
+    "chat.menu.serverView.back": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back to the message"
+          }
+        }
+      }
+    },
+    "chat.missing.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This conversation is no longer on this device."
+          }
+        }
+      }
+    },
+    "chat.missing.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conversation not found"
+          }
+        }
+      }
+    },
+    "chat.opening": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opening conversation"
+          }
+        }
+      }
+    },
+    "chat.reaction.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reaction %@"
+          }
+        }
+      }
+    },
+    "chat.reaction.a11y.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Double tap to remove"
+          }
+        }
+      }
+    },
+    "chat.reply.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Replying to %@: %@"
+          }
+        }
+      }
+    },
+    "chat.reply.unavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original message unavailable"
+          }
+        }
+      }
+    },
+    "chat.serverView.a11y.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Double tap to flip back"
+          }
+        }
+      }
+    },
+    "chat.status.failedRetry": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not sent. Tap to retry"
+          }
+        }
+      }
+    },
+    "chat.system.contactFallback": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your contact"
+          }
+        }
+      }
+    },
+    "chat.system.disappearingChanged": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disappearing message timer changed"
+          }
+        }
+      }
+    },
+    "chat.system.keyVerified": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safety keys with %@ verified"
+          }
+        }
+      }
+    },
+    "chat.system.screenshotTaken": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ took a screenshot"
+          }
+        }
+      }
+    },
+    "chat.system.viewOnceOpened": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ opened your view-once message"
+          }
+        }
+      }
+    },
+    "chat.tampered.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unverified message. %@"
+          }
+        }
+      }
+    },
+    "chat.tampered.decryptionFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The content could not be decrypted with the shared key."
+          }
+        }
+      }
+    },
+    "chat.tampered.invalidSignature": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The signature does not match the sender's pinned key."
+          }
+        }
+      }
+    },
+    "chat.tampered.malformedPayload": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The decrypted content was not a valid message."
+          }
+        }
+      }
+    },
+    "chat.tampered.replayed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This message was delivered twice; the duplicate was ignored."
+          }
+        }
+      }
+    },
+    "chat.tampered.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Message could not be verified"
+          }
+        }
+      }
+    },
+    "chat.tampered.unknownSender": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The sender's keys could not be found."
+          }
+        }
+      }
+    },
+    "common.cancel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        }
+      }
+    },
+    "common.done": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        }
+      }
+    },
+    "common.off": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Off"
+          }
+        }
+      }
+    },
+    "common.ok": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        }
+      }
+    },
+    "common.on": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On"
+          }
+        }
+      }
+    },
+    "conversations.action.delete": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
+        }
+      }
+    },
+    "conversations.action.markRead": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mark read"
+          }
+        }
+      }
+    },
+    "conversations.empty.action": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New chat"
+          }
+        }
+      }
+    },
+    "conversations.empty.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start a conversation. Only the two of you will ever be able to read it."
+          }
+        }
+      }
+    },
+    "conversations.empty.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No chats yet"
+          }
+        }
+      }
+    },
+    "conversations.error.partialSync": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld conversation(s) could not be refreshed."
+          }
+        }
+      }
+    },
+    "conversations.error.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Something went wrong"
+          }
+        }
+      }
+    },
+    "conversations.loading": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading chats"
+          }
+        }
+      }
+    },
+    "conversations.preview.attachment": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Encrypted attachment"
+          }
+        }
+      }
+    },
+    "conversations.preview.empty": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No messages yet"
+          }
+        }
+      }
+    },
+    "conversations.preview.photo": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Encrypted photo"
+          }
+        }
+      }
+    },
+    "conversations.preview.reaction": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reacted %@"
+          }
+        }
+      }
+    },
+    "conversations.preview.sealed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sealed time capsule"
+          }
+        }
+      }
+    },
+    "conversations.preview.tampered": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Message could not be verified"
+          }
+        }
+      }
+    },
+    "conversations.preview.whisper": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Whisper, hold to read"
+          }
+        }
+      }
+    },
+    "conversations.row.a11y.unread": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld unread"
+          }
+        }
+      }
+    },
+    "conversations.row.a11y.verified": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "verified"
+          }
+        }
+      }
+    },
+    "conversations.search.empty.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing in your chats matches that search."
+          }
+        }
+      }
+    },
+    "conversations.search.empty.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No matches"
+          }
+        }
+      }
+    },
+    "conversations.search.prompt": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search chats"
+          }
+        }
+      }
+    },
+    "conversations.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chats"
+          }
+        }
+      }
+    },
+    "conversations.toolbar.newChat": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New chat"
+          }
+        }
+      }
+    },
+    "conversations.toolbar.settings": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
+          }
+        }
+      }
+    },
+    "decoy.error.conversationMissing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This conversation is no longer available."
+          }
+        }
+      }
+    },
+    "decoy.error.relayUnreachable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't reach the relay. Try again later."
+          }
+        }
+      }
+    },
+    "demo.echo.attachment.kind.file": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "file"
+          }
+        }
+      }
+    },
+    "demo.echo.attachment.kind.photo": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "photo"
+          }
+        }
+      }
+    },
+    "demo.echo.attachment.received": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Got your %@ (%@). The key came inside the ciphertext, so I decrypted it right here."
+          }
+        }
+      }
+    },
+    "demo.echo.capsule": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sealed at %@. This capsule unlocks %lld seconds later; patience is a feature."
+          }
+        }
+      }
+    },
+    "demo.echo.disappearing.off": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disappearing messages are off in this chat. Turn them on from the header menu and I'll follow the same timer."
+          }
+        }
+      }
+    },
+    "demo.echo.disappearing.on": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Messages here disappear %@ after they're read. Mine follow the same timer."
+          }
+        }
+      }
+    },
+    "demo.echo.greeting": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hi, I'm Echo 👋 I'm a second Cipher client living inside this very app, with my own identity keys in a separate Keychain slot and my own message store. Everything between us is sealed end-to-end; the relay only ever sees ciphertext. Say “help” to see what I can do."
+          }
+        }
+      }
+    },
+    "demo.echo.greeting.again": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hey again 👋 Still here, still encrypted. Say “help” for the menu."
+          }
+        }
+      }
+    },
+    "demo.echo.help": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Here's what I understand:\n• help — this list\n• photo — a view-once picture I draw on this device\n• capsule — a Time Capsule that unlocks %lld seconds later\n• whisper — a message you hold to reveal\n• disappear — this chat's disappearing setting\n• ping — pong\nReply to one of my messages and I'll quote you back. Add a ! and I'll react."
+          }
+        }
+      }
+    },
+    "demo.echo.help.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Say “help” and I'll list what I can do."
+          }
+        }
+      }
+    },
+    "demo.echo.photo.caption": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drawn just now with CoreGraphics, no metadata, encrypted before upload. View once — then it's gone."
+          }
+        }
+      }
+    },
+    "demo.echo.pong": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "pong 🏓 Sealed, signed and decrypted without leaving this device."
+          }
+        }
+      }
+    },
+    "demo.echo.system.disappearingChanged": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noticed you changed the disappearing timer. I'll match whatever your next message uses."
+          }
+        }
+      }
+    },
+    "demo.echo.system.keyVerified": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You verified my keys — now it's mutual, as far as I'm concerned. 🔐"
+          }
+        }
+      }
+    },
+    "demo.echo.system.screenshot": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A screenshot? I saw that. 👀"
+          }
+        }
+      }
+    },
+    "demo.echo.tampered": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Something arrived from you that failed verification, so I didn't read it. If you sent something, try again."
+          }
+        }
+      }
+    },
+    "demo.echo.twist.counted": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld words, %lld characters, one envelope. The relay saw none of them."
+          }
+        }
+      }
+    },
+    "demo.echo.twist.mirrored": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 🪞"
+          }
+        }
+      }
+    },
+    "demo.echo.twist.questioned": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“%@?” Only you and I can read that, so answer freely."
+          }
+        }
+      }
+    },
+    "demo.echo.twist.reversedWords": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ — your words, mirrored."
+          }
+        }
+      }
+    },
+    "demo.echo.whisper": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "psst… this one's a whisper. Hold to read it; let go and it blurs again."
+          }
+        }
+      }
+    },
+    "demo.error.accountTaken": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The relay's “echo” account uses a different password."
+          }
+        }
+      }
+    },
+    "demo.error.connectionTimedOut": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The realtime connection did not come up in time."
+          }
+        }
+      }
+    },
+    "demo.error.imageGenerationFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Echo could not draw a picture."
+          }
+        }
+      }
+    },
+    "demo.error.integrationMissing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The messaging stack is not wired in this build."
+          }
+        }
+      }
+    },
+    "demo.error.keyPublishFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Echo could not publish its keys."
+          }
+        }
+      }
+    },
+    "demo.error.notStarted": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Echo is not running."
+          }
+        }
+      }
+    },
+    "demo.error.replyTimedOut": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Echo did not answer in time."
+          }
+        }
+      }
+    },
+    "demo.error.sendFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The message could not be sent."
+          }
+        }
+      }
+    },
+    "demo.error.signInFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Echo could not reach the relay to sign in."
+          }
+        }
+      }
+    },
+    "demo.error.signInFailed.status": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Echo could not sign in (HTTP %lld)."
+          }
+        }
+      }
+    },
+    "demo.error.storeUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Echo could not open its in-memory store."
+          }
+        }
+      }
+    },
+    "demo.selftest.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Echo self-test in progress"
+          }
+        }
+      }
+    },
+    "demo.selftest.account": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signing in as @%@"
+          }
+        }
+      }
+    },
+    "demo.selftest.step.awaitingReply": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sent “ping”, waiting for Echo"
+          }
+        }
+      }
+    },
+    "demo.selftest.step.buildingStack": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opening the local store"
+          }
+        }
+      }
+    },
+    "demo.selftest.step.connecting": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connecting to the relay"
+          }
+        }
+      }
+    },
+    "demo.selftest.step.failed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed"
+          }
+        }
+      }
+    },
+    "demo.selftest.step.idle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starting"
+          }
+        }
+      }
+    },
+    "demo.selftest.step.passed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passed"
+          }
+        }
+      }
+    },
+    "demo.selftest.step.publishingKeys": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Publishing identity keys"
+          }
+        }
+      }
+    },
+    "demo.selftest.step.signingIn": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signing in"
+          }
+        }
+      }
+    },
+    "demo.selftest.step.startingConversation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opening a chat with Echo"
+          }
+        }
+      }
+    },
+    "demo.selftest.step.startingEcho": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starting Echo"
+          }
+        }
+      }
+    },
+    "demo.selftest.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Echo self-test"
+          }
+        }
+      }
+    },
+    "demo.settings.footer": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Echo is a second Cipher client inside this debug build, with its own keys and store. It talks to the same relay you do and sees only ciphertext until it decrypts on its side."
+          }
+        }
+      }
+    },
+    "demo.status.connecting": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Echo is connecting…"
+          }
+        }
+      }
+    },
+    "demo.status.explainer": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A second Cipher client in this app that answers you"
+          }
+        }
+      }
+    },
+    "demo.status.failed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Echo couldn't start"
+          }
+        }
+      }
+    },
+    "demo.status.failed.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check that the relay is running."
+          }
+        }
+      }
+    },
+    "demo.status.identity": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "@%@ · own keys, own store, same relay"
+          }
+        }
+      }
+    },
+    "demo.status.online": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Echo is online"
+          }
+        }
+      }
+    },
+    "demo.status.openChat": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open"
+          }
+        }
+      }
+    },
+    "demo.status.openChat.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open the chat with Echo"
+          }
+        }
+      }
+    },
+    "demo.status.publishingKeys": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Publishing Echo's keys…"
+          }
+        }
+      }
+    },
+    "demo.status.reconnecting": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Echo is reconnecting…"
+          }
+        }
+      }
+    },
+    "demo.status.signingIn": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Echo is signing in…"
+          }
+        }
+      }
+    },
+    "demo.status.stopped": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Echo is off"
+          }
+        }
+      }
+    },
+    "disappearing.badge.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Messages disappear %@"
+          }
+        }
+      }
+    },
+    "disappearing.menu.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disappearing messages"
+          }
+        }
+      }
+    },
+    "disappearing.menu.header": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete after reading"
+          }
+        }
+      }
+    },
+    "disappearing.menu.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disappearing messages"
+          }
+        }
+      }
+    },
+    "disappearing.notice.them.off": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ turned off disappearing messages"
+          }
+        }
+      }
+    },
+    "disappearing.notice.them.on": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ set messages to disappear %@"
+          }
+        }
+      }
+    },
+    "disappearing.notice.you.off": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You turned off disappearing messages"
+          }
+        }
+      }
+    },
+    "disappearing.notice.you.on": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You set messages to disappear %@"
+          }
+        }
+      }
+    },
+    "disappearing.timer.fiveMinutes": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 minutes"
+          }
+        }
+      }
+    },
+    "disappearing.timer.fragment.fiveMinutes": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "after 5 minutes"
+          }
+        }
+      }
+    },
+    "disappearing.timer.fragment.off": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "off"
+          }
+        }
+      }
+    },
+    "disappearing.timer.fragment.oneDay": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "after 1 day"
+          }
+        }
+      }
+    },
+    "disappearing.timer.fragment.oneHour": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "after 1 hour"
+          }
+        }
+      }
+    },
+    "disappearing.timer.fragment.thirtySeconds": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "after 30 seconds"
+          }
+        }
+      }
+    },
+    "disappearing.timer.off": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Off"
+          }
+        }
+      }
+    },
+    "disappearing.timer.oneDay": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 day"
+          }
+        }
+      }
+    },
+    "disappearing.timer.oneHour": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 hour"
+          }
+        }
+      }
+    },
+    "disappearing.timer.thirtySeconds": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 seconds"
+          }
+        }
+      }
+    },
+    "ephemeral.error.conversationNotFound": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This conversation is no longer available."
+          }
+        }
+      }
+    },
+    "ephemeral.error.unlockTooSoon": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A Time Capsule must open at least a minute from now (%@)."
+          }
+        }
+      }
+    },
+    "error.generic.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Please try again."
+          }
+        }
+      }
+    },
+    "error.generic.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Something went wrong"
+          }
+        }
+      }
+    },
+    "error.integration.notWired": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This build is missing a component:"
+          }
+        }
+      }
+    },
+    "error.keychain.shape": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The secure store returned unexpected data."
+          }
+        }
+      }
+    },
+    "error.keychain.status": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The secure store reported an error."
+          }
+        }
+      }
+    },
+    "error.lock.decoyMatchesReal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The duress PIN must be different from your real PIN."
+          }
+        }
+      }
+    },
+    "error.lock.lengthMismatch": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The duress PIN must have the same number of digits as your PIN."
+          }
+        }
+      }
+    },
+    "error.lock.noPIN": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set a PIN before adding a duress PIN."
+          }
+        }
+      }
+    },
+    "error.pinVault.corrupt": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The stored PIN record is unreadable. Set the PIN again."
+          }
+        }
+      }
+    },
+    "error.pinVault.storage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The PIN could not be saved to the secure store."
+          }
+        }
+      }
+    },
+    "error.token.gatewayUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign-in is not available in this build."
+          }
+        }
+      }
+    },
+    "error.token.noSession": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You are signed out."
+          }
+        }
+      }
+    },
+    "error.token.refreshRejected": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your session has expired. Please sign in again."
+          }
+        }
+      }
+    },
+    "expiry.countdown.a11y.expired": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expired"
+          }
+        }
+      }
+    },
+    "expiry.countdown.a11y.remaining": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disappears in %@"
+          }
+        }
+      }
+    },
+    "keygen.conflict.body": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This account already published identity keys from another device or install. Rotating replaces them with this device's keys; your contacts will see a key change and can re-verify you."
+          }
+        }
+      }
+    },
+    "keygen.conflict.rotate": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rotate keys"
+          }
+        }
+      }
+    },
+    "keygen.conflict.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keys exist on another device"
+          }
+        }
+      }
+    },
+    "keygen.ready": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your identity is ready"
+          }
+        }
+      }
+    },
+    "keygen.ready.keyLabel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Identity public key"
+          }
+        }
+      }
+    },
+    "keygen.ready.version": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Public key version"
+          }
+        }
+      }
+    },
+    "keygen.retry": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try again"
+          }
+        }
+      }
+    },
+    "keygen.running.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This takes a moment the first time."
+          }
+        }
+      }
+    },
+    "keygen.signOut": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign out"
+          }
+        }
+      }
+    },
+    "keygen.step.generating.subtitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "X25519 for agreement, Ed25519 for signatures."
+          }
+        }
+      }
+    },
+    "keygen.step.generating.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Generating Curve25519 keys"
+          }
+        }
+      }
+    },
+    "keygen.step.publishing.subtitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The relay only ever sees public keys."
+          }
+        }
+      }
+    },
+    "keygen.step.publishing.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Publishing only the public half"
+          }
+        }
+      }
+    },
+    "keygen.step.sealing.subtitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Private halves stay on this device, protected by it."
+          }
+        }
+      }
+    },
+    "keygen.step.sealing.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sealing them in the Keychain"
+          }
+        }
+      }
+    },
+    "keygen.step.state.active": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In progress"
+          }
+        }
+      }
+    },
+    "keygen.step.state.blocked": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Needs attention"
+          }
+        }
+      }
+    },
+    "keygen.step.state.done": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        }
+      }
+    },
+    "keygen.step.state.pending": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pending"
+          }
+        }
+      }
+    },
+    "keygen.subtitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your keys never leave this device."
+          }
+        }
+      }
+    },
+    "keygen.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Creating your identity"
+          }
+        }
+      }
+    },
+    "lock.autoLock.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When Cipher goes to the background"
+          }
+        }
+      }
+    },
+    "lock.autoLock.fifteenMinutes": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "After 15 minutes"
+          }
+        }
+      }
+    },
+    "lock.autoLock.fiveMinutes": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "After 5 minutes"
+          }
+        }
+      }
+    },
+    "lock.autoLock.immediately": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Immediately"
+          }
+        }
+      }
+    },
+    "lock.autoLock.oneMinute": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "After 1 minute"
+          }
+        }
+      }
+    },
+    "lock.autoLock.thirtySeconds": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "After 30 seconds"
+          }
+        }
+      }
+    },
+    "lock.autoLock.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auto-lock"
+          }
+        }
+      }
+    },
+    "lock.biometric.fallback": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use PIN"
+          }
+        }
+      }
+    },
+    "lock.biometric.reason": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlock Cipher"
+          }
+        }
+      }
+    },
+    "lock.biometrics.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your PIN still works as a fallback"
+          }
+        }
+      }
+    },
+    "lock.biometrics.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlock with"
+          }
+        }
+      }
+    },
+    "lock.biometry.faceID": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Face ID"
+          }
+        }
+      }
+    },
+    "lock.biometry.none": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Biometrics"
+          }
+        }
+      }
+    },
+    "lock.biometry.opticID": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Optic ID"
+          }
+        }
+      }
+    },
+    "lock.biometry.touchID": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Touch ID"
+          }
+        }
+      }
+    },
+    "lock.changePIN.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld digits"
+          }
+        }
+      }
+    },
+    "lock.changePIN.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asks for your current PIN first"
+          }
+        }
+      }
+    },
+    "lock.changePIN.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change PIN"
+          }
+        }
+      }
+    },
+    "lock.duress.change": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change"
+          }
+        }
+      }
+    },
+    "lock.duress.explanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A duress PIN is a second PIN. If someone forces you to unlock Cipher, enter it instead of your real PIN: the app opens normally but shows a harmless, made-up inbox. Your real conversations stay hidden and untouched, and nothing on screen reveals that another inbox exists. Only your real PIN brings your own messages back."
+          }
+        }
+      }
+    },
+    "lock.duress.needsPIN": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn on App lock and set a PIN first."
+          }
+        }
+      }
+    },
+    "lock.duress.remove": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove duress PIN"
+          }
+        }
+      }
+    },
+    "lock.duress.remove.confirm.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entering it will then simply count as a wrong PIN."
+          }
+        }
+      }
+    },
+    "lock.duress.remove.confirm.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove the duress PIN?"
+          }
+        }
+      }
+    },
+    "lock.duress.remove.short": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove"
+          }
+        }
+      }
+    },
+    "lock.duress.set": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set a duress PIN"
+          }
+        }
+      }
+    },
+    "lock.duress.status.off": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not set"
+          }
+        }
+      }
+    },
+    "lock.duress.status.on": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On. Opens a decoy inbox."
+          }
+        }
+      }
+    },
+    "lock.duress.status.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duress PIN"
+          }
+        }
+      }
+    },
+    "lock.lockout.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try again in"
+          }
+        }
+      }
+    },
+    "lock.lockout.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Too many attempts"
+          }
+        }
+      }
+    },
+    "lock.requirePIN.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ask for a PIN when Cipher opens"
+          }
+        }
+      }
+    },
+    "lock.requirePIN.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Require PIN"
+          }
+        }
+      }
+    },
+    "lock.section.appLock": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App lock"
+          }
+        }
+      }
+    },
+    "lock.section.duress": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duress PIN"
+          }
+        }
+      }
+    },
+    "lock.section.privacy": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shoulder-surf protection"
+          }
+        }
+      }
+    },
+    "lock.settings.error.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not update the lock"
+          }
+        }
+      }
+    },
+    "lock.settings.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App lock"
+          }
+        }
+      }
+    },
+    "lock.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlock Cipher"
+          }
+        }
+      }
+    },
+    "messaging.unavailable.opening": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opening your encrypted store…"
+          }
+        }
+      }
+    },
+    "messaging.unavailable.retry": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try again"
+          }
+        }
+      }
+    },
+    "mock.auth.invalidCredentials.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The username or password is incorrect."
+          }
+        }
+      }
+    },
+    "mock.auth.invalidCredentials.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid credentials"
+          }
+        }
+      }
+    },
+    "mock.auth.invalidRefresh.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Please sign in again."
+          }
+        }
+      }
+    },
+    "mock.auth.invalidRefresh.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Session expired"
+          }
+        }
+      }
+    },
+    "mock.auth.offline.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check your connection and try again."
+          }
+        }
+      }
+    },
+    "mock.auth.offline.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You are offline"
+          }
+        }
+      }
+    },
+    "mock.auth.usernameTaken.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Someone already registered this username."
+          }
+        }
+      }
+    },
+    "mock.auth.usernameTaken.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Username taken"
+          }
+        }
+      }
+    },
+    "mock.identity.exists": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An identity already exists."
+          }
+        }
+      }
+    },
+    "mock.identity.missing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No identity has been created."
+          }
+        }
+      }
+    },
+    "mock.keys.conflict.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Identity keys exist for this user. Rotate explicitly."
+          }
+        }
+      }
+    },
+    "mock.keys.conflict.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keys already registered"
+          }
+        }
+      }
+    },
+    "mock.keys.notRegistered.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This user has not published keys yet."
+          }
+        }
+      }
+    },
+    "mock.keys.notRegistered.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No keys published"
+          }
+        }
+      }
+    },
+    "mock.keys.userNotFound.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No account has that username."
+          }
+        }
+      }
+    },
+    "mock.keys.userNotFound.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "User not found"
+          }
+        }
+      }
+    },
+    "newChat.action.start": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start encrypted chat"
+          }
+        }
+      }
+    },
+    "newChat.action.starting": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pinning keys…"
+          }
+        }
+      }
+    },
+    "newChat.explainer": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Their public keys are fetched and pinned on this device before the first message is sealed."
+          }
+        }
+      }
+    },
+    "newChat.heading": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Who do you want to reach?"
+          }
+        }
+      }
+    },
+    "newChat.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New chat"
+          }
+        }
+      }
+    },
+    "newChat.username.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contact username"
+          }
+        }
+      }
+    },
+    "newChat.username.invalid": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3–32 lowercase letters, digits or underscores"
+          }
+        }
+      }
+    },
+    "newChat.username.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Username"
+          }
+        }
+      }
+    },
+    "pinSetup.error.lockedOut": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Too many attempts. Try again later."
+          }
+        }
+      }
+    },
+    "pinSetup.error.mismatch": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The PINs did not match. Start again."
+          }
+        }
+      }
+    },
+    "pinSetup.error.wrongPIN": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "That is not your current PIN."
+          }
+        }
+      }
+    },
+    "pinSetup.hint.strength": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avoid repeated digits and runs like 1234."
+          }
+        }
+      }
+    },
+    "pinSetup.length": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PIN length"
+          }
+        }
+      }
+    },
+    "pinSetup.length.digits": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld digits"
+          }
+        }
+      }
+    },
+    "pinSetup.step.confirm": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter it again"
+          }
+        }
+      }
+    },
+    "pinSetup.step.enter": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a PIN"
+          }
+        }
+      }
+    },
+    "pinSetup.step.enterDuress": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a duress PIN"
+          }
+        }
+      }
+    },
+    "pinSetup.step.verify": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter your current PIN"
+          }
+        }
+      }
+    },
+    "preview.error.relayRejected": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The relay rejected this message."
+          }
+        }
+      }
+    },
+    "preview.error.userNotFound": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No user named @%@ exists."
+          }
+        }
+      }
+    },
+    "privacy.curtain.subtitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Security you can see and feel"
+          }
+        }
+      }
+    },
+    "privacy.flipToHide.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn your phone face down to blur the screen"
+          }
+        }
+      }
+    },
+    "privacy.flipToHide.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Flip to hide"
+          }
+        }
+      }
+    },
+    "privacy.flipToHide.unsupported": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not available on this device"
+          }
+        }
+      }
+    },
+    "privacy.switcher.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Always covered. Cipher never shows a message in the switcher."
+          }
+        }
+      }
+    },
+    "privacy.switcher.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App switcher"
+          }
+        }
+      }
+    },
+    "problem.correlation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reference"
+          }
+        }
+      }
+    },
+    "problem.dismiss": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dismiss error"
+          }
+        }
+      }
+    },
+    "realtime.keyChanged.fallbackName": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A contact"
+          }
+        }
+      }
+    },
+    "realtime.keyChanged.toast": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@'s safety keys changed. Verify them before you continue."
+          }
+        }
+      }
+    },
+    "root.restoring": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restoring your session"
+          }
+        }
+      }
+    },
+    "route.attachment": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attachment"
+          }
+        }
+      }
+    },
+    "route.placeholder.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This screen is on its way in a later build."
+          }
+        }
+      }
+    },
+    "sensitiveGuard.chip.accept": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send as view-once"
+          }
+        }
+      }
+    },
+    "sensitiveGuard.chip.accept.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sends this message as view-once and deletes it %@ after it is read"
+          }
+        }
+      }
+    },
+    "sensitiveGuard.chip.cardNumber": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Looks like a card number. Send as view-once and auto-delete in %@?"
+          }
+        }
+      }
+    },
+    "sensitiveGuard.chip.dismiss.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dismiss suggestion"
+          }
+        }
+      }
+    },
+    "sensitiveGuard.chip.iban": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Looks like a bank account number. Send as view-once and auto-delete in %@?"
+          }
+        }
+      }
+    },
+    "sensitiveGuard.chip.oneTimeCode": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Looks like a one-time code. Send as view-once and auto-delete in %@?"
+          }
+        }
+      }
+    },
+    "sensitiveGuard.chip.password": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Looks like a password. Send as view-once and auto-delete in %@?"
+          }
+        }
+      }
+    },
+    "sensitiveGuard.settings.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spots passwords, codes and card numbers as you type"
+          }
+        }
+      }
+    },
+    "sensitiveGuard.settings.footer": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Analysis runs entirely on this device. A draft is never sent anywhere before you tap send."
+          }
+        }
+      }
+    },
+    "sensitiveGuard.settings.section": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy"
+          }
+        }
+      }
+    },
+    "sensitiveGuard.settings.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sensitive-content guard"
+          }
+        }
+      }
+    },
+    "serversEye.column.server": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What the server stores"
+          }
+        }
+      }
+    },
+    "serversEye.column.you": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What you see"
+          }
+        }
+      }
+    },
+    "serversEye.explainer.body": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Who, when, a counter and sealed bytes. No text, no filenames, no keys. Everything on the left is decrypted on your device alone."
+          }
+        }
+      }
+    },
+    "serversEye.explainer.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The relay only ever sees this"
+          }
+        }
+      }
+    },
+    "serversEye.field.ciphertext": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ciphertext"
+          }
+        }
+      }
+    },
+    "serversEye.field.counter": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "counter"
+          }
+        }
+      }
+    },
+    "serversEye.field.createdAt": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "timestamp"
+          }
+        }
+      }
+    },
+    "serversEye.field.expiresAt": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "expiresAt"
+          }
+        }
+      }
+    },
+    "serversEye.field.id": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "id"
+          }
+        }
+      }
+    },
+    "serversEye.field.signature": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "signature"
+          }
+        }
+      }
+    },
+    "serversEye.row.notUploaded": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing stored yet"
+          }
+        }
+      }
+    },
+    "serversEye.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server's-Eye View"
+          }
+        }
+      }
+    },
+    "session.expired.toast": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your session expired. Please sign in again."
+          }
+        }
+      }
+    },
+    "settings.account.idLabel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Account id"
+          }
+        }
+      }
+    },
+    "settings.appLock.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PIN and Face ID"
+          }
+        }
+      }
+    },
+    "settings.appLock.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opens app lock settings"
+          }
+        }
+      }
+    },
+    "settings.appLock.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App lock"
+          }
+        }
+      }
+    },
+    "settings.copied.suffix": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "copied"
+          }
+        }
+      }
+    },
+    "settings.demo.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A local bot that replies to you"
+          }
+        }
+      }
+    },
+    "settings.demo.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Demo companion (Echo)"
+          }
+        }
+      }
+    },
+    "settings.identity.copy": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy"
+          }
+        }
+      }
+    },
+    "settings.identity.footnote": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "These are the public halves the relay stores. Contacts pin them and warn you if they change."
+          }
+        }
+      }
+    },
+    "settings.identity.identityKey": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Identity key (X25519)"
+          }
+        }
+      }
+    },
+    "settings.identity.loading": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading keys"
+          }
+        }
+      }
+    },
+    "settings.identity.signingKey": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signing key (Ed25519)"
+          }
+        }
+      }
+    },
+    "settings.section.account": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Account"
+          }
+        }
+      }
+    },
+    "settings.section.developer": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Developer"
+          }
+        }
+      }
+    },
+    "settings.section.identity": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Identity keys"
+          }
+        }
+      }
+    },
+    "settings.section.security": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Security"
+          }
+        }
+      }
+    },
+    "settings.section.server": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Relay"
+          }
+        }
+      }
+    },
+    "settings.server.active": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connected to"
+          }
+        }
+      }
+    },
+    "settings.server.apply": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save"
+          }
+        }
+      }
+    },
+    "settings.server.field": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Override, e.g. http://192.168.1.20:8080"
+          }
+        }
+      }
+    },
+    "settings.server.footnote": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Local addresses may use http. Anything beyond your own network must use https."
+          }
+        }
+      }
+    },
+    "settings.server.invalid": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter an http:// or https:// address with a host."
+          }
+        }
+      }
+    },
+    "settings.server.reset": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use default"
+          }
+        }
+      }
+    },
+    "settings.server.reset.toast": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Using the default relay"
+          }
+        }
+      }
+    },
+    "settings.server.restart": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Relaunch Cipher to use the new address."
+          }
+        }
+      }
+    },
+    "settings.server.saved.toast": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Relay address saved"
+          }
+        }
+      }
+    },
+    "settings.signOut": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign out"
+          }
+        }
+      }
+    },
+    "settings.signOut.confirm.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your identity keys stay on this device so you can sign back in without rotating them."
+          }
+        }
+      }
+    },
+    "settings.signOut.confirm.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign out of Cipher?"
+          }
+        }
+      }
+    },
+    "settings.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
+          }
+        }
+      }
+    },
+    "settings.version": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cipher"
+          }
+        }
+      }
+    },
+    "settings.version.label": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App version"
+          }
+        }
+      }
+    },
+    "trust.action.enableDisappearing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable disappearing"
+          }
+        }
+      }
+    },
+    "trust.action.enableDisappearing.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose how long messages stay after being read"
+          }
+        }
+      }
+    },
+    "trust.action.reviewKeyChange": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Review key change"
+          }
+        }
+      }
+    },
+    "trust.action.verifyKeys": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verify keys"
+          }
+        }
+      }
+    },
+    "trust.date.on": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "on %@"
+          }
+        }
+      }
+    },
+    "trust.date.recently": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "recently"
+          }
+        }
+      }
+    },
+    "trust.error.notFound": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This conversation is no longer on this device."
+          }
+        }
+      }
+    },
+    "trust.error.notFound.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conversation not found"
+          }
+        }
+      }
+    },
+    "trust.level.high": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Strong protection"
+          }
+        }
+      }
+    },
+    "trust.level.low": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Needs your attention"
+          }
+        }
+      }
+    },
+    "trust.level.medium": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Good, with room to improve"
+          }
+        }
+      }
+    },
+    "trust.loading": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking this chat's protections…"
+          }
+        }
+      }
+    },
+    "trust.reason.a11y.open": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not yet"
+          }
+        }
+      }
+    },
+    "trust.reason.a11y.satisfied": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In place"
+          }
+        }
+      }
+    },
+    "trust.reason.disappearingOff.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set a timer so messages delete on both phones after they are read."
+          }
+        }
+      }
+    },
+    "trust.reason.disappearingOff.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Messages stay forever"
+          }
+        }
+      }
+    },
+    "trust.reason.disappearingOn.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Messages delete on both phones %@ after they are read."
+          }
+        }
+      }
+    },
+    "trust.reason.disappearingOn.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Messages disappear"
+          }
+        }
+      }
+    },
+    "trust.reason.improves": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+%lld%%"
+          }
+        }
+      }
+    },
+    "trust.reason.improves.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Improves trust by %lld percent"
+          }
+        }
+      }
+    },
+    "trust.reason.keyChanged.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@'s keys changed %@. Until you compare safety codes again, this could be a new phone or someone in the middle."
+          }
+        }
+      }
+    },
+    "trust.reason.keyChanged.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safety keys changed recently"
+          }
+        }
+      }
+    },
+    "trust.reason.keyEstablished.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@'s keys have stayed the same for over a month."
+          }
+        }
+      }
+    },
+    "trust.reason.keyEstablished.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keys are established"
+          }
+        }
+      }
+    },
+    "trust.reason.keyFresh.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@'s keys were published %@. Keys that stay unchanged for a month earn a little more trust."
+          }
+        }
+      }
+    },
+    "trust.reason.keyFresh.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keys are new"
+          }
+        }
+      }
+    },
+    "trust.reason.keysUnverified.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compare safety codes with %@ in person or on a call. It is the only way to rule out an impersonating relay."
+          }
+        }
+      }
+    },
+    "trust.reason.keysUnverified.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keys not verified yet"
+          }
+        }
+      }
+    },
+    "trust.reason.keysVerified.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You compared safety codes with %@ %@. The relay cannot swap keys without you noticing."
+          }
+        }
+      }
+    },
+    "trust.reason.keysVerified.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keys verified by you"
+          }
+        }
+      }
+    },
+    "trust.reason.metadataStrippingOff.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location and camera details are sent along with photos."
+          }
+        }
+      }
+    },
+    "trust.reason.metadataStrippingOff.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photo metadata kept"
+          }
+        }
+      }
+    },
+    "trust.reason.metadataStrippingOn.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location, camera and timestamp details are removed from photos before they are encrypted."
+          }
+        }
+      }
+    },
+    "trust.reason.metadataStrippingOn.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photo metadata stripped"
+          }
+        }
+      }
+    },
+    "trust.ring.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, trust %lld percent"
+          }
+        }
+      }
+    },
+    "trust.ring.a11y.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opens why this chat is secure"
+          }
+        }
+      }
+    },
+    "trust.sheet.done.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close trust details"
+          }
+        }
+      }
+    },
+    "trust.sheet.footer": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scored on this device from your pinned keys and settings. Nothing is sent to the relay."
+          }
+        }
+      }
+    },
+    "trust.sheet.header.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. Trust %lld percent. %@. %@"
+          }
+        }
+      }
+    },
+    "trust.sheet.section.protections": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Protections"
+          }
+        }
+      }
+    },
+    "trust.sheet.summary": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld of %lld protections in place"
+          }
+        }
+      }
+    },
+    "trust.sheet.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Why this chat is secure"
+          }
+        }
+      }
+    },
+    "verify.contact.fallback": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "this contact"
+          }
+        }
+      }
+    },
+    "verify.error.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not update trust"
+          }
+        }
+      }
+    },
+    "verify.fingerprint.loading": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Computing fingerprint"
+          }
+        }
+      }
+    },
+    "verify.guidance.body": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ sees the same eight emoji on their screen. If even one differs, someone may be sitting between you: stop and compare in person."
+          }
+        }
+      }
+    },
+    "verify.guidance.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Read these aloud on a call"
+          }
+        }
+      }
+    },
+    "verify.keyChange.currentVersion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keys the relay now serves"
+          }
+        }
+      }
+    },
+    "verify.keyChange.noticedAt": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noticed"
+          }
+        }
+      }
+    },
+    "verify.keyChange.pinnedVersion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keys you had pinned"
+          }
+        }
+      }
+    },
+    "verify.keyChange.reason.attack.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A relay that swapped the keys would look exactly like this. Only comparing codes with %@ directly can tell the two apart."
+          }
+        }
+      }
+    },
+    "verify.keyChange.reason.attack.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rarely: someone in the middle"
+          }
+        }
+      }
+    },
+    "verify.keyChange.reason.device.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keys never leave a device, so %@ setting up Cipher again creates new ones."
+          }
+        }
+      }
+    },
+    "verify.keyChange.reason.device.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Usually: a new phone or a reinstall"
+          }
+        }
+      }
+    },
+    "verify.keyChange.subtitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Messages are still encrypted, but to keys nobody has checked."
+          }
+        }
+      }
+    },
+    "verify.keyChange.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@'s keys changed"
+          }
+        }
+      }
+    },
+    "verify.keyChange.trust.confirm.action": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trust new keys"
+          }
+        }
+      }
+    },
+    "verify.keyChange.trust.confirm.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The warning goes away and %@ returns to \"not verified\". Anything you send is readable by whoever holds these keys."
+          }
+        }
+      }
+    },
+    "verify.keyChange.trust.confirm.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trust the new keys without checking?"
+          }
+        }
+      }
+    },
+    "verify.keyChange.trustNewKeys": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trust new keys"
+          }
+        }
+      }
+    },
+    "verify.keyChange.trustNewKeys.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clears the warning without comparing codes"
+          }
+        }
+      }
+    },
+    "verify.keyChange.unknownVersion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unknown"
+          }
+        }
+      }
+    },
+    "verify.keyChange.verifyAgain": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verify again"
+          }
+        }
+      }
+    },
+    "verify.keyChange.whatChanged": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What changed"
+          }
+        }
+      }
+    },
+    "verify.keyChange.why": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Why this happens"
+          }
+        }
+      }
+    },
+    "verify.outcome.dismiss": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dismiss"
+          }
+        }
+      }
+    },
+    "verify.outcome.matched.qr": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@'s code matches the keys pinned on this device. Messages between you are end-to-end encrypted with keys you have both confirmed."
+          }
+        }
+      }
+    },
+    "verify.outcome.matched.readAloud": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You confirmed the codes match. %@ is now marked as verified on this device."
+          }
+        }
+      }
+    },
+    "verify.outcome.matched.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keys verified"
+          }
+        }
+      }
+    },
+    "verify.outcome.mismatch.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The keys in this code are different from the keys this device pinned for %@. Do not send anything sensitive until you have compared codes in person."
+          }
+        }
+      }
+    },
+    "verify.outcome.mismatch.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keys do not match"
+          }
+        }
+      }
+    },
+    "verify.outcome.wrongPerson.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code was made for a different account. Ask %@ to open their own verification screen."
+          }
+        }
+      }
+    },
+    "verify.outcome.wrongPerson.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "That code belongs to someone else"
+          }
+        }
+      }
+    },
+    "verify.paste.explainer": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ask %@ to copy the code under \"Your code\" on their verification screen and send it to you, then paste it here."
+          }
+        }
+      }
+    },
+    "verify.paste.field.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verification code"
+          }
+        }
+      }
+    },
+    "verify.paste.fromClipboard": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paste from clipboard"
+          }
+        }
+      }
+    },
+    "verify.paste.fromClipboard.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fills the field with the clipboard contents"
+          }
+        }
+      }
+    },
+    "verify.paste.placeholder": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "cipher:verify?v=1&uid=…"
+          }
+        }
+      }
+    },
+    "verify.paste.rejected": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "That's not a Cipher verification code."
+          }
+        }
+      }
+    },
+    "verify.paste.submit": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check this code"
+          }
+        }
+      }
+    },
+    "verify.paste.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter code"
+          }
+        }
+      }
+    },
+    "verify.qr.a11y.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Let %@ scan this with their phone"
+          }
+        }
+      }
+    },
+    "verify.qr.body": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Let %@ scan this, or scan theirs. Either direction proves both sets of keys."
+          }
+        }
+      }
+    },
+    "verify.qr.copied": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Code copied"
+          }
+        }
+      }
+    },
+    "verify.qr.copy": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy code as text"
+          }
+        }
+      }
+    },
+    "verify.qr.copy.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy your verification code as text"
+          }
+        }
+      }
+    },
+    "verify.qr.loading": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparing your code"
+          }
+        }
+      }
+    },
+    "verify.qr.scan": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan their code"
+          }
+        }
+      }
+    },
+    "verify.qr.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your code"
+          }
+        }
+      }
+    },
+    "verify.safetyNumber.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safety number"
+          }
+        }
+      }
+    },
+    "verify.safetyNumber.copied": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copied"
+          }
+        }
+      }
+    },
+    "verify.safetyNumber.copy": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy"
+          }
+        }
+      }
+    },
+    "verify.safetyNumber.copy.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy safety number"
+          }
+        }
+      }
+    },
+    "verify.safetyNumber.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Same digits on both phones, in the same order."
+          }
+        }
+      }
+    },
+    "verify.safetyNumber.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safety number"
+          }
+        }
+      }
+    },
+    "verify.scanner.denied.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow the camera in Settings to scan %@'s code, or paste the code instead."
+          }
+        }
+      }
+    },
+    "verify.scanner.denied.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camera access is off"
+          }
+        }
+      }
+    },
+    "verify.scanner.error.input": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The camera could not be opened."
+          }
+        }
+      }
+    },
+    "verify.scanner.error.noCamera": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No camera is available on this device."
+          }
+        }
+      }
+    },
+    "verify.scanner.error.output": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This device cannot read QR codes."
+          }
+        }
+      }
+    },
+    "verify.scanner.fallback.paste": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can paste the code %@ shares with you instead."
+          }
+        }
+      }
+    },
+    "verify.scanner.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "It's on their verification screen, under \"Your code\"."
+          }
+        }
+      }
+    },
+    "verify.scanner.instruction": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Point at %@'s code"
+          }
+        }
+      }
+    },
+    "verify.scanner.openSettings": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Settings"
+          }
+        }
+      }
+    },
+    "verify.scanner.paste": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paste code"
+          }
+        }
+      }
+    },
+    "verify.scanner.paste.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a verification code manually"
+          }
+        }
+      }
+    },
+    "verify.scanner.preview.a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camera viewfinder"
+          }
+        }
+      }
+    },
+    "verify.scanner.rejected": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "That's not a Cipher verification code"
+          }
+        }
+      }
+    },
+    "verify.scanner.requesting": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Requesting camera access"
+          }
+        }
+      }
+    },
+    "verify.scanner.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan their code"
+          }
+        }
+      }
+    },
+    "verify.scanner.unavailable.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paste the verification code %@ shares with you."
+          }
+        }
+      }
+    },
+    "verify.scanner.unavailable.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No camera here"
+          }
+        }
+      }
+    },
+    "verify.status.confirm": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "They match — mark as verified"
+          }
+        }
+      }
+    },
+    "verify.status.confirm.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only after you have compared the emoji or safety number with %@"
+          }
+        }
+      }
+    },
+    "verify.status.keyChanged": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keys changed"
+          }
+        }
+      }
+    },
+    "verify.status.keyChanged.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@'s keys were replaced %@. Verify again before trusting this conversation."
+          }
+        }
+      }
+    },
+    "verify.status.review": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Review what changed"
+          }
+        }
+      }
+    },
+    "verify.status.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Status"
+          }
+        }
+      }
+    },
+    "verify.status.unverified": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not verified yet"
+          }
+        }
+      }
+    },
+    "verify.status.unverified.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Messages are encrypted, but nobody has checked that these keys really belong to %@."
+          }
+        }
+      }
+    },
+    "verify.status.verified": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verified"
+          }
+        }
+      }
+    },
+    "verify.status.verified.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You confirmed %@'s keys %@. Verified keys stay verified until they change."
+          }
+        }
+      }
+    },
+    "verify.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verify keys"
+          }
+        }
+      }
+    },
+    "verify.unavailable.myKeys": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your identity keys could not be read."
+          }
+        }
+      }
+    },
+    "verify.unavailable.noContact": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This contact is not in your address book yet."
+          }
+        }
+      }
+    },
+    "verify.unavailable.theirKeys": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ has not published keys yet."
+          }
+        }
+      }
+    },
+    "welcome.cipherStrip": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "end to end encrypted"
+          }
+        }
+      }
+    },
+    "welcome.cta.login": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I already have an account"
+          }
+        }
+      }
+    },
+    "welcome.cta.register": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Get started"
+          }
+        }
+      }
+    },
+    "welcome.footnote": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keys are created on this device and never leave it."
+          }
+        }
+      }
+    },
+    "welcome.tagline": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Security you can see and feel"
+          }
+        }
+      }
+    },
+    "welcome.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cipher"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

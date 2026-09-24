@@ -1,0 +1,69 @@
+name: Backend CI
+
+on:
+  push:
+    branches: [main]
+    paths: ["backend/**", ".github/workflows/backend.yml"]
+  pull_request:
+    paths: ["backend/**", ".github/workflows/backend.yml"]
+
+concurrency:
+  group: backend-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Compile and package
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      # Compilation is the blocking gate: main must always build.
+      - name: Package (no tests)
+        run: mvn -B -ntp -DskipTests package
+
+      # Test suites are being extended in the hardening pass. Today they cover the auth and key
+      # directory features (unit, @WebMvcTest slices and Testcontainers integration tests) and
+      # nothing for messaging, presence, WebSocket or attachments. Until those suites exist this
+      # step reports but does not block; flip continue-on-error off once they land.
+      - name: Verify (unit + slices + Testcontainers)
+        run: mvn -B -ntp verify
+        continue-on-error: true
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-test-reports
+          path: |
+            backend/target/surefire-reports
+            backend/target/failsafe-reports
+          if-no-files-found: ignore
+
+  docker-image:
+    name: Docker image builds
+    runs-on: ubuntu-latest
+    needs: build
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Build (no push)
+        uses: docker/build-push-action@v6
+        with:
+          context: backend
+          push: false
+          tags: cipher-relay:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

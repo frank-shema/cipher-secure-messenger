@@ -1,0 +1,193 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "error.api.cancelled": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The request was cancelled."
+          }
+        }
+      }
+    },
+    "error.api.decoding": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The server sent an unexpected response."
+          }
+        }
+      }
+    },
+    "error.api.encoding": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The request could not be prepared."
+          }
+        }
+      }
+    },
+    "error.api.http": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The server returned an error."
+          }
+        }
+      }
+    },
+    "error.api.invalidURL": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The server address is not valid."
+          }
+        }
+      }
+    },
+    "error.api.offline": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You appear to be offline."
+          }
+        }
+      }
+    },
+    "error.api.payloadTooLarge": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is too large to send."
+          }
+        }
+      }
+    },
+    "error.api.rateLimited": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Too many requests. Please wait a moment and try again."
+          }
+        }
+      }
+    },
+    "error.api.transport": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The server could not be reached."
+          }
+        }
+      }
+    },
+    "error.api.unauthorized": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your session has expired. Please sign in again."
+          }
+        }
+      }
+    },
+    "error.realtime.authenticationRejected": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your session has expired. Please sign in again."
+          }
+        }
+      }
+    },
+    "error.realtime.closed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The live connection was closed by the server."
+          }
+        }
+      }
+    },
+    "error.realtime.encoding": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A realtime message could not be prepared."
+          }
+        }
+      }
+    },
+    "error.realtime.notConnected": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not connected to the server."
+          }
+        }
+      }
+    },
+    "error.realtime.notSignedIn": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You are signed out."
+          }
+        }
+      }
+    },
+    "error.realtime.rateLimited": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Too many requests. Please wait a moment and try again."
+          }
+        }
+      }
+    },
+    "error.realtime.transport": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The live connection was interrupted."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

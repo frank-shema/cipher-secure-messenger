@@ -54,7 +54,10 @@ targets:
         NSCameraUsageDescription: "Cipher uses the camera to scan a contact's safety QR code."
         NSPhotoLibraryUsageDescription: "Cipher uses your photo library to attach photos to encrypted messages."
         NSFaceIDUsageDescription: "Cipher uses Face ID to unlock the app."
+        NSMotionUsageDescription: "Cipher uses motion to hide your messages when the phone is placed face down."
         ITSAppUsesNonExemptEncryption: false
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
     entitlements:
       path: Cipher/Resources/Cipher.entitlements
       properties:

@@ -1,0 +1,23 @@
+%% iOS module dependency graph. Arrows point at what a module imports. Dependencies only ever point inwards to CipherCore.
+flowchart TB
+    app["Cipher (app target)<br/>App · Data · Features · DemoBot"]
+
+    core["CipherCore<br/>entities · ports · use cases · wire types<br/>policies · sensitive-content scanners · trust scoring<br/><i>Foundation only</i>"]
+    crypto["CipherCrypto<br/>CipherCryptoEngine · AttachmentCipher<br/>KeychainIdentityKeyStore · SecureEnclaveWrapper<br/>SafetyFingerprintGenerator · QRPayload<br/><i>CryptoKit · Security</i>"]
+    net["CipherNetworking<br/>APIClient · REST gateways · DTOs<br/>WebSocketClient · RealtimeFrameCodec · ReconnectPolicy<br/><i>URLSession</i>"]
+    persist["CipherPersistence<br/>PersistenceStore (ModelActor)<br/>messages · conversations · contacts · outbox · replay guard<br/><i>SwiftData</i>"]
+    design["CipherDesign<br/>tokens · components · motion · security views · haptics<br/><i>SwiftUI · CoreHaptics</i>"]
+
+    app --> core
+    app --> crypto
+    app --> net
+    app --> persist
+    app --> design
+    crypto --> core
+    net --> core
+    persist --> core
+
+    classDef pkg fill:#0f1720,stroke:#2dd4bf,color:#e6f1ff;
+    classDef app fill:#111827,stroke:#60a5fa,color:#e6f1ff;
+    class core,crypto,net,persist,design pkg;
+    class app app;

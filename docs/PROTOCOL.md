@@ -159,9 +159,11 @@ with yourself → `400 urn:cipher:problem:validation`.
 }
 ```
 
-Server-side validation: `senderId` must equal the authenticated user; `conversationId` must
-equal the path id; `recipientId` must be the other participant; `counter ≥ 0`; `ciphertext`
-≤ 256 KiB decoded; `signature` exactly 64 bytes decoded; `expiresAt` null or in the future.
+Server-side validation: `v` may be omitted and must be `1` when present; `senderId` must equal
+the authenticated user; `conversationId` must equal the path id; `recipientId` must be the other
+participant; `counter ≥ 0`; `ciphertext` ≤ 256 KiB decoded; `signature` exactly 64 bytes decoded;
+`expiresAt` null or in the future. A duplicate `id` is only a no-op when the stored envelope has
+the same sender and conversation; otherwise `400 urn:cipher:problem:validation`.
 `expiresAt` is the **only** content-related field the relay can see; it exists so the relay
 can purge disappearing messages. `unlockAt`, `viewOnce`, `whisper` live inside the ciphertext.
 
@@ -198,9 +200,10 @@ Errors: `403 urn:cipher:problem:not-a-participant`, `404 urn:cipher:problem:conv
 
 Rate limit on upload: 20 / minute / user. Size limit 25 MiB → `413`.
 
-Multipart parts: `file` (the encrypted blob; the client always names the part `blob` and
-sends `application/octet-stream`), `conversationId` (UUID), `expiresAt` (optional, epoch ms).
-The relay ignores any filename or content type the client might leak and stores bytes only.
+Multipart parts: `file` (the encrypted bytes; the relay also accepts the part name `blob`, with or
+without a filename), `conversationId` (UUID), `expiresAt` (optional, epoch ms, must be in the
+future). The client sends the bytes part as `application/octet-stream` with the fixed filename
+`blob`; the relay ignores any filename or content type and stores bytes only.
 
 **BlobDescriptor**
 
@@ -217,7 +220,12 @@ Download is allowed only for participants of the conversation the blob was uploa
 
 Endpoint: `GET /ws`. Authenticate with `Authorization: Bearer <accessToken>` (preferred; keeps
 tokens out of access logs) or `?token=<accessToken>` for tools that cannot set headers.
-Handshake with a bad token closes with code **4001**. Rate-limit violations close with **4008**.
+A missing, invalid or expired token is rejected **before the upgrade** with
+`401 application/problem+json` (`urn:cipher:problem:unauthorized`); a session that somehow reaches
+the handler without a principal is closed with code **4001**. Clients treat both as "token
+rejected": refresh, then reconnect. Inbound frames are budgeted at 240 per minute per user;
+exceeding it answers an `error` frame with code `rate_limited` and closes with **4008**. Sessions
+idle for 90 s are closed with **1001**.
 
 Every frame is a JSON text message:
 
@@ -226,8 +234,10 @@ Every frame is a JSON text message:
 ```
 
 On connect the relay (1) marks the user online and broadcasts `presence.update` to their
-contacts, then (2) pushes every envelope addressed to the user that has not been acknowledged,
-oldest first, as `message.new`.
+contacts (for the user's first open socket only; further sockets of the same user do not
+re-announce, and `online: false` is sent when the last one closes), then (2) pushes every
+envelope addressed to the user that has not been acknowledged and has not expired, oldest first,
+as `message.new`.
 
 Heartbeat: the client sends `ping` every 25 s; the relay answers `pong` and closes sessions
 idle for 90 s.
@@ -257,8 +267,8 @@ Example:
 
 | type | payload | effect |
 |---|---|---|
-| `message.ack` | `{ "messageIds": [uuid] }` | Recipient confirms it received the push. Relay marks `DELIVERED` and relays `receipt.delivered` to the sender. Unacked envelopes are re-pushed on the next connect. |
-| `receipt.read` | `{ "conversationId", "messageIds": [uuid] }` | Relay marks `READ`, relays `receipt.read` to the sender. |
+| `message.ack` | `{ "messageIds": [uuid] }` (1–500 ids) | Recipient confirms it received the push. Relay marks `DELIVERED` (only for ids addressed to the caller that are still `SENT`) and relays `receipt.delivered` to the sender, one receipt per conversation. Unacked envelopes are re-pushed on the next connect. |
+| `receipt.read` | `{ "conversationId", "messageIds": [uuid] }` (1–500 ids) | Relay marks `READ` (only ids of that conversation addressed to the caller), relays `receipt.read` to the sender. `403 not-a-participant` semantics apply as an `error` frame with code `forbidden`. |
 | `typing.start` | `{ "conversationId" }` | Relayed (with `userId`) to the other participant. Ephemeral; never stored. |
 | `typing.stop` | `{ "conversationId" }` | As above. |
 | `ping` | `{}` | Relay answers `pong`. |
@@ -334,6 +344,7 @@ mapped onto a curated table of 256 visually distinct emoji. QR payload:
 | `urn:cipher:problem:invalid-credentials` | 401 |
 | `urn:cipher:problem:invalid-refresh-token` | 401 |
 | `urn:cipher:problem:unauthorized` | 401 |
+| `urn:cipher:problem:forbidden` | 403 (generic access denial from the security layer) |
 | `urn:cipher:problem:not-a-participant` | 403 |
 | `urn:cipher:problem:user-not-found` | 404 |
 | `urn:cipher:problem:keys-not-registered` | 404 |
