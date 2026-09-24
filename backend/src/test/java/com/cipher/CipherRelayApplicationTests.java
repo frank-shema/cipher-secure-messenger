@@ -3,6 +3,7 @@ package com.cipher;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.cipher.shared.config.CorrelationIdFilter;
+import java.util.Arrays;
 import org.flywaydb.core.Flyway;
 import org.flywaydb.core.api.MigrationInfo;
 import org.flywaydb.core.api.MigrationState;
@@ -37,11 +38,13 @@ class CipherRelayApplicationTests {
     }
 
     @Test
-    void baselineMigrationIsApplied() {
+    void allMigrationsAreApplied() {
         MigrationInfo current = flyway.info().current();
 
         assertThat(current).isNotNull();
-        assertThat(current.getVersion().getVersion()).isEqualTo("1");
+        assertThat(current.getVersion().getVersion()).isEqualTo("3");
         assertThat(current.getState()).isEqualTo(MigrationState.SUCCESS);
+        assertThat(Arrays.stream(flyway.info().applied()).map(info -> info.getVersion().getVersion()))
+                .containsExactly("1", "2", "3");
     }
 }
