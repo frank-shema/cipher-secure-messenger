@@ -66,9 +66,9 @@ cd cipher-secure-messenger
 make ios-open      # regenerates Cipher.xcodeproj from ios/project.yml and opens it in Xcode
 ```
 
-Run the `Cipher` scheme on an iPhone simulator, open **Settings → Relay**, enter
-`http://104.248.131.165:8080`, tap **Save**, relaunch, then sign in with the demo credentials
-below. Two simulators (or a simulator and a phone) can chat with each other through the hosted
+Run the `Cipher` scheme on an iPhone simulator and sign in with the demo credentials below. The
+app talks to the hosted relay by default (no setup); **Settings → Relay** switches to
+`http://localhost:8080` when you run the backend yourself. Two simulators (or a simulator and a phone) can chat with each other through the hosted
 relay, and Echo works on a single simulator. The server only ever sees ciphertext; you can prove
 it by calling `GET /api/v1/conversations/{id}/messages` from Swagger with your token.
 
@@ -95,8 +95,8 @@ make ios-open    # regenerate Cipher.xcodeproj from ios/project.yml and open it 
 make seed        # wait for /actuator/health, confirm the demo users exist, print the credentials
 ```
 
-Run the `Cipher` scheme on an iPhone simulator. The simulator talks to the relay at
-`http://localhost:8080` and `ws://localhost:8080/ws` out of the box. Swagger UI is at
+Run the `Cipher` scheme on an iPhone simulator, open **Settings → Relay** and enter
+`http://localhost:8080` (the default is the hosted relay). Swagger UI is at
 `http://localhost:8080/swagger-ui.html`, health at `/actuator/health`. To run the relay without
 Docker: `cd backend && mvn spring-boot:run -Dspring-boot.run.profiles=dev` against any
 PostgreSQL 16 reachable through `DATABASE_URL`.

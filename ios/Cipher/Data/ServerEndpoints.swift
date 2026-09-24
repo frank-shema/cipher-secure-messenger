@@ -1,13 +1,19 @@
 import Foundation
 
-/// Where the relay lives. The simulator default is the local Spring Boot relay; a physical device points
-/// at the Mac's LAN address through the Settings override. Production deployments use https/wss; the
-/// `NSAllowsLocalNetworking` exception in Info.plist only relaxes ATS for local addresses.
+/// Where the relay lives. The default is the hosted demo relay so a fresh install works with no setup;
+/// `make up` users switch to `localhost` through the Settings override. Production deployments use
+/// https/wss; the demo relay is plain http, which is why Info.plist relaxes App Transport Security.
 struct ServerEndpoints: Hashable, Sendable {
     let baseURL: URL
     let webSocketURL: URL
 
-    /// `http://localhost:8080` / `ws://localhost:8080/ws`, the relay's development defaults.
+    /// The publicly hosted demo relay (see docs/DEPLOYMENT.md).
+    static let hosted = ServerEndpoints(
+        baseURL: URL(string: "http://104.248.131.165:8080") ?? URL(fileURLWithPath: "/"),
+        webSocketURL: URL(string: "ws://104.248.131.165:8080/ws") ?? URL(fileURLWithPath: "/")
+    )
+
+    /// `http://localhost:8080` / `ws://localhost:8080/ws`, the relay started by `make up`.
     static let localhost = ServerEndpoints(
         baseURL: URL(string: "http://localhost:8080") ?? URL(fileURLWithPath: "/"),
         webSocketURL: URL(string: "ws://localhost:8080/ws") ?? URL(fileURLWithPath: "/")
@@ -36,7 +42,7 @@ struct ServerEndpoints: Hashable, Sendable {
 
     /// The override wins only when it parses; a half-typed value never silently breaks connectivity.
     static func resolve(override: String?) -> ServerEndpoints {
-        guard let override, let parsed = parse(override) else { return .localhost }
+        guard let override, let parsed = parse(override) else { return .hosted }
         return parsed
     }
 }

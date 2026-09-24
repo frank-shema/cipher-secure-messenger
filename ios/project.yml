@@ -58,6 +58,7 @@ targets:
         ITSAppUsesNonExemptEncryption: false
         NSAppTransportSecurity:
           NSAllowsLocalNetworking: true
+          NSAllowsArbitraryLoads: true
     entitlements:
       path: Cipher/Resources/Cipher.entitlements
       properties:
