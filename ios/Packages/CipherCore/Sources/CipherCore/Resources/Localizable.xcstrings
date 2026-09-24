@@ -1,0 +1,204 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "error.core.cannotMessageSelf": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You cannot start a conversation with yourself."
+          }
+        }
+      }
+    },
+    "error.core.contactNotFound": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This contact could not be found."
+          }
+        }
+      }
+    },
+    "error.core.conversationNotFound": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This conversation could not be found."
+          }
+        }
+      }
+    },
+    "error.core.invalidKeyBundle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The contact's published keys are invalid."
+          }
+        }
+      }
+    },
+    "error.core.messageNotFound": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This message could not be found."
+          }
+        }
+      }
+    },
+    "error.core.messageNotRetryable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This message cannot be sent again."
+          }
+        }
+      }
+    },
+    "error.core.peerKeysUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The sender's keys could not be retrieved."
+          }
+        }
+      }
+    },
+    "error.core.recipientKeysUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This contact has not published encryption keys yet."
+          }
+        }
+      }
+    },
+    "error.core.sealingFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The message could not be encrypted."
+          }
+        }
+      }
+    },
+    "error.crypto.decryptionFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The message could not be decrypted."
+          }
+        }
+      }
+    },
+    "error.crypto.identityUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your identity keys are unavailable."
+          }
+        }
+      }
+    },
+    "error.crypto.invalidSignature": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The message signature could not be verified."
+          }
+        }
+      }
+    },
+    "error.crypto.keyLength": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A contact key has an invalid length."
+          }
+        }
+      }
+    },
+    "error.crypto.malformedPayload": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The decrypted message is malformed."
+          }
+        }
+      }
+    },
+    "error.payload.encodingFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The message could not be prepared."
+          }
+        }
+      }
+    },
+    "error.payload.inconsistent": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The message content is inconsistent."
+          }
+        }
+      }
+    },
+    "error.payload.malformed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The message content is malformed."
+          }
+        }
+      }
+    },
+    "error.payload.unsupportedVersion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This message uses a newer version of Cipher."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}
