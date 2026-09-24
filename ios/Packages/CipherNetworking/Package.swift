@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "CipherNetworking",
+    defaultLocalization: "en",
     platforms: [.iOS(.v17), .macOS(.v14)],
     products: [
         .library(name: "CipherNetworking", targets: ["CipherNetworking"])
@@ -15,7 +16,8 @@ let package = Package(
             name: "CipherNetworking",
             dependencies: [
                 .product(name: "CipherCore", package: "CipherCore")
-            ]
+            ],
+            resources: [.process("Resources")]
         ),
         .testTarget(
             name: "CipherNetworkingTests",
