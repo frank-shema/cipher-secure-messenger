@@ -1,0 +1,149 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "error.keystore.accessDenied": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cipher is not allowed to access the Keychain."
+          }
+        }
+      }
+    },
+    "error.keystore.corruptIdentity": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The stored identity keys are damaged."
+          }
+        }
+      }
+    },
+    "error.keystore.deviceLocked": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlock your device to access your keys."
+          }
+        }
+      }
+    },
+    "error.keystore.identityAlreadyExists": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An identity already exists on this device."
+          }
+        }
+      }
+    },
+    "error.keystore.identityNotFound": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No identity keys were found on this device."
+          }
+        }
+      }
+    },
+    "error.keystore.invalidKeyMaterial": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The key material has an invalid length."
+          }
+        }
+      }
+    },
+    "error.keystore.keychain": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Keychain returned an unexpected error."
+          }
+        }
+      }
+    },
+    "error.keystore.secureEnclaveUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Secure Enclave is unavailable."
+          }
+        }
+      }
+    },
+    "error.keystore.unwrapFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your keys could not be unlocked by the Secure Enclave."
+          }
+        }
+      }
+    },
+    "error.qr.keyLength": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The verification code contains an invalid key."
+          }
+        }
+      }
+    },
+    "error.qr.missingField": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The verification code is incomplete."
+          }
+        }
+      }
+    },
+    "error.qr.notACipherCode": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is not a Cipher verification code."
+          }
+        }
+      }
+    },
+    "error.qr.unsupportedVersion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code was made by a newer version of Cipher."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}
