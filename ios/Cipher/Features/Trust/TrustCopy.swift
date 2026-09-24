@@ -100,7 +100,7 @@ enum TrustCopy {
                 defaultValue: "Set a timer so messages delete on both phones after they are read."
             )
         case .disappearingOn:
-            let timer = CountdownRing.label(forRemaining: disappearingTimer ?? 0)
+            let timer = ExpiryCountdown.label(forRemaining: disappearingTimer ?? 0)
             return String(
                 localized: "trust.reason.disappearingOn.detail",
                 defaultValue: "Messages delete on both phones \(timer) after they are read."

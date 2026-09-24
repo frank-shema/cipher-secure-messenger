@@ -75,7 +75,11 @@ public struct ReceiveEnvelopeUseCase: Sendable {
     private func replayOutcome(for stored: StoredEnvelope, direction: MessageDirection) async throws -> Message {
         let envelope = stored.envelope
         CoreLog.useCases.warning("replayed counter \(envelope.counter) in \(envelope.conversationId.description, privacy: .public)")
-        if let original = try await messages.fetch(conversationId: envelope.conversationId, senderId: envelope.senderId, counter: envelope.counter) {
+        if let original = try await messages.fetch(
+            conversationId: envelope.conversationId,
+            senderId: envelope.senderId,
+            counter: envelope.counter
+        ) {
             return original
         }
         return makeMessage(from: stored, direction: direction, content: .tampered(.replayed), payload: nil)
@@ -95,7 +99,12 @@ public struct ReceiveEnvelopeUseCase: Sendable {
         }
     }
 
-    private func makeMessage(from stored: StoredEnvelope, direction: MessageDirection, content: MessageContent, payload: MessagePayload?) -> Message {
+    private func makeMessage(
+        from stored: StoredEnvelope,
+        direction: MessageDirection,
+        content: MessageContent,
+        payload: MessagePayload?
+    ) -> Message {
         let envelope = stored.envelope
         return Message(
             id: envelope.id,

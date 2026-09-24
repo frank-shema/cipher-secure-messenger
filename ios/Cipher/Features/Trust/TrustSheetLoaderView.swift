@@ -11,6 +11,7 @@ struct TrustSheetLoaderView: View {
     let contacts: any ContactRepository
     let evaluator: any TrustEvaluating
     let actions: TrustActions
+    var presentation: ScreenPresentation = .sheet
 
     @State private var phase: Phase = .loading
 
@@ -27,7 +28,7 @@ struct TrustSheetLoaderView: View {
                 ProgressView(String(localized: "trust.loading", defaultValue: "Checking this chat's protections…"))
                     .tint(CipherColor.accent)
             case .loaded(let viewModel):
-                TrustSheetView(viewModel: viewModel, actions: actions)
+                TrustSheetView(viewModel: viewModel, actions: actions, presentation: presentation)
             case .missing:
                 EmptyStateView(
                     icon: "questionmark.circle",

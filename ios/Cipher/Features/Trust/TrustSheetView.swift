@@ -10,12 +10,25 @@ struct TrustSheetView: View {
     let actions: TrustActions
     /// Injected so previews render stable dates; the chat passes its own clock.
     var now: () -> Date = { Date() }
+    /// A sheet from the chat header (own stack, Done button); pushed for `Route.trust`.
+    var presentation: ScreenPresentation = .sheet
 
     @Environment(\.dismiss) private var dismiss
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
-        NavigationStack {
+        switch presentation {
+        case .sheet:
+            NavigationStack { content }
+                .presentationDetents([.medium, .large])
+                .presentationDragIndicator(.visible)
+        case .pushed:
+            content
+        }
+    }
+
+    private var content: some View {
+        Group {
             ScrollView {
                 VStack(spacing: CipherSpacing.xl) {
                     TrustSheetHeader(viewModel: viewModel)
@@ -35,17 +48,17 @@ struct TrustSheetView: View {
             .navigationTitle(String(localized: "trust.sheet.title", defaultValue: "Why this chat is secure"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button(String(localized: "common.done", defaultValue: "Done")) { dismiss() }
-                        .accessibilityLabel(String(localized: "trust.sheet.done.a11y", defaultValue: "Close trust details"))
+                if presentation == .sheet {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button(String(localized: "common.done", defaultValue: "Done")) { dismiss() }
+                            .accessibilityLabel(String(localized: "trust.sheet.done.a11y", defaultValue: "Close trust details"))
+                    }
                 }
             }
             .animation(CipherMotion.gentle.crossfadeIfReduced(reduceMotion), value: viewModel.report)
             .task { viewModel.start() }
             .onDisappear { viewModel.stop() }
         }
-        .presentationDetents([.medium, .large])
-        .presentationDragIndicator(.visible)
     }
 
     private var protections: some View {

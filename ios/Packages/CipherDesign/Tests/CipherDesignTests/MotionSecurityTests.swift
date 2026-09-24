@@ -4,14 +4,14 @@ import Testing
 
 struct MotionSecurityTests {
     @Test func decryptScheduleIsDeterministicAndMonotonic() {
-        let a = DecryptSchedule(count: 24, duration: 0.4)
-        let b = DecryptSchedule(count: 24, duration: 0.4)
-        #expect(a == b)
-        let starts = (0..<24).map(a.start(of:))
+        let first = DecryptSchedule(count: 24, duration: 0.4)
+        let second = DecryptSchedule(count: 24, duration: 0.4)
+        #expect(first == second)
+        let starts = (0..<24).map(first.start(of:))
         #expect(zip(starts, starts.dropFirst()).allSatisfy { $0 <= $1 })
-        #expect(a.resolveTime(of: 23) <= a.duration + 1e-9)
-        #expect(a.state(of: 0, at: 0) == .resolving)
-        #expect(a.state(of: 23, at: a.totalDuration) == .plain)
+        #expect(first.resolveTime(of: 23) <= first.duration + 1e-9)
+        #expect(first.state(of: 0, at: 0) == .resolving)
+        #expect(first.state(of: 23, at: first.totalDuration) == .plain)
         #expect(CipherGlyphs.glyph(index: 3, frame: 7) == CipherGlyphs.glyph(index: 3, frame: 7))
     }
 

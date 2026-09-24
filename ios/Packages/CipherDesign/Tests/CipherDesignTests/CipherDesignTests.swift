@@ -24,12 +24,12 @@ struct CipherDesignTests {
     }
 
     @Test func avatarHueIsDeterministicAndBounded() {
-        let a = AvatarIdentity.hue(for: "ada@cipher.app")
-        let b = AvatarIdentity.hue(for: "ada@cipher.app")
-        let c = AvatarIdentity.hue(for: "grace@cipher.app")
-        #expect(a == b)
-        #expect(a != c)
-        #expect((0..<1).contains(a))
+        let ada = AvatarIdentity.hue(for: "ada@cipher.app")
+        let adaAgain = AvatarIdentity.hue(for: "ada@cipher.app")
+        let grace = AvatarIdentity.hue(for: "grace@cipher.app")
+        #expect(ada == adaAgain)
+        #expect(ada != grace)
+        #expect((0..<1).contains(ada))
         #expect(AvatarIdentity.initials(from: "Ada Lovelace") == "AL")
     }
 

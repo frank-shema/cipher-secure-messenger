@@ -79,7 +79,7 @@ public struct PINPadView: View {
     private var dotColor: Color { isShowingError ? CipherColor.danger : CipherColor.accent }
 
     private func key(_ digit: String) -> some View {
-        PINKeyButton(accessibilityLabel: digit, action: { append(digit) }) { Text(digit) }
+        PINKeyButton(accessibilityLabel: digit, action: { append(digit) }, label: { Text(digit) })
     }
 
     private func append(_ digit: String) {

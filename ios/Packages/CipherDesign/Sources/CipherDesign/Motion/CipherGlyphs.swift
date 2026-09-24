@@ -11,11 +11,11 @@ public enum CipherGlyphs {
     /// The same inputs always produce the same output, which keeps every frame
     /// of an effect reproducible in previews, tests and on device.
     public static func hash(_ seed: UInt64, _ index: Int, _ frame: Int) -> UInt64 {
-        var z = seed &+ 0x9E37_79B9_7F4A_7C15 &* UInt64(truncatingIfNeeded: index &+ 1)
-        z &+= 0xBF58_476D_1CE4_E5B9 &* UInt64(truncatingIfNeeded: frame &+ 1)
-        z = (z ^ (z >> 30)) &* 0xBF58_476D_1CE4_E5B9
-        z = (z ^ (z >> 27)) &* 0x94D0_49BB_1331_11EB
-        return z ^ (z >> 31)
+        var state = seed &+ 0x9E37_79B9_7F4A_7C15 &* UInt64(truncatingIfNeeded: index &+ 1)
+        state &+= 0xBF58_476D_1CE4_E5B9 &* UInt64(truncatingIfNeeded: frame &+ 1)
+        state = (state ^ (state >> 30)) &* 0xBF58_476D_1CE4_E5B9
+        state = (state ^ (state >> 27)) &* 0x94D0_49BB_1331_11EB
+        return state ^ (state >> 31)
     }
 
     /// A deterministic glyph for a character position at a given animation frame.

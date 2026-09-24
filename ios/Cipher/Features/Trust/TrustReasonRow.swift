@@ -87,9 +87,9 @@ struct TrustReasonRow: View {
             .modifier(TrustActionStyle(tint: CipherColor.danger))
         case .enableDisappearing:
             Menu {
-                ForEach(ComposerOptions.disappearingPresets, id: \.self) { preset in
-                    Button(CountdownRing.label(forRemaining: preset)) {
-                        actions.onEnableDisappearing(preset)
+                ForEach(DisappearingTimer.allCases.filter(\.isEnabled)) { timer in
+                    Button(timer.title) {
+                        actions.onEnableDisappearing(timer.rawValue)
                     }
                 }
             } label: {

@@ -21,49 +21,49 @@ public struct MessageBubbleShape: Shape {
     }
 
     public func path(in rect: CGRect) -> Path {
-        let r = min(radius, min(rect.width, rect.height) / 2)
+        let corner = min(radius, min(rect.width, rect.height) / 2)
         let tailSize: CGFloat = tail == .none ? 0 : 6
         var path = Path()
 
-        path.move(to: CGPoint(x: rect.minX + r, y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.maxX - r, y: rect.minY))
-        path.addArc(center: CGPoint(x: rect.maxX - r, y: rect.minY + r), radius: r,
+        path.move(to: CGPoint(x: rect.minX + corner, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX - corner, y: rect.minY))
+        path.addArc(center: CGPoint(x: rect.maxX - corner, y: rect.minY + corner), radius: corner,
                     startAngle: .degrees(-90), endAngle: .degrees(0), clockwise: false)
 
         if tail == .trailing {
-            path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - r))
+            path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - corner))
             path.addQuadCurve(
                 to: CGPoint(x: rect.maxX + tailSize, y: rect.maxY),
                 control: CGPoint(x: rect.maxX, y: rect.maxY - tailSize / 2)
             )
             path.addQuadCurve(
-                to: CGPoint(x: rect.maxX - r, y: rect.maxY),
-                control: CGPoint(x: rect.maxX - r / 2, y: rect.maxY)
+                to: CGPoint(x: rect.maxX - corner, y: rect.maxY),
+                control: CGPoint(x: rect.maxX - corner / 2, y: rect.maxY)
             )
         } else {
-            path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - r))
-            path.addArc(center: CGPoint(x: rect.maxX - r, y: rect.maxY - r), radius: r,
+            path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - corner))
+            path.addArc(center: CGPoint(x: rect.maxX - corner, y: rect.maxY - corner), radius: corner,
                         startAngle: .degrees(0), endAngle: .degrees(90), clockwise: false)
         }
 
         if tail == .leading {
-            path.addLine(to: CGPoint(x: rect.minX + r, y: rect.maxY))
+            path.addLine(to: CGPoint(x: rect.minX + corner, y: rect.maxY))
             path.addQuadCurve(
                 to: CGPoint(x: rect.minX - tailSize, y: rect.maxY),
-                control: CGPoint(x: rect.minX + r / 2, y: rect.maxY)
+                control: CGPoint(x: rect.minX + corner / 2, y: rect.maxY)
             )
             path.addQuadCurve(
-                to: CGPoint(x: rect.minX, y: rect.maxY - r),
+                to: CGPoint(x: rect.minX, y: rect.maxY - corner),
                 control: CGPoint(x: rect.minX, y: rect.maxY - tailSize / 2)
             )
         } else {
-            path.addLine(to: CGPoint(x: rect.minX + r, y: rect.maxY))
-            path.addArc(center: CGPoint(x: rect.minX + r, y: rect.maxY - r), radius: r,
+            path.addLine(to: CGPoint(x: rect.minX + corner, y: rect.maxY))
+            path.addArc(center: CGPoint(x: rect.minX + corner, y: rect.maxY - corner), radius: corner,
                         startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
         }
 
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.minY + r))
-        path.addArc(center: CGPoint(x: rect.minX + r, y: rect.minY + r), radius: r,
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.minY + corner))
+        path.addArc(center: CGPoint(x: rect.minX + corner, y: rect.minY + corner), radius: corner,
                     startAngle: .degrees(180), endAngle: .degrees(270), clockwise: false)
         path.closeSubpath()
         return path

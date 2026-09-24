@@ -40,7 +40,7 @@ struct DuressPINSection: View {
                     HStack(spacing: CipherSpacing.sm) {
                         CipherButton(String(localized: "lock.duress.change", defaultValue: "Change"),
                                      systemImage: "key.fill", variant: .ghost, action: onChange)
-                        CipherButton(String(localized: "lock.duress.remove", defaultValue: "Remove"),
+                        CipherButton(String(localized: "lock.duress.remove.short", defaultValue: "Remove"),
                                      systemImage: "trash", variant: .destructive, action: onRemove)
                     }
                 } else {
@@ -60,10 +60,12 @@ struct DuressPINSection: View {
     private var explanation: String {
         String(
             localized: "lock.duress.explanation",
-            defaultValue: "A duress PIN is a second PIN. If someone forces you to unlock Cipher, enter it instead of your "
-                + "real PIN: the app opens normally but shows a harmless, made-up inbox. Your real conversations stay "
-                + "hidden and untouched, and nothing on screen reveals that another inbox exists. Only your real PIN "
-                + "brings your own messages back."
+            defaultValue: """
+                A duress PIN is a second PIN. If someone forces you to unlock Cipher, enter it instead of your \
+                real PIN: the app opens normally but shows a harmless, made-up inbox. Your real conversations stay \
+                hidden and untouched, and nothing on screen reveals that another inbox exists. Only your real PIN \
+                brings your own messages back.
+                """
         )
     }
 }

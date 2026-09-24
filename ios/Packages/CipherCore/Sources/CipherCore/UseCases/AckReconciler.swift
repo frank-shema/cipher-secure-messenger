@@ -26,7 +26,9 @@ struct AckReconciler: Sendable {
         }
         let updated = try await apply(ack, to: message)
         try await outbox.remove(messageId: message.id)
-        CoreLog.useCases.info("message \(message.id.description, privacy: .public) acknowledged as \(ack.status.rawValue, privacy: .public)")
+        CoreLog.useCases.info(
+            "message \(message.id.description, privacy: .public) acknowledged as \(ack.status.rawValue, privacy: .public)"
+        )
         return .sent(updated)
     }
 

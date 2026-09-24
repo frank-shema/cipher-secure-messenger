@@ -28,7 +28,8 @@ public struct MarkConversationReadUseCase: Sendable {
         do {
             try await realtime.send(.receiptRead(conversationId: conversationId, messageIds: ids))
         } catch {
-            CoreLog.useCases.notice("read receipt for \(ids.count) messages not sent: \(String(describing: type(of: error)), privacy: .public)")
+            let errorType = String(describing: type(of: error))
+            CoreLog.useCases.notice("read receipt for \(ids.count) messages not sent: \(errorType, privacy: .public)")
         }
         return ids
     }

@@ -60,8 +60,8 @@ extension View {
 
 #Preview("PIN keys") {
     HStack(spacing: CipherSpacing.lg) {
-        PINKeyButton(accessibilityLabel: "1", action: {}) { Text(verbatim: "1") }
-        PINKeyButton(accessibilityLabel: "Delete", action: {}) { Image(systemName: "delete.left") }
+        PINKeyButton(accessibilityLabel: "1", action: {}, label: { Text(verbatim: "1") })
+        PINKeyButton(accessibilityLabel: "Delete", action: {}, label: { Image(systemName: "delete.left") })
     }
     .padding(CipherSpacing.xxl)
     .background(CipherColor.background)
