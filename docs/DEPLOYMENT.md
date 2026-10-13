@@ -1,28 +1,28 @@
 # Deployment
 
-The relay is deployed as a single Docker container on an Ubuntu 24.04 droplet (DigitalOcean, `fra1`).
+The relay runs as two Docker containers (relay + its own PostgreSQL 16) on a Hetzner Ubuntu host, published on port 8090. It replaced the original DigitalOcean droplet deployment on 2026-10-13 after that droplet was decommissioned.
 
 | Item | Value |
 |---|---|
-| Relay | `http://104.248.131.165:8080` |
-| Swagger UI | `http://104.248.131.165:8080/swagger-ui.html` |
-| Health | `http://104.248.131.165:8080/actuator/health` |
-| WebSocket | `ws://104.248.131.165:8080/ws` |
+| Relay | `http://138.201.153.167:8090` |
+| Swagger UI | `http://138.201.153.167:8090/swagger-ui.html` |
+| Health | `http://138.201.153.167:8090/actuator/health` |
+| WebSocket | `ws://138.201.153.167:8090/ws` |
 | Demo users | `alice` / `cipher-alice`, `bob` / `cipher-bob`, `echo` / `cipher-echo` |
 
 ## Layout on the server
 
 ```
 /opt/cipher/
-├── docker-compose.yml   # eclipse-temurin:21-jre running the jar, joined to the database network
+├── docker-compose.yml   # cipher-db (postgres:16-alpine, named volume) + relay (eclipse-temurin:21-jre), port 8090 → 8080
 ├── cipher-relay.jar     # built from main with: cd backend && mvn -DskipTests package
-├── .env                 # mode 600 — profile, DATABASE_*, JWT_SECRET, ATTACHMENTS_PATH (never committed)
+├── .env                 # mode 600 — profile, DATABASE_*, POSTGRES_PASSWORD, JWT_SECRET, ATTACHMENTS_PATH (never committed)
 └── blobs/               # encrypted attachment blobs (opaque, UUID-named)
 ```
 
-The container joins the existing `backend_chibuku-net` Docker network and talks to the shared
-PostgreSQL 16 container over the private network. The relay has its own `cipher` database and
-role; nothing else on that instance is touched. Memory is capped at 900 MB with `-Xmx512m`.
+The relay and its database share a private Compose network; only port 8090 is published and
+allowed through `ufw`. Nothing else on the host is touched. Memory is capped at 1.5 GB with
+`-Xmx768m`.
 
 ## Profile choice
 
@@ -34,13 +34,13 @@ enables the demo seeder (`alice`, `bob`, `echo`) so reviewers can sign in immedi
 
 ```sh
 cd backend && mvn -DskipTests package
-scp target/cipher-relay-0.1.0-SNAPSHOT.jar root@104.248.131.165:/opt/cipher/cipher-relay.jar
-ssh root@104.248.131.165 'cd /opt/cipher && docker compose restart relay'
+scp target/cipher-relay-0.1.0-SNAPSHOT.jar root@138.201.153.167:/opt/cipher/cipher-relay.jar
+ssh root@138.201.153.167 'cd /opt/cipher && docker compose restart relay'
 ```
 
 ## Pointing the app at the server
 
-In the app, open Settings → Server URL and enter `http://104.248.131.165:8080`. The simulator
+In the app, open Settings → Server URL and enter `http://138.201.153.167:8090`. The simulator
 default remains `http://localhost:8080` for `make up`.
 
 ## Not yet wired
