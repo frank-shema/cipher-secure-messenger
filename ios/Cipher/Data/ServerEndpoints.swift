@@ -9,8 +9,8 @@ struct ServerEndpoints: Hashable, Sendable {
 
     /// The publicly hosted demo relay (see docs/DEPLOYMENT.md).
     static let hosted = ServerEndpoints(
-        baseURL: URL(string: "http://104.248.131.165:8080") ?? URL(fileURLWithPath: "/"),
-        webSocketURL: URL(string: "ws://104.248.131.165:8080/ws") ?? URL(fileURLWithPath: "/")
+        baseURL: URL(string: "http://138.201.153.167:8090") ?? URL(fileURLWithPath: "/"),
+        webSocketURL: URL(string: "ws://138.201.153.167:8090/ws") ?? URL(fileURLWithPath: "/")
     )
 
     /// `http://localhost:8080` / `ws://localhost:8080/ws`, the relay started by `make up`.

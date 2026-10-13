@@ -55,10 +55,10 @@ The blind relay is deployed and reachable right now:
 
 | | |
 |---|---|
-| Relay | `http://104.248.131.165:8080` |
-| Swagger UI | [http://104.248.131.165:8080/swagger-ui.html](http://104.248.131.165:8080/swagger-ui.html) |
-| Health | [http://104.248.131.165:8080/actuator/health](http://104.248.131.165:8080/actuator/health) |
-| WebSocket | `ws://104.248.131.165:8080/ws` |
+| Relay | `http://138.201.153.167:8090` |
+| Swagger UI | [http://138.201.153.167:8090/swagger-ui.html](http://138.201.153.167:8090/swagger-ui.html) |
+| Health | [http://138.201.153.167:8090/actuator/health](http://138.201.153.167:8090/actuator/health) |
+| WebSocket | `ws://138.201.153.167:8090/ws` |
 
 ```sh
 git clone https://github.com/frank-shema/cipher-secure-messenger.git
@@ -75,7 +75,7 @@ it by calling `GET /api/v1/conversations/{id}/messages` from Swagger with your t
 You can also poke the API without the app:
 
 ```sh
-curl -s -X POST http://104.248.131.165:8080/api/v1/auth/login \
+curl -s -X POST http://138.201.153.167:8090/api/v1/auth/login \
   -H 'Content-Type: application/json' \
   -d '{"username":"alice","password":"cipher-alice"}' | jq .
 ```
@@ -141,7 +141,7 @@ Capsule).
 ### Physical device
 
 A device cannot reach `localhost` on your Mac. Open **Settings → Relay**, enter either the hosted
-relay `http://104.248.131.165:8080` or `http://<your-mac-lan-ip>:8080`, tap **Save** and relaunch
+relay `http://138.201.153.167:8090` or `http://<your-mac-lan-ip>:8080`, tap **Save** and relaunch
 (the API client is built once at launch). The WebSocket URL is derived from the same address (`http` → `ws`, `https` → `wss`).
 `Info.plist` allows plain `http` for local networking only; anything that leaves your network must
 be `https`.
